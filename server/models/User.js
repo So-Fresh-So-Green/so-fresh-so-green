@@ -21,6 +21,10 @@ const userSchema = new Schema(
       required: true,
       minlength: 8
     },
+    profPic: {
+      type: String,
+      trim: true
+    },
     posts: [{
       type: Schema.Types.ObjectId,
       ref: 'Post'
