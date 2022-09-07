@@ -40,7 +40,28 @@ const typeDefs = gql`
     email: String
     password: String
     profPic: String
+    posts: [Post]
+    comments: [Comment]
+    plants: [Plant]
+    followers: [User]
+    following: [User]
     orders: [Order]
+  }
+
+  type Post {
+    _id: ID
+    title: String
+    content: String
+    createdAt: String
+    username: String
+    plant: Plant
+    comments: [Comment]
+  }
+
+  type Comment {
+    content: String
+    createdAt: String
+    username: String
   }
 
   type Checkout {
