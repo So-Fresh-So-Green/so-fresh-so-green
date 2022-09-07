@@ -3,7 +3,7 @@ const dateFormat = require('../utils/dateFormat')
 
 const commentSchema = new Schema(
     {
-        commentContent: {
+        content: {
         type: String,
         required: true
         },
