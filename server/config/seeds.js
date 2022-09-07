@@ -20,49 +20,49 @@ db.once('open', async () => {
     {
       name: 'bamboo',
       waterSched: '2x/day',
-      image: 'https://placeholder.pics/svg/300/C08EFF-FFB12D/A5FFFD-50FFE1',
+      image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       user: 'Pamela'
     },
     {
       name: 'grass',
       waterSched: '2x/day',
-      image: 'https://placeholder.pics/svg/300/C08EFF-FAB12D/A5FFAD-50FAE1',
+      image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       user: 'Pamela'
     },
     {
       name: 'fern',
       waterSched: '1x/week',
-      image: 'https://placeholder.pics/svg/300/71FF67-736AFF',
+      image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       user: 'Elijah'
     },
     {
       name: 'monstera',
       waterSched: '2x/week',
-      image: 'https://placeholder.pics/svg/300/C05EFB-FFB14D/A5CFFD-50FCE1',
+      image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       user: 'Jimbo'
     },
     {
       name: 'tree',
       waterSched: '2x/year',
-      image: 'https://placeholder.pics/svg/300/C28EFF-FFF12D/A5AAAD-50AFE1',
+      image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       user: 'Jimbo'
     },
     {
       name: 'moss',
       waterSched: '1x/week',
-      image: 'https://placeholder.pics/svg/300/71FF67-736AFF',
+      image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       user: 'Niki'
     },
     {
       name: 'melon',
       waterSched: '1x/week',
-      image: 'https://placeholder.pics/svg/300/71BB67-736AAA',
+      image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       user: 'Grego'
     },
@@ -77,7 +77,7 @@ db.once('open', async () => {
       name: 'Plant 1',
       description:
         'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      image: 'https://placeholder.pics/svg/300/C08EFF-FFB12D/A5FFFD-50FFE1',
+      image: 'placeholder-plant.jpg',
       price: 2.99,
       quantity: 500,
       plant: plants[0]._id,
@@ -87,7 +87,7 @@ db.once('open', async () => {
       name: 'Plant 2',
       description:
         'Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.',
-      image: 'https://placeholder.pics/svg/300/71FF67-736AFF',
+      image: 'placeholder-plant.jpg',
       price: 1.99,
       quantity: 500,
       plant: plants[1]._id,
@@ -193,7 +193,7 @@ db.once('open', async () => {
       username: 'Pamela',
       email: 'pamela@testmail.com',
       password: 'password12345',
-      profPic: 'https://placeholder.pics/svg/300/89FF50-FF417B/A5FFFD-FF0CC7',
+      profPic: 'profile.jpg',
       plants: [
         plants[0]._id,
         plants[1]._id
@@ -208,6 +208,7 @@ db.once('open', async () => {
       username: 'Elijah',
       email: 'eholt@testmail.com',
       password: 'password12345',
+      profPic: 'profile.jpg',
       plants: [
         plants[2]._id
       ]
@@ -216,6 +217,7 @@ db.once('open', async () => {
       username: 'Jimbo',
       email: 'jim@testmail.com',
       password: 'password12345',
+      profPic: 'profile.jpg',
       plants: [
         plants[3]._id,
         plants[4]._id
@@ -230,6 +232,7 @@ db.once('open', async () => {
       username: 'Niki',
       email: 'niki@testmail.com',
       password: 'password12345',
+      profPic: 'profile.jpg',
       plants: [
         plants[5]._id
       ],
@@ -237,10 +240,11 @@ db.once('open', async () => {
     },
   ]);
 
-  await User.create({
+  const grego = await User.create({
       username: 'Grego',
       email: 'greggg@testmail.com',
       password: 'password12345',
+      profPic: 'profile.jpg',
       plants: [
         plants[6]._id
       ],
@@ -256,10 +260,11 @@ db.once('open', async () => {
       following: [users[0]._id]
     })
 
-  await User.create({
+  const syd = await User.create({
     username: 'Syd',
     email: 'sydo@testmail.com',
     password: 'password12345',
+    profPic: 'profile.jpg',
     plants: [
       plants[6]._id
     ],
@@ -273,6 +278,26 @@ db.once('open', async () => {
       users[3]._id
     ],
     following: [users[0]._id]
+  })
+
+  await User.create({
+    username: 'Blah',
+    email: 'blah@testmail.com',
+    password: 'password12345',
+    profPic: 'profile.jpg',
+    plants: [
+      plants[6]._id
+    ],
+    orders: [
+      {
+        products: [products[2]._id, products[2]._id, products[3]._id]
+      }
+    ],
+    followers: [
+      syd._id,
+      grego._id
+    ],
+    following: [users[0]._id, users[2]._id, syd._id]
   })
 
   console.log('users seeded');
