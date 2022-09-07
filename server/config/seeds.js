@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { User, Product, Category } = require('../models');
+const { User, Product, Category, Plant } = require('../models');
 
 db.once('open', async () => {
   await Category.deleteMany();
@@ -14,26 +14,84 @@ db.once('open', async () => {
 
   console.log('categories seeded');
 
+  await Plant.deleteMany();
+
+  const plants = await Plant.insertMany([
+    {
+      name: 'bamboo',
+      waterSched: '2x/day',
+      image: 'https://placeholder.pics/svg/300/C08EFF-FFB12D/A5FFFD-50FFE1',
+      description: 'blah blah blah blah blah',
+      user: 'Pamela'
+    },
+    {
+      name: 'grass',
+      waterSched: '2x/day',
+      image: 'https://placeholder.pics/svg/300/C08EFF-FAB12D/A5FFAD-50FAE1',
+      description: 'blah blah blah blah blah',
+      user: 'Pamela'
+    },
+    {
+      name: 'fern',
+      waterSched: '1x/week',
+      image: 'https://placeholder.pics/svg/300/71FF67-736AFF',
+      description: 'blah blah blah blah blah',
+      user: 'Elijah'
+    },
+    {
+      name: 'monstera',
+      waterSched: '2x/week',
+      image: 'https://placeholder.pics/svg/300/C05EFB-FFB14D/A5CFFD-50FCE1',
+      description: 'blah blah blah blah blah',
+      user: 'Jimbo'
+    },
+    {
+      name: 'tree',
+      waterSched: '2x/year',
+      image: 'https://placeholder.pics/svg/300/C28EFF-FFF12D/A5AAAD-50AFE1',
+      description: 'blah blah blah blah blah',
+      user: 'Jimbo'
+    },
+    {
+      name: 'moss',
+      waterSched: '1x/week',
+      image: 'https://placeholder.pics/svg/300/71FF67-736AFF',
+      description: 'blah blah blah blah blah',
+      user: 'Niki'
+    },
+    {
+      name: 'melon',
+      waterSched: '1x/week',
+      image: 'https://placeholder.pics/svg/300/71BB67-736AAA',
+      description: 'blah blah blah blah blah',
+      user: 'Grego'
+    },
+  ])
+
+  console.log('plants seeded')
+
   await Product.deleteMany();
 
   const products = await Product.insertMany([
     {
-      name: 'Tin of Cookies',
+      name: 'Plant 1',
       description:
         'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      image: 'cookie-tin.jpg',
-      category: categories[0]._id,
+      image: 'https://placeholder.pics/svg/300/C08EFF-FFB12D/A5FFFD-50FFE1',
       price: 2.99,
-      quantity: 500
+      quantity: 500,
+      plant: plants[0]._id,
+      category: categories[0]._id,
     },
     {
-      name: 'Canned Coffee',
+      name: 'Plant 2',
       description:
         'Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.',
-      image: 'canned-coffee.jpg',
-      category: categories[0]._id,
+      image: 'https://placeholder.pics/svg/300/71FF67-736AFF',
       price: 1.99,
-      quantity: 500
+      quantity: 500,
+      plant: plants[1]._id,
+      category: categories[0]._id
     },
     {
       name: 'Toilet Paper',
@@ -130,22 +188,92 @@ db.once('open', async () => {
 
   await User.deleteMany();
 
-  await User.create({
-    username: 'Pamela',
-    email: 'pamela@testmail.com',
-    password: 'password12345',
-    orders: [
+  const users = await User.insertMany([
       {
-        products: [products[0]._id, products[0]._id, products[1]._id]
-      }
-    ]
-  });
+      username: 'Pamela',
+      email: 'pamela@testmail.com',
+      password: 'password12345',
+      profPic: 'https://placeholder.pics/svg/300/89FF50-FF417B/A5FFFD-FF0CC7',
+      plants: [
+        plants[0]._id,
+        plants[1]._id
+      ],
+      orders: [
+        {
+          products: [products[0]._id, products[0]._id, products[1]._id]
+        }
+      ]
+    },
+    {
+      username: 'Elijah',
+      email: 'eholt@testmail.com',
+      password: 'password12345',
+      plants: [
+        plants[2]._id
+      ]
+    },
+    {
+      username: 'Jimbo',
+      email: 'jim@testmail.com',
+      password: 'password12345',
+      plants: [
+        plants[3]._id,
+        plants[4]._id
+      ],
+      orders: [
+        {
+          products: [products[2]._id, products[2]._id, products[3]._id]
+        }
+      ]
+    },
+    {
+      username: 'Niki',
+      email: 'niki@testmail.com',
+      password: 'password12345',
+      plants: [
+        plants[5]._id
+      ],
+      followers: '6318c9ef717cf979455c9b68'
+    },
+  ]);
 
   await User.create({
-    username: 'Elijah',
-    email: 'eholt@testmail.com',
-    password: 'password12345'
-  });
+      username: 'Grego',
+      email: 'greggg@testmail.com',
+      password: 'password12345',
+      plants: [
+        plants[6]._id
+      ],
+      orders: [
+        {
+          products: [products[2]._id, products[2]._id, products[3]._id]
+        }
+      ],
+      followers: [
+        users[0]._id,
+        users[1]._id
+      ],
+      following: [users[0]._id]
+    })
+
+  await User.create({
+    username: 'Syd',
+    email: 'sydo@testmail.com',
+    password: 'password12345',
+    plants: [
+      plants[6]._id
+    ],
+    orders: [
+      {
+        products: [products[2]._id, products[2]._id, products[3]._id]
+      }
+    ],
+    followers: [
+      users[2]._id,
+      users[3]._id
+    ],
+    following: [users[0]._id]
+  })
 
   console.log('users seeded');
 

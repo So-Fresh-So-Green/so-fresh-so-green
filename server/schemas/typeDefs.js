@@ -6,13 +6,25 @@ const typeDefs = gql`
     name: String
   }
 
+  type Plant {
+    _id: ID
+    name: String
+    waterSched: String
+    image: String
+    description: String
+    createdAt: String
+    user: String
+  }
+
   type Product {
     _id: ID
     name: String
     description: String
     image: String
-    quantity: Int
+    postedAt: String
     price: Float
+    quantity: Int
+    plant: Plant
     category: Category
   }
 
