@@ -37,7 +37,7 @@ const typeDefs = gql`
   type User {
     _id: ID
     username: String
-    email: String
+    email: String!
     password: String
     profPic: String
     posts: [Post]
@@ -63,6 +63,13 @@ const typeDefs = gql`
     body: String!
     createdAt: String!
     username: String!
+  }
+
+  input RegisterInput {
+    username: String!
+    password: String!
+    confirmPassword: String!
+    email: String!
   }
 
   type Comment {
@@ -96,6 +103,7 @@ const typeDefs = gql`
     updateUser(username: String, email: String, password: String): User
     updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
+    register(registerInput: RegisterInput): User
   }
 `;
 
