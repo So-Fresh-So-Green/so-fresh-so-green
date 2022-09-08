@@ -63,7 +63,7 @@ const resolvers = {
 
     async getPosts(){
       try {
-        const posts = await Post.find();
+        const posts = await Post.find().sort({ createdAt: -1 });
         return posts;
       } catch (err){
         throw new Error(err);
@@ -175,7 +175,7 @@ const resolvers = {
     },
     async createPost(_, { body }, context) {
       if (context.user) {
-        
+
         const newPost = new Post({
           body, 
           user: user.id,
@@ -187,6 +187,20 @@ const resolvers = {
 
         return post;
       } 
+
+      throw new AuthenticationError('Not logged in')
+    },
+    
+    async deletePost(_, { postId }, context) {
+      if (context.user) {
+        const post = await Post.findById(postId);
+          if (user.username === post.username){
+            await post.delete();
+            return 'Post deleted successfully';
+          } else {
+            throw new AuthenticationError('Action not allowed');
+          }
+      }
 
       throw new AuthenticationError('Not logged in')
     }
