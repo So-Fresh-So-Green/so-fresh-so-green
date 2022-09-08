@@ -74,4 +74,4 @@ const postSchema = new Schema({
 
 // module.exports = Post;
 
-module.exports = model('Port', postSchema)
+module.exports = model('Post', postSchema)

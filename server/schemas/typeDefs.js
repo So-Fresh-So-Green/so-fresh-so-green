@@ -95,6 +95,7 @@ const typeDefs = gql`
     order(_id: ID!): Order
     checkout(products: [ID]!): Checkout
     getPosts: [Post]
+    getPost(postId: ID!): Post
   }
 
   type Mutation {
@@ -104,6 +105,8 @@ const typeDefs = gql`
     updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
     register(registerInput: RegisterInput): User
+    createPost(body: String!): Post!
+    deletePost(postId: ID!): String!
   }
 `;
 
