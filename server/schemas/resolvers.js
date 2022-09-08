@@ -181,6 +181,7 @@ const resolvers = {
             createdAt: new Date().toISOString()
           })
           await post.save()
+          
           return post;
         }
       }
