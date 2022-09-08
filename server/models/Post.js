@@ -13,6 +13,7 @@ const postSchema = new Schema({
         {
             body: String,
             username: String,
+            userId: Schema.Types.ObjectId,
             createdAt: String
         }
     ],
@@ -22,6 +23,10 @@ const postSchema = new Schema({
             createdAt: String
         }
     ],
+    plant: {
+        type: Schema.Types.ObjectId,
+        ref: 'Plant'
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'users'
@@ -70,8 +75,8 @@ const postSchema = new Schema({
 //     return this.comments.length
 // })
 
-// const Post = model('Post', postSchema);
+const Post = model('Post', postSchema);
 
-// module.exports = Post;
+module.exports = Post;
 
-module.exports = model('Post', postSchema)
+// module.exports = model('Post', postSchema)

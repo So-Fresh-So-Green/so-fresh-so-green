@@ -7,13 +7,13 @@ const typeDefs = gql`
   }
 
   type Plant {
-    _id: ID
+    _id: ID!
     name: String
     waterSched: String
     image: String
     description: String
-    createdAt: String
-    user: String
+    createdAt: String!
+    user: String!
   }
 
   type Product {
@@ -63,6 +63,22 @@ const typeDefs = gql`
     body: String!
     createdAt: String!
     username: String!
+    plant: Plant
+    comments: [Comment]
+  }
+
+  type Comment {
+    id: ID!
+    body: String!
+    username: String!
+    userId: ID!
+    createdAt: String!
+  }
+
+  type Like {
+    id: ID!
+    username: String!
+    createdAt: String!
   }
 
   input RegisterInput {
@@ -70,12 +86,6 @@ const typeDefs = gql`
     password: String!
     confirmPassword: String!
     email: String!
-  }
-
-  type Comment {
-    content: String
-    createdAt: String
-    username: String
   }
 
   type Checkout {
@@ -103,6 +113,9 @@ const typeDefs = gql`
     addOrder(products: [ID]!): Order
     updateUser(username: String, email: String, password: String): User
     updateProduct(_id: ID!, quantity: Int!): Product
+    createComment(postId: String!, body: String!): Post!
+    deleteComment(postId: String!, commentId: ID!): Post!
+    likePost(postId: ID!): Post!
     login(email: String!, password: String!): Auth
     register(registerInput: RegisterInput): User
     createPost(body: String!): Post!

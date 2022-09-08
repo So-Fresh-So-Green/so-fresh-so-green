@@ -1,4 +1,4 @@
-const { AuthenticationError } = require('apollo-server-express');
+const { AuthenticationError, UserInputError } = require('apollo-server-express');
 const { User, Product, Category, Order, Post } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
@@ -35,10 +35,16 @@ const resolvers = {
     
     user: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: 'orders.products',
-          populate: 'category'
-        });
+        const user = await User.findById(context.user._id)
+          .populate('plants')
+          .populate('posts')
+          .populate('comments')
+          .populate('followers')
+          .populate('following')
+          .populate({
+            path: 'orders.products',
+            populate: 'category'
+          });
 
         user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
 
@@ -156,6 +162,43 @@ const resolvers = {
 
       return await Product.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
     },
+
+    createComment: async (_, {postId, body}, context) => {
+      if (context.user) {
+        if(body.trim() === '') {
+          throw new UserInputError('Empty comment', {
+            errors: {
+              body: "Comment body can't be empty"
+            }
+          })
+        }
+        const post = await Post.findById(postId)
+        if(post) {
+          post.comments.unshift({
+            body,
+            username: context.user.username,
+            userId: context.user._id,
+            createdAt: new Date().toISOString()
+          })
+          await post.save()
+          
+          return post;
+        }
+      }
+    },
+
+    deleteComment: async(_, {postId, commentId}, context) => {
+      const post = await Post.findById(postId)
+      if (post) {
+        const commentIndex = post.comments.findIndex(c => c.id === commentId)
+        if(post.comments[commentIndex].username === context.user.username) {
+          post.comments.splice(commentIndex, 1)
+          await post.save()
+          return post;
+        }
+      }
+    },
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -178,15 +221,15 @@ const resolvers = {
         
         const newPost = new Post({
           body, 
-          user: user.id,
-          username: user.username,
+          user: context.user.id,
+          username: context.user.username,
           createdAt: new Date().toISOString()
         });
 
         const post = await newPost.save();
 
         return post;
-      } 
+      }
 
       throw new AuthenticationError('Not logged in')
     }
