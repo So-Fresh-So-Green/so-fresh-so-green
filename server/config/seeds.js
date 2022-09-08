@@ -20,17 +20,82 @@ db.once('open', async () => {
     {
       body: "This is a sample post",
       username: "user",
-      createdAt: "lalala"
+      createdAt: "lalala",
+      comments: [
+        {
+          body: 'blah blah blah blah',
+          username: 'Grego',
+          createdAt: 'blah'
+        }, 
+        {
+          body: 'i dont get it',
+          username: 'Jimbo',
+          createdAt: 'asdfasdg'
+        }, 
+        {
+          body: 'very cool wow',
+          username: 'Grego',
+          createdAt: 'basdgasdglah'
+        }, 
+        {
+          body: 'i love this',
+          username: 'user',
+          createdAt: 'blasdgah'
+        }, 
+      ]
     },
     {
       body: "Another lovely post",
       username: "user2",
       createdAt: "woohoo"
-    }
+    },
+    {
+      body: "alsdgjsadkghsaldkgjsaldf",
+      username: "user",
+      createdAt: "lalala",
+      comments: [
+        {
+          body: 'blah blah blah blah',
+          username: 'Grego',
+          createdAt: 'blah'
+        }, 
+        {
+          body: 'not very cool at all',
+          username: 'Jimbo',
+          createdAt: 'asdfasdg'
+        }, 
+        {
+          body: 'not very cool at all',
+          username: 'Grego',
+          createdAt: 'basdgasdglah'
+        }, 
+        {
+          body: 'i hate this',
+          username: 'user',
+          createdAt: 'blasdgah'
+        }, 
+      ]
+    },
+    {
+      body: "blah blah blah",
+      username: "Grego",
+      createdAt: "woohoo"
+    },
+    {
+      body: "sample x2",
+      username: "Niki",
+      createdAt: "lalala"
+    },
+    {
+      body: "plants plants plants",
+      username: "Niki",
+      createdAt: "woohoo"
+    },
   ]); 
 
-  await Plant.deleteMany();
+  console.log('posts seeded')
 
+  await Plant.deleteMany();
   
   const plants = await Plant.insertMany([
     {
@@ -204,57 +269,61 @@ db.once('open', async () => {
 
   await User.deleteMany();
 
-  const users = await User.insertMany([
+  const pam = await User.create({
+    username: 'Pamela',
+    email: 'pamela@testmail.com',
+    password: 'password12345',
+    profPic: 'profile.jpg',
+    plants: [
+      plants[0]._id,
+      plants[1]._id
+    ],
+    orders: [
       {
-      username: 'Pamela',
-      email: 'pamela@testmail.com',
-      password: 'password12345',
-      profPic: 'profile.jpg',
-      plants: [
-        plants[0]._id,
-        plants[1]._id
-      ],
-      orders: [
-        {
-          products: [products[0]._id, products[0]._id, products[1]._id]
-        }
-      ]
-    },
-    {
-      username: 'Elijah',
-      email: 'eholt@testmail.com',
-      password: 'password12345',
-      profPic: 'profile.jpg',
-      plants: [
-        plants[2]._id
-      ]
-    },
-    {
-      username: 'Jimbo',
-      email: 'jim@testmail.com',
-      password: 'password12345',
-      profPic: 'profile.jpg',
-      plants: [
-        plants[3]._id,
-        plants[4]._id
-      ],
-      orders: [
-        {
-          products: [products[2]._id, products[2]._id, products[3]._id]
-        }
-      ]
-    },
-    {
-      username: 'Niki',
-      email: 'niki@testmail.com',
-      password: 'password12345',
-      profPic: 'profile.jpg',
-      plants: [
-        plants[5]._id
-      ],
-      followers: '6318c9ef717cf979455c9b68'
-    },
-  ]);
+        products: [products[0]._id, products[0]._id, products[1]._id]
+      }
+    ]
+  })
+
+  const elijah = await User.create({
+    username: 'Elijah',
+    email: 'eholt@testmail.com',
+    password: 'password12345',
+    profPic: 'profile.jpg',
+    plants: [
+      plants[2]._id,
+      plants[0]._id
+    ],
+    following: [pam._id]
+  })
+
+  const jimbo = await User.create({
+    username: 'Jimbo',
+    email: 'jim@testmail.com',
+    password: 'password12345',
+    profPic: 'profile.jpg',
+    plants: [
+      plants[3]._id,
+      plants[4]._id
+    ],
+    orders: [
+      {
+        products: [products[2]._id, products[2]._id, products[3]._id]
+      }
+    ]
+  })
+
+  const niki = await User.create({
+    username: 'Niki',
+    email: 'niki@testmail.com',
+    password: 'password12345',
+    profPic: 'profile.jpg',
+    plants: [
+      plants[4]._id,
+      plants[5]._id
+    ],
+    following: [jimbo._id]
+  })
 
   const grego = await User.create({
       username: 'Grego',
@@ -270,10 +339,10 @@ db.once('open', async () => {
         }
       ],
       followers: [
-        users[0]._id,
-        users[1]._id
+        niki._id,
+        jimbo._id
       ],
-      following: [users[0]._id]
+      following: [pam._id]
     })
 
   const syd = await User.create({
@@ -282,7 +351,9 @@ db.once('open', async () => {
     password: 'password12345',
     profPic: 'profile.jpg',
     plants: [
-      plants[6]._id
+      plants[6]._id,
+      plants[3]._id,
+      plants[2]._id
     ],
     orders: [
       {
@@ -290,13 +361,13 @@ db.once('open', async () => {
       }
     ],
     followers: [
-      users[2]._id,
-      users[3]._id
+      grego._id,
+      jimbo._id
     ],
-    following: [users[0]._id]
+    following: [pam._id]
   })
 
-  await User.create({
+  const blah = await User.create({
     username: 'Blah',
     email: 'blah@testmail.com',
     password: 'password12345',
@@ -313,7 +384,7 @@ db.once('open', async () => {
       syd._id,
       grego._id
     ],
-    following: [users[0]._id, users[2]._id, syd._id]
+    following: [pam._id, niki._id, syd._id]
   })
 
   console.log('users seeded');
