@@ -79,7 +79,8 @@ userSchema.virtual('followingCount').get(function() {
 
 userSchema.virtual('followerCount').get(function() {
   return this.followers.length
-})
+},
+{ timestamps: true })
 
 const User = model('User', userSchema);
 
