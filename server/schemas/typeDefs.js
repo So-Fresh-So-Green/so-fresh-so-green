@@ -6,16 +6,6 @@ const typeDefs = gql`
     name: String
   }
 
-  type Plant {
-    _id: ID!
-    name: String
-    waterSched: String
-    image: String
-    description: String
-    createdAt: String!
-    user: String!
-  }
-
   type Product {
     _id: ID
     name: String
@@ -23,7 +13,6 @@ const typeDefs = gql`
     image: String
     postedAt: String
     price: Float
-    quantity: Int
     plant: Plant
     category: Category
   }
@@ -41,7 +30,6 @@ const typeDefs = gql`
     password: String
     profPic: String
     posts: [Post]
-    comments: [Comment]
     plants: [Plant]
     followers: [User]
     following: [User]
@@ -54,8 +42,11 @@ const typeDefs = gql`
     createdAt: String!
     username: String!
     plant: Plant
-    user: ID!
+    userId: ID!
     comments: [Comment]
+    likes: [Like]!
+    likeCount: Int!
+    commentCount: Int!
   }
 
   type Comment {
@@ -70,6 +61,17 @@ const typeDefs = gql`
     id: ID!
     username: String!
     createdAt: String!
+  }
+
+  type Plant {
+    _id: ID!
+    name: String!
+    waterSched: String
+    image: String
+    description: String
+    createdAt: String!
+    username: String!
+    userId: ID!
   }
 
   input RegisterInput {
@@ -89,13 +91,13 @@ const typeDefs = gql`
   }
 
   type Query {
-    categories: [Category]
-    products(category: ID, name: String): [Product]
-    product(_id: ID!): Product
-    user: User
-    order(_id: ID!): Order
+    getCategories: [Category]
+    allProducts(category: ID, name: String): [Product]
+    getProduct(_id: ID!): Product
+    getUser: User
+    getOrder(_id: ID!): Order
     checkout(products: [ID]!): Checkout
-    getPosts: [Post]
+    allPosts: [Post]
     getPost(postId: ID!): Post
     getUserPost(user: ID!): [Post]
   }
@@ -104,14 +106,17 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     addOrder(products: [ID]!): Order
     updateUser(username: String, email: String, password: String): User
-    updateProduct(_id: ID!, quantity: Int!): Product
-    createComment(postId: String!, body: String!): Post!
-    deleteComment(postId: String!, commentId: ID!): Post!
+    createProduct(name: String!, description: String, image: String, price: Int, plant: ID, category: ID): Product
+    updateProduct(_id: ID!, name: String, description: String, image: String, price: Int, plant: ID, category: ID): Product
     likePost(postId: ID!): Post!
     login(email: String!, password: String!): Auth
     register(registerInput: RegisterInput): User
     createPost(body: String!): Post!
     deletePost(postId: ID!): String!
+    createComment(postId: String!, body: String!): Post!
+    deleteComment(postId: String!, commentId: ID!): Post!
+    addPlant(name: String!, waterSched: String, image: String, description: String): Plant!
+    deletePlant(plantId: ID!): String!
   }
 `;
 

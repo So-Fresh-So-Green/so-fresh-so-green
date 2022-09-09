@@ -22,12 +22,6 @@ const productSchema = new Schema({
   },
   price: {
     type: Number,
-    required: true,
-  },
-  quantity: {
-    type: Number,
-    min: 0,
-    default: 0
   },
   plant: {
     type: Schema.Types.ObjectId,
@@ -36,7 +30,6 @@ const productSchema = new Schema({
   category: {
     type: Schema.Types.ObjectId,
     ref: 'Category',
-    required: true
   }
 });
 
