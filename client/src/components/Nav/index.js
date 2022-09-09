@@ -8,11 +8,39 @@ function Nav() {
     if (Auth.loggedIn()) {
       return (
         <ul className="flex-row">
+          NAVIGATION LINKS, LOGGED IN
           <li className="mx-1">
+            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+            <a href="/plant-shop">
+              Plant Shop
+            </a>
+          </li>
+          <li className="mx-1">
+            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+            <a href="/newsfeed">
+              Newsfeed
+            </a>
+          </li>
+          <li className="mx-1">
+            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+            <a href="/profile">
+              My Profile
+            </a>
+          </li>
+          <li className="mx-1">
+            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+            <a href="/about">
+              About SFSG
+            </a>
+          </li>
+
+          {/* DO WE NEED THIS? */}
+          {/* <li className="mx-1">
             <Link to="/orderHistory">
               Order History
             </Link>
-          </li>
+          </li> */}
+
           <li className="mx-1">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
             <a href="/" onClick={() => Auth.logout()}>
@@ -24,7 +52,8 @@ function Nav() {
     } else {
       return (
         <ul className="flex-row">
-          <li className="mx-1">
+         NAVIGATION LINKS, LOGGED OUT
+         <li className="mx-1">
             <Link to="/signup">
               Signup
             </Link>
@@ -34,6 +63,12 @@ function Nav() {
               Login
             </Link>
           </li>
+          <li className="mx-1">
+            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+            <a href="/about">
+              About SFSG
+            </a>
+          </li>
         </ul>
       );
     }
@@ -42,9 +77,8 @@ function Nav() {
   return (
     <header className="flex-row px-1">
       <h1>
-        <Link to="/">
-          <span role="img" aria-label="shopping bag">🛍️</span>
-          -Shop-Shop
+        <Link to="/about">
+          So Fresh, So Green
         </Link>
       </h1>
 
