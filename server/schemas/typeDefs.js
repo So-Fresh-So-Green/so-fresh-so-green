@@ -48,22 +48,13 @@ const typeDefs = gql`
     orders: [Order]
   }
 
-  # type Post {
-  #   _id: ID
-  #   title: String
-  #   content: String
-  #   createdAt: String
-  #   username: String
-  #   plant: Plant
-  #   comments: [Comment]
-  # }
-
   type Post {
     _id: ID!
     body: String!
     createdAt: String!
     username: String!
     plant: Plant
+    user: ID!
     comments: [Comment]
   }
 
@@ -106,6 +97,7 @@ const typeDefs = gql`
     checkout(products: [ID]!): Checkout
     getPosts: [Post]
     getPost(postId: ID!): Post
+    getUserPost(user: ID!): [Post]
   }
 
   type Mutation {
