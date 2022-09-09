@@ -13,7 +13,6 @@ const typeDefs = gql`
     image: String
     postedAt: String
     price: Float
-    quantity: Int
     plant: Plant
     category: Category
   }
@@ -92,13 +91,13 @@ const typeDefs = gql`
   }
 
   type Query {
-    categories: [Category]
-    products(category: ID, name: String): [Product]
-    product(_id: ID!): Product
-    user: User
-    order(_id: ID!): Order
+    getCategories: [Category]
+    allProducts(category: ID, name: String): [Product]
+    getProduct(_id: ID!): Product
+    getUser: User
+    getOrder(_id: ID!): Order
     checkout(products: [ID]!): Checkout
-    getPosts: [Post]
+    allPosts: [Post]
     getPost(postId: ID!): Post
     getUserPost(user: ID!): [Post]
   }
@@ -107,7 +106,8 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     addOrder(products: [ID]!): Order
     updateUser(username: String, email: String, password: String): User
-    updateProduct(_id: ID!, quantity: Int!): Product
+    createProduct(name: String!, description: String, image: String, price: Int, plant: ID, category: ID): Product
+    updateProduct(_id: ID!, name: String, description: String, image: String, price: Int, plant: ID, category: ID): Product
     likePost(postId: ID!): Post!
     login(email: String!, password: String!): Auth
     register(registerInput: RegisterInput): User
@@ -115,7 +115,6 @@ const typeDefs = gql`
     deletePost(postId: ID!): String!
     createComment(postId: String!, body: String!): Post!
     deleteComment(postId: String!, commentId: ID!): Post!
-    likeComment(postId: ID!): Post!
     addPlant(name: String!, waterSched: String, image: String, description: String): Plant!
     deletePlant(plantId: ID!): String!
   }

@@ -9,31 +9,28 @@ const resolvers = {
 
   Query: {
     
-    categories: async () => {
+    getCategories: async () => {
       return await Category.find();
     },
 
-    products: async (parent, { category, name }) => {
+    allProducts: async (parent, { category, name }) => {
       const params = {};
-
       if (category) {
         params.category = category;
       }
-
       if (name) {
         params.name = {
           $regex: name
         };
       }
-
-      return await Product.find(params).populate('category');
+      return await Product.find(params).populate('plant').populate('category');
     },
     
-    product: async (parent, { _id }) => {
+    getProduct: async (parent, { _id }) => {
       return await Product.findById(_id).populate('category');
     },
     
-    user: async (parent, args, context) => {
+    getUser: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id)
           .populate('plants')
@@ -53,7 +50,7 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
 
-    order: async (parent, { _id }, context) => {
+    getOrder: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
           path: 'orders.products',
@@ -66,7 +63,7 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
 
-    async getPosts(){
+    async allPosts(){
       try {
         const posts = await Post.find().sort({ createdAt: -1 });
         return posts;
@@ -90,7 +87,7 @@ const resolvers = {
 
     getUserPost: async (_, args, context) => {
       try {
-        const post = await Post.find({user: context.user._id}, (err, data) => {
+        const post = await Post.find({userId: context.user._id}, (err, data) => {
           if (data) {
             return data
           } else {
@@ -168,12 +165,33 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-    updateProduct: async (parent, { _id, quantity }) => {
-      const decrement = Math.abs(quantity) * -1;
-
-      return await Product.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
+    createProduct: async(_, {name, description, image, price, plant, category}, context) => {
+      if (context.user) {
+        const newProduct = new Product({
+          name,
+          description,
+          image,
+          price,
+          plant,
+          category
+        })
+        const product = await newProduct.save()
+        return product
+      }
+      throw new AuthenticationError('Not logged in')
     },
-
+    updateProduct: async (parent, { _id, name, description, image, price, plant, category }) => {
+      return await Product.findByIdAndUpdate(
+        _id, {
+              name,
+              description,
+              image,
+              price,
+              plant,
+              category
+            }, { new: true }
+      );
+    },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
@@ -186,7 +204,6 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-
     createPost: async (_, { body }, context) => {
       if (context.user) {
         const newPost = new Post({
@@ -208,8 +225,7 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in')
     },
-    
-    async deletePost(_, { postId }, context) {
+    deletePost: async (_, { postId }, context) => {
       if (context.user) {
         const post = await Post.findById(postId);
           if (context.user._id === post.userId){
@@ -221,7 +237,6 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in')
     },
-
     createComment: async (_, {postId, body}, context) => {
       if (context.user) {
         if(body.trim() === '') {
@@ -245,7 +260,6 @@ const resolvers = {
         }
       }
     },
-
     deleteComment: async(_, {postId, commentId}, context) => {
       const post = await Post.findById(postId)
       if (post) {
@@ -257,7 +271,6 @@ const resolvers = {
         }
       }
     },
-
     likePost: async(_, {postId}, context) => {
       const username = context.user.username
 
@@ -276,7 +289,6 @@ const resolvers = {
         return post
       } else throw new UserInputError('Post not found')
     },
-
     addPlant: async(_, {name, waterSched, image, description}, context) => {
       if(context.user) {
         const newPlant = new Plant({
@@ -303,7 +315,7 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in')
     },
-    async deletePlant(_, { plantId }, context) {
+    deletePlant: async (_, { plantId }, context) => {
       if (context.user) {
         const plant = await Plant.findById(plantId);
           if (context.user._id === plant.userId){
