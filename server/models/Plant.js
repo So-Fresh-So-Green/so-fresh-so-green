@@ -1,16 +1,12 @@
 const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat')
 
 const plantSchema = new Schema(
     {
         name: {
         type: String,
-        required: true,
         trim: true
         },
-        waterSched: {
-            type: String,
-        },
+        waterSched: String,
         image: {
             type: String,
             trim: true
@@ -19,17 +15,16 @@ const plantSchema = new Schema(
             type: String,
             trim: true
         },
-        createdAt: {
-            type: Date,
-            default: Date.now,
-            get: (val) => dateFormat(val)
-        },
-        user: {
+        createdAt: String,
+        username: {
             type: String,
-            required: true,
             trim: true
+        },
+        userId: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
         }
-    },
+    }
 );
 
 const Plant = model('Plant', plantSchema);

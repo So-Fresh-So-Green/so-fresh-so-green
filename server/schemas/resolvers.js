@@ -1,5 +1,5 @@
 const { AuthenticationError, UserInputError } = require('apollo-server-express');
-const { User, Product, Category, Order, Post } = require('../models');
+const { User, Product, Category, Order, Post, Plant } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -38,7 +38,6 @@ const resolvers = {
         const user = await User.findById(context.user._id)
           .populate('plants')
           .populate('posts')
-          .populate('comments')
           .populate('followers')
           .populate('following')
           .populate({
@@ -175,6 +174,54 @@ const resolvers = {
       return await Product.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
     },
 
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+      const correctPw = await user.isCorrectPassword(password);
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+      const token = signToken(user);
+      return { token, user };
+    },
+
+    createPost: async (_, { body }, context) => {
+      if (context.user) {
+        const newPost = new Post({
+          body, 
+          username: context.user.username,
+          createdAt: new Date().toISOString(),
+        });
+
+        const post = await newPost.save();
+
+        await User.updateOne(
+          {_id: context.user._id},
+          {
+            $push: {posts: post}
+          },
+          {new: true}
+        )
+        return post;
+      }
+      throw new AuthenticationError('Not logged in')
+    },
+    
+    async deletePost(_, { postId }, context) {
+      if (context.user) {
+        const post = await Post.findById(postId);
+          if (context.user._id === post.userId){
+            await post.delete();
+            return 'Post deleted successfully';
+          } else {
+            throw new AuthenticationError('Action not allowed');
+          }
+      }
+      throw new AuthenticationError('Not logged in')
+    },
+
     createComment: async (_, {postId, body}, context) => {
       if (context.user) {
         if(body.trim() === '') {
@@ -211,62 +258,64 @@ const resolvers = {
       }
     },
 
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+    likePost: async(_, {postId}, context) => {
+      const username = context.user.username
 
-      if (!user) {
-        throw new AuthenticationError('Incorrect credentials');
-      }
+      const post = await Post.findById(postId)
+      if(post) {
+        if(post.likes.find((like) => like.username === username)) {
+          post.likes = post.likes.filter((like) => like.username !== username)
+        } else {
+          post.likes.push({
+            username,
+            createdAt: new Date().toISOString()
+          })
+        }
 
-      const correctPw = await user.isCorrectPassword(password);
-
-      if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
-      }
-
-      const token = signToken(user);
-
-      return { token, user };
+        await post.save()
+        return post
+      } else throw new UserInputError('Post not found')
     },
-    async createPost(_, { body }, context) {
-      if (context.user) {
 
-        const newPost = new Post({
-          body, 
-          username: context.user.username,
+    addPlant: async(_, {name, waterSched, image, description}, context) => {
+      if(context.user) {
+        const newPlant = new Plant({
+          name,
+          waterSched,
+          image,
+          description,
           createdAt: new Date().toISOString(),
-          user: context.user._id
+          username: context.user.username,
+          userId: context.user._id
         });
-
-        const post = await newPost.save();
-
+        console.log(newPlant)
+  
+        const plant = await newPlant.save();
+        
         await User.updateOne(
           {_id: context.user._id},
           {
-            $push: {posts: post}
+            $push: {plants: plant}
           },
           {new: true}
         )
-        return post;
+        return plant;
       }
-
       throw new AuthenticationError('Not logged in')
     },
-    
-    async deletePost(_, { postId }, context) {
+    async deletePlant(_, { plantId }, context) {
       if (context.user) {
-        const post = await Post.findById(postId);
-          if (user.username === post.username){
-            await post.delete();
-            return 'Post deleted successfully';
+        const plant = await Plant.findById(plantId);
+          if (context.user._id === plant.userId){
+            await plant.delete();
+            return 'Plant deleted successfully';
           } else {
             throw new AuthenticationError('Action not allowed');
           }
       }
-
       throw new AuthenticationError('Not logged in')
-    }
-  }
+    },
+  },
 };
 
 module.exports = resolvers;
