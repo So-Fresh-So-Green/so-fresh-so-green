@@ -14,87 +14,6 @@ db.once('open', async () => {
 
   console.log('categories seeded');
 
-  await Post.deleteMany();
-
-  const posts = await Post.insertMany([
-    {
-      body: "This is a sample post",
-      username: "user",
-      createdAt: "lalala",
-      comments: [
-        {
-          body: 'blah blah blah blah',
-          username: 'Grego',
-          createdAt: 'blah'
-        }, 
-        {
-          body: 'i dont get it',
-          username: 'Jimbo',
-          createdAt: 'asdfasdg'
-        }, 
-        {
-          body: 'very cool wow',
-          username: 'Grego',
-          createdAt: 'basdgasdglah'
-        }, 
-        {
-          body: 'i love this',
-          username: 'user',
-          createdAt: 'blasdgah'
-        }, 
-      ]
-    },
-    {
-      body: "Another lovely post",
-      username: "user2",
-      createdAt: "woohoo"
-    },
-    {
-      body: "alsdgjsadkghsaldkgjsaldf",
-      username: "user",
-      createdAt: "lalala",
-      comments: [
-        {
-          body: 'blah blah blah blah',
-          username: 'Grego',
-          createdAt: 'blah'
-        }, 
-        {
-          body: 'not very cool at all',
-          username: 'Jimbo',
-          createdAt: 'asdfasdg'
-        }, 
-        {
-          body: 'not very cool at all',
-          username: 'Grego',
-          createdAt: 'basdgasdglah'
-        }, 
-        {
-          body: 'i hate this',
-          username: 'user',
-          createdAt: 'blasdgah'
-        }, 
-      ]
-    },
-    {
-      body: "blah blah blah",
-      username: "Grego",
-      createdAt: "woohoo"
-    },
-    {
-      body: "sample x2",
-      username: "Niki",
-      createdAt: "lalala"
-    },
-    {
-      body: "plants plants plants",
-      username: "Niki",
-      createdAt: "woohoo"
-    },
-  ]); 
-
-  console.log('posts seeded')
-
   await Plant.deleteMany();
   
   const plants = await Plant.insertMany([
@@ -388,6 +307,93 @@ db.once('open', async () => {
   })
 
   console.log('users seeded');
+
+  await Post.deleteMany();
+
+  const posts = await Post.insertMany([
+    {
+      body: "This is a sample post",
+      username: "user",
+      createdAt: "lalala",
+      user: grego._id,
+      comments: [
+        {
+          body: 'blah blah blah blah',
+          username: 'Grego',
+          createdAt: 'blah'
+        }, 
+        {
+          body: 'i dont get it',
+          username: 'Jimbo',
+          createdAt: 'asdfasdg'
+        }, 
+        {
+          body: 'very cool wow',
+          username: 'Grego',
+          createdAt: 'basdgasdglah'
+        }, 
+        {
+          body: 'i love this',
+          username: 'user',
+          createdAt: 'blasdgah'
+        }, 
+      ]
+    },
+    {
+      body: "Another lovely post",
+      username: "user2",
+      createdAt: "woohoo",
+      user: niki._id
+    },
+    {
+      body: "alsdgjsadkghsaldkgjsaldf",
+      username: "user",
+      createdAt: "lalala",
+      user: pam._id,
+      comments: [
+        {
+          body: 'blah blah blah blah',
+          username: 'Grego',
+          createdAt: 'blah'
+        }, 
+        {
+          body: 'not very cool at all',
+          username: 'Jimbo',
+          createdAt: 'asdfasdg'
+        }, 
+        {
+          body: 'not very cool at all',
+          username: 'Grego',
+          createdAt: 'basdgasdglah'
+        }, 
+        {
+          body: 'i hate this',
+          username: 'user',
+          createdAt: 'blasdgah'
+        }, 
+      ]
+    },
+    {
+      body: "blah blah blah",
+      username: "Grego",
+      createdAt: "woohoo",
+      user: pam._id
+    },
+    {
+      body: "sample x2",
+      username: "Niki",
+      createdAt: "lalala",
+      user: pam._id
+    },
+    {
+      body: "plants plants plants",
+      username: "Niki",
+      createdAt: "woohoo",
+      user: syd._id
+    },
+  ]); 
+
+  console.log('posts seeded')
 
   process.exit();
 });

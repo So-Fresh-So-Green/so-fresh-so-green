@@ -89,7 +89,19 @@ const resolvers = {
         }
       },
 
-   
+    getUserPost: async (_, args, context) => {
+      try {
+        const post = await Post.find({user: context.user._id}, (err, data) => {
+          if (data) {
+            return data
+          } else {
+            throw new Error('User has no posts')
+          }
+        })
+      } catch (err) {
+        throw new Error(err)
+      }
+    },
 
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
@@ -221,13 +233,20 @@ const resolvers = {
 
         const newPost = new Post({
           body, 
-          user: context.user.id,
           username: context.user.username,
-          createdAt: new Date().toISOString()
+          createdAt: new Date().toISOString(),
+          user: context.user._id
         });
 
         const post = await newPost.save();
 
+        await User.updateOne(
+          {_id: context.user._id},
+          {
+            $push: {posts: post}
+          },
+          {new: true}
+        )
         return post;
       }
 
