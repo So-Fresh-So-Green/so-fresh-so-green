@@ -31,7 +31,8 @@ class AuthService {
     // Saves user token to localStorage
     localStorage.setItem('id_token', idToken);
 
-    window.location.assign('/');
+    // This is where client gets sent after successful login
+    window.location.assign('/newsfeed');
   }
 
   logout() {
