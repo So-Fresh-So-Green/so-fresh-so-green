@@ -7,29 +7,35 @@ function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
-          NAVIGATION LINKS, LOGGED IN
-          <li className="mx-1">
+        <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+        <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+          <li>
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/plant-shop">
+            {/* <a href="/plant-shop">
               Plant Shop
-            </a>
+            </a> */}
+            <a href="/" class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 
+            lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">Home</a>
           </li>
-          <li className="mx-1">
+          <li>
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/newsfeed">
+            {/* <a href="/newsfeed">
               Newsfeed
-            </a>
+            </a> */}
+            <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
+            lg:border-0 lg:hover:text-primary-700 lg:p-0  hover:text-white ">Marketplace</a>
           </li>
-          <li className="mx-1">
+          <li>
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/profile">
+            <a href="/profile" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
+            lg:border-0 lg:hover:text-primary-700 lg:p-0  hover:text-white ">
               My Profile
             </a>
           </li>
-          <li className="mx-1">
+          <li>
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/about">
+            <a href="/about" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
+            lg:border-0 lg:hover:text-primary-700 lg:p-0  hover:text-white ">
               About SFSG
             </a>
           </li>
@@ -41,44 +47,62 @@ function Nav() {
             </Link>
           </li> */}
 
-          <li className="mx-1">
+          <li >
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
+            <a href="/" onClick={() => Auth.logout()} class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
+            lg:border-0 lg:hover:text-primary-700 lg:p-0  hover:text-white ">
               Logout
             </a>
           </li>
         </ul>
+        </div>
       );
     } else {
       return (
-        <ul className="flex-row">
-         NAVIGATION LINKS, LOGGED OUT
+        <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+        <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
          <li className="mx-1">
             <Link to="/signup">
-              Signup
+            <a href="/" class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 
+            lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">Signup</a>
             </Link>
           </li>
-          <li className="mx-1">
+          <li>
             <Link to="/login">
-              Login
+            <a href="/" class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 
+            lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">Log in</a>
             </Link>
           </li>
-          <li className="mx-1">
+          <li>
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/about">
+            {/* <a href="/about">
               About SFSG
-            </a>
+            </a> */}
+            <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
+            lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-white lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">About SFSG</a>
+          </li>
+          <li>
+            <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
+            lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-white lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Team</a>
+          </li>
+          <li>
+            <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 
+            lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-white lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
           </li>
         </ul>
+        </div>
       );
     }
   }
 
   return (
-    <header className="flex-row px-1">
+    <div  class="bg-gradient-to-r from-slate-300 via-green-200  to-green-300 ...  ...">
+    <header class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
       <h1>
         <Link to="/about">
-          So Fresh, So Green
+         <a href="//////" class="flex items-center">
+            <img src="//////" class="mr-3 h-6 sm:h-9" alt="esfsg logo" />
+        </a>
         </Link>
       </h1>
 
@@ -86,6 +110,7 @@ function Nav() {
         {showNavigation()}
       </nav>
     </header>
+    </div>
   );
 }
 
