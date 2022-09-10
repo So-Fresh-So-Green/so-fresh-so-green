@@ -91,13 +91,13 @@ const typeDefs = gql`
   }
 
   type Query {
-    getCategories: [Category]
-    allProducts(category: ID, name: String): [Product]
+    categories: [Category]
+    products(category: ID, name: String): [Product]
     getProduct(_id: ID!): Product
     getUser: User
     getOrder(_id: ID!): Order
     checkout(products: [ID]!): Checkout
-    allPosts: [Post]
+    posts: [Post]
     getPost(postId: ID!): Post
     getUserPost(user: ID!): [Post]
   }
