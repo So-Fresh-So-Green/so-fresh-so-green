@@ -77,6 +77,12 @@ export const QUERY_ALL_POSTS = gql`
       likes {
         username
       }
+      likeCount
+      comments {
+        username
+        createdAt
+        body
+      }
       commentCount
     }
   }
