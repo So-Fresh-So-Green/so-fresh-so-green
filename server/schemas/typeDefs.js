@@ -40,6 +40,7 @@ const typeDefs = gql`
     _id: ID!
     body: String!
     createdAt: String!
+    image: String
     username: String!
     plant: Plant
     userId: ID!

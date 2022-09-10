@@ -66,3 +66,49 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+export const QUERY_ALL_POSTS = gql`
+  {
+    posts {
+      _id
+      body
+      createdAt
+      username
+      image
+      likes {
+        username
+      }
+      likeCount
+      comments {
+        username
+        createdAt
+        body
+      }
+      commentCount
+    }
+  }
+`
+export const QUERY_POST = gql`
+  query GetPost($postId: ID!){
+    getPost(postId: $postId) {
+      _id
+      body
+      createdAt
+      image
+      username
+      comments {
+        body
+        username
+        createdAt
+        id
+      }
+      likes {
+        username
+        createdAt
+        id
+      }
+      likeCount
+      commentCount
+    }
+  }
+`;
