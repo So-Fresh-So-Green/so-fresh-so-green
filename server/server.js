@@ -16,7 +16,6 @@ const server = new ApolloServer({
 });
 
 //socket.io connection
-
 const io = require("socket.io")(8800, {
   cors: {
     origin: "http://localhost:3000",
@@ -56,6 +55,7 @@ io.on("connection", (socket) => {
     }
   });
 });
+
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
