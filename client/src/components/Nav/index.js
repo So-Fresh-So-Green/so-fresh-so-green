@@ -14,7 +14,7 @@ function Nav() {
             {/* <a href="/plant-shop">
               Plant Shop
             </a> */}
-            <a href="/" class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 
+            <a href="/newsfeed" class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 
             lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">Home</a>
           </li>
           <li>
@@ -22,7 +22,7 @@ function Nav() {
             {/* <a href="/newsfeed">
               Newsfeed
             </a> */}
-            <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
+            <a href="/plant-shop" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
             lg:border-0 lg:hover:text-primary-700 lg:p-0  hover:text-white ">Marketplace</a>
           </li>
           <li>
@@ -78,6 +78,12 @@ function Nav() {
             {/* <a href="/about">
               About SFSG
             </a> */}
+            <Link to="/plant-shop">
+            <a href="/" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
+            lg:border-0 lg:hover:text-primary-700 lg:p-0  hover:text-white ">Marketplace</a>
+            </Link>
+          </li>
+          <li>
             <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
             lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-white lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">About SFSG</a>
           </li>
