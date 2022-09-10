@@ -1,18 +1,20 @@
 import React from "react";
 import {useQuery} from '@apollo/client'
 import {QUERY_ALL_POSTS} from '../utils/queries'
-import PostItem from '../components/PostItem'
+import PostList from '../components/PostList'
+import PostForm from "../components/PostForm";
 
 export default function Newsfeed() {
     const {loading, data} = useQuery(QUERY_ALL_POSTS)
 
-    if(data) {
-        console.log(data)
-    }
-
     return (
         <div>
             <h1>This the Newsfeed</h1>
+
+            <div>
+                <h2>Create a new post</h2>
+                <PostForm />
+            </div>
 
             <div>
                 {loading ? (
@@ -20,7 +22,7 @@ export default function Newsfeed() {
                 ) : (
                     data.posts.map(post => 
                     <div key={post.id}>
-                        <PostItem post={post}/>
+                        <PostList post={post}/>
                     </div>)
                 ) }
             </div>
