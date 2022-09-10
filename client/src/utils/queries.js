@@ -88,3 +88,27 @@ export const QUERY_ALL_POSTS = gql`
     }
   }
 `
+export const QUERY_POST = gql`
+  query GetPost($postId: ID!){
+    getPost(postId: $postId) {
+      _id
+      body
+      createdAt
+      image
+      username
+      comments {
+        body
+        username
+        createdAt
+        id
+      }
+      likes {
+        username
+        createdAt
+        id
+      }
+      likeCount
+      commentCount
+    }
+  }
+`;

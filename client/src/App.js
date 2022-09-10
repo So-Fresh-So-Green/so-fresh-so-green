@@ -21,6 +21,7 @@ import PlantShop from './pages/PlantShop';
 import Profile from './pages/Profile';
 import Newsfeed from './pages/Newsfeed';
 import About from './pages/About';
+import Post from './pages/Post'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -84,6 +85,10 @@ function App() {
               <Route 
                 path="/newsfeed" 
                 element={<Newsfeed />} 
+              />
+              <Route 
+                path="/post/:postId" 
+                element={<Post />} 
               />
               <Route 
                 path="/about" 
