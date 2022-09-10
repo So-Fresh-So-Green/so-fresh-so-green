@@ -66,3 +66,18 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+export const QUERY_ALL_POSTS = gql`
+  {
+    posts {
+      _id
+      body
+      createdAt
+      username
+      likes {
+        username
+      }
+      commentCount
+    }
+  }
+`
