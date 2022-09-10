@@ -41,12 +41,13 @@ module.exports = {
           },
     }, 
     Mutation: {
-        createPost: async (_, { body }, context) => {
+        createPost: async (_, { body, image }, context) => {
             if (context.user) {
               const newPost = new Post({
                 body, 
                 username: context.user.username,
                 createdAt: new Date().toISOString(),
+                image
               });
       
               const post = await newPost.save();

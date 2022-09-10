@@ -3,16 +3,22 @@ import {useQuery} from '@apollo/client'
 import {QUERY_ALL_POSTS} from '../utils/queries'
 import PostList from '../components/PostList'
 import PostForm from "../components/PostForm";
+import '../index.css'
 
 export default function Newsfeed() {
     const {loading, data} = useQuery(QUERY_ALL_POSTS)
 
+    const newPostBtn = () => {
+        const postForm = document.getElementById('post-form')
+        postForm.classList.toggle('invis')
+    }
+
     return (
         <div>
             <h1>This the Newsfeed</h1>
-
-            <div>
-                <h2>Create a new post</h2>
+            <button onClick={newPostBtn}>Create a new post</button>
+            
+            <div id="post-form" className="invis">
                 <PostForm />
             </div>
 

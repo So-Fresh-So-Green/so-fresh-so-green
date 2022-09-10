@@ -112,7 +112,7 @@ const typeDefs = gql`
     likePost(postId: ID!): Post!
     login(email: String!, password: String!): Auth
     register(registerInput: RegisterInput): User
-    createPost(body: String!): Post!
+    createPost(body: String!, image: String): Post!
     deletePost(postId: ID!): String!
     createComment(postId: String!, body: String!): Post!
     deleteComment(postId: String!, commentId: ID!): Post!
