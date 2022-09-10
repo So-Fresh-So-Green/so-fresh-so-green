@@ -74,6 +74,7 @@ export const QUERY_ALL_POSTS = gql`
       body
       createdAt
       username
+      image
       likes {
         username
       }

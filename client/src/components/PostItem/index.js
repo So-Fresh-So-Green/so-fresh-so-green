@@ -5,17 +5,30 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 
-function PostItem(post) {
+function PostItem({post: {
+    id,
+    image,
+    body,
+    username,
+    createdAt,
+    comments,
+    commentCount,
+    likes,
+    likeCount
+}}) {
     const [state, dispatch] = useStoreContext()
 
-    const {
-        body,
-        username,
-        createdAt,
-        comments,
-        likes,
-        userId
-    } = post
+    return(
+        <div>
+            <img src={`/images/${image}`}/>
+            <h1>{body}</h1>
+            <p>by: {username}</p>
+            <p>created at: {createdAt}</p>
+            <p>this post has {commentCount} comments</p>
+        </div>
+    )
 
     
 }
+
+export default PostItem
