@@ -3,11 +3,11 @@ const { Product, Category } = require('../../models');
 
 module.exports = {
     Query: {
-        getCategories: async () => {
+        categories: async () => {
             return await Category.find();
           },
       
-          allProducts: async (parent, { category, name }) => {
+          products: async (parent, { category, name }) => {
             const params = {};
             if (category) {
               params.category = category;
