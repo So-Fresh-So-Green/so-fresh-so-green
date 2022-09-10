@@ -3,6 +3,9 @@ const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
 
+//graphQL-Upload package
+const { GraphQLUpload } = require('graphql-upload');
+
 //GraphQL Schemas
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
