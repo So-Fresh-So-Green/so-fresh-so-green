@@ -2,6 +2,6 @@ import React from "react";
 
 export default function About() {
     return <div>
-        This the About SFSG page
+        <h1 className="text-3xl">The quick brown fox...</h1>
     </div>
 }
