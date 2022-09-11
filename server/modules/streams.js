@@ -1,5 +1,8 @@
 const { stream } = require('stream');
-const { bucket, s3 } = require ('./bucket.js')
+const { s3 } = require ('./bucket.js')
+
+const bucket = process.env.AWS_BUCKET_NAME
+
 
 module.exports = createUploadStream = (key) => {
     const pass = new stream.PassThrough();

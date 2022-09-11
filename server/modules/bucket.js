@@ -3,7 +3,8 @@ const AWS = require('aws-sdk');
 // const uuid = require("uuid").v4;
 require("dotenv").config();
 
-const bucket = process.env.AWS_BUCKET_NAME
+// const bucket = process.env.AWS_BUCKET_NAME
+
 // export const s3Upload = async (file) => {
 //     const s3 = new S3()
 
@@ -23,4 +24,4 @@ module.exports = new AWS.S3({
     s3ForcePathStyle: true,
 })
 
-module.exports = bucket;
+// module.exports = bucket;
