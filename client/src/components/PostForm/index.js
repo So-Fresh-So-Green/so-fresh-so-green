@@ -33,7 +33,6 @@ const PostForm = () => {
             const {data} = await createPost({
                 variables: {...formState}
             })
-
             setFormState({
                 body: '',
                 image: ''
@@ -62,16 +61,23 @@ const PostForm = () => {
 
             <form onSubmit={handleFormSubmit}>
                 <div>
-                    <textarea name='body' placeholder='Enter your thought here' onChange={handleChange}></textarea>
+                    <textarea name='body' placeholder='Enter your post here' onChange={handleChange} value={formState.body}></textarea>
                 </div>
                 <div>
-                    <input name='image' placeholder='Upload your photo here' onChange={handleChange} />
+                    <input name='image' placeholder='Upload your photo here' onChange={handleChange} value={formState.image} />
                 </div>
 
                 <div>
                     <button type='submit'>Create Post</button>
                 </div>
             </form>
+            {error && (
+                <div>
+                    <ul>
+                        <li>{error.graphQLErrors[0].message}</li>
+                    </ul>
+                </div>
+            )}
         </div>
     )
 }
