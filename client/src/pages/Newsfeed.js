@@ -3,6 +3,7 @@ import {useQuery} from '@apollo/client'
 import {QUERY_ALL_POSTS} from '../utils/queries'
 import PostList from '../components/PostList'
 import PostForm from "../components/PostForm";
+import Auth from '../utils/auth'
 import '../index.css'
 
 export default function Newsfeed() {
@@ -16,7 +17,12 @@ export default function Newsfeed() {
     return (
         <div>
             <h1>This the Newsfeed</h1>
-            <button onClick={newPostBtn}>Create a new post</button>
+            {/* must be logged in to create new post */}
+            {Auth.loggedIn() ? (
+                <button onClick={newPostBtn}>Create a new post</button>
+            ) : (
+                <span></span>
+            )}
             
             <div id="post-form" className="invis">
                 <PostForm />

@@ -43,6 +43,9 @@ module.exports = {
     Mutation: {
         createPost: async (_, { body, image }, context) => {
             if (context.user) {
+              if (body.trim() === '' && image.trim() === '') {
+                throw new Error('Post must include either a body or an image')
+              }
               const newPost = new Post({
                 body, 
                 username: context.user.username,
