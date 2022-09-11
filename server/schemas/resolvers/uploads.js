@@ -1,20 +1,29 @@
+const { ApolloError } = require('apollo-server-express');
+const { GraphQLUpload } = require('graphql-upload');
+const { createUploadStream } = require('../../modules/streams');
+
 
 module.exports = {
     Mutation: {
-        singleUpload: async (parent, { file }) => {
-            const { createReadStream, filename, mimetype, encoding } = await file;
-    
-            // Invoking the `createReadStream` will return a Readable Stream.
-            // See https://nodejs.org/api/stream.html#stream_readable_streams
+        fileUpload: async (parent, { file }) => {
+            const { filename, createReadStream } = await file;
+
             const stream = createReadStream();
+
+            let result;
     
-            // This is purely for demonstration purposes and will overwrite the
-            // local-file-output.txt in the current working directory on EACH upload.
-            const out = require('fs').createWriteStream('local-file-output.txt');
-            stream.pipe(out);
-            await finished(out);
+            try {
+            const uploadStream = createUploadStream(filename);
+            stream.pipe(uploadStream.writeStream);
+            result = await uploadStream.promise;
+            } catch (error) {
+            console.log(
+                `[Error]: Message: ${error.message}, Stack: ${error.stack}`
+            );
+            throw new ApolloError("Error uploading file");
+            }
     
-            return { filename, mimetype, encoding };
+            return result;
         },
     }
 }
