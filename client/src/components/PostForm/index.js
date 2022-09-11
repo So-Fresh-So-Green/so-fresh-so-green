@@ -62,7 +62,7 @@ const PostForm = () => {
 
             <form onSubmit={handleFormSubmit}>
                 <div>
-                    <textarea name='body' placeholder='Enter your thought here' onChange={handleChange} value={formState.body} ></textarea>
+                    <textarea name='body' placeholder='Enter your post here' onChange={handleChange} value={formState.body} ></textarea>
                 </div>
                 <div>
                     <input name='image' placeholder='Upload your photo here' onChange={handleChange} value={formState.image} />
