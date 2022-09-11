@@ -1,6 +1,16 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+  scalar Upload
+
+  type FileUploadResponse {
+    ETag: String!
+    Location: String!
+    key: String!
+    Key: String!
+    Bucket: String!
+  }
+
   type Category {
     _id: ID
     name: String
@@ -118,6 +128,7 @@ const typeDefs = gql`
     deleteComment(postId: String!, commentId: ID!): Post!
     addPlant(name: String!, waterSched: String, image: String, description: String): Plant!
     deletePlant(plantId: ID!): String!
+    fileUpload(file: Upload!): FileUploadResponse!
   }
 `;
 
