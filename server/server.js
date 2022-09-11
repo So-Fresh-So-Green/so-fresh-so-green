@@ -1,7 +1,15 @@
+require("dotenv").config();
+
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
+
+//graphQL-Upload package
+const { graphqlUploadExpress } = require(`graphql-upload`);
+const {
+  ApolloServerPluginLandingPageLocalDefault,
+} = require('apollo-server-core');
 
 //GraphQL Schemas
 const { typeDefs, resolvers } = require('./schemas');
@@ -12,6 +20,10 @@ const app = express();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  // Using graphql-upload without CSRF prevention is very insecure.
+  csrfPrevention: true,
+  // cache: 'bounded',
+  // plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
   context: authMiddleware,
 });
 
@@ -55,6 +67,9 @@ io.on("connection", (socket) => {
     }
   });
 });
+
+//graphql-upload package
+app.use(graphqlUploadExpress({ maxFileSize: 1000000000, maxFiles: 1}));
 
 
 app.use(express.urlencoded({ extended: false }));
