@@ -19,9 +19,13 @@ export default function Profile() {
             console.log("handlePictureUploadChange executed")
             if (!event.target.files[0]) return;
     
+            console.log(event.target.files)
             console.log(event.target.files[0])
+            console.log(event.target.files[0].name)
+            const imgString = event.target.files[0].name
+            console.log(imgString);
             setFile(event.target.files[0])
-            setFileName(event.target.file[0].name)
+            setFileName(imgString)
         }
     
         const handlePictureUploadSubmit = async (event) => {
@@ -78,7 +82,7 @@ Hi div!
                 </div>
                 <br></br>
                 <div className="col-sm-10">
-                  <button type="submit">Upload Photo</button>
+                  <button type="submit">Upload {fileName}</button>
                 </div>
                 <br></br>
               </form>

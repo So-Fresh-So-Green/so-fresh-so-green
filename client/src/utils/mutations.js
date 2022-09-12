@@ -74,11 +74,11 @@ export const CREATE_POST = gql`
 `
 
 export const UPLOAD_PROFILE_PIC = gql`
-  mutation uploadPicture(
+  mutation fileUpload(
   $file: Upload!
   $id: String!
   ) {
-    uploadPicture(
+    fileUpload(
       file: $file
       id: $id
   ) {
@@ -88,23 +88,8 @@ export const UPLOAD_PROFILE_PIC = gql`
       url
       user {
         _id
-        firstName
-        lastName
-        email
-        profileImage
-        contacts {
-          email
-          name
-        }
-        answers {
-          answers
-          questions {
-            text
-            category {
-              name
-            }
-          }
-        }
+        username
+        profPic
       }
     }
   }
