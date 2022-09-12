@@ -1,6 +1,7 @@
 import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import Auth from '../../utils/auth'
+import LikeButton from '../LikeButton'
 
 function PostItem({post: {
     _id,
@@ -15,13 +16,11 @@ function PostItem({post: {
     userId
 }}) {
 
-    const userData = Auth.getProfile()
-    const curUserId = userData.data._id
-    const rightUser = curUserId === userId
+    const profData = Auth.getProfile()
+    const userData = profData.data
+    const rightUser = userData._id === userId
     
-    const likePost = () => {
-        console.log(rightUser)
-    }
+    
     const deletePost = () => {
         console.log('poof')
     }
@@ -38,7 +37,7 @@ function PostItem({post: {
                 {/* a link to the individual post page here */}
                 <button>💬</button><label>{commentCount} </label>
             </Link>
-            <button onClick={likePost}> ❤️</button><label>{likeCount}</label>
+            <LikeButton user={userData} post={{_id, likes, likeCount}}/>
             {rightUser ? <button onClick={deletePost}> 🗑️</button> : <span></span>}
             <hr></hr>
             <br></br>
