@@ -32,18 +32,22 @@ function Nav() {
               </Link>
             </li>
             <li>
-              {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-              <a href="/profile" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
+              <Link to="/profile">
+                {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+                <a href="/profile" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
             lg:border-0 lg:hover:text-primary-700 lg:p-0  hover:text-white ">
-                My Profile
-              </a>
+                  My Profile
+                </a>
+              </Link>
             </li>
             <li>
-              {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-              <a href="/about" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
+              <Link to="/about">
+                {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+                <a href="/about" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
             lg:border-0 lg:hover:text-primary-700 lg:p-0  hover:text-white ">
-                About SFSG
-              </a>
+                  About SFSG
+                </a>
+              </Link>
             </li>
 
             {/* DO WE NEED THIS? */}
@@ -91,8 +95,10 @@ function Nav() {
               </Link>
             </li>
             <li>
-              <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
+              <Link to="/about">
+                <a href="/about" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
             lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-white lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">About SFSG</a>
+              </Link>
             </li>
             <li>
               <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
