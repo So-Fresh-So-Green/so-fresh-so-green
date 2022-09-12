@@ -17,11 +17,16 @@ const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+
+//graphql-upload package
+app.use(graphqlUploadExpress({ maxFileSize: 1000000000, maxFiles: 1}));
+
 const server = new ApolloServer({
+  uploads: false,
   typeDefs,
   resolvers,
   // Using graphql-upload without CSRF prevention is very insecure.
-  csrfPrevention: true,
+  // csrfPrevention: true,
   // cache: 'bounded',
   // plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
   context: authMiddleware,
@@ -67,10 +72,6 @@ io.on("connection", (socket) => {
     }
   });
 });
-
-//graphql-upload package
-app.use(graphqlUploadExpress({ maxFileSize: 1000000000, maxFiles: 1}));
-
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

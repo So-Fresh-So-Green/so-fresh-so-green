@@ -5,9 +5,12 @@ const { createUploadStream } = require('../../modules/streams');
 
 module.exports = {
     Mutation: {
-        fileUpload: async (parent, { file }) => {
-            const { filename, createReadStream } = await file;
+        fileUpload: async (parent, { file, id }) => {
+            console.log(`fileUpload executed!`)
+            const { createReadStream, filename, mimetype, encoding } = await file;
 
+            console.log(file)
+            console.log(`ID IS AS FOLLOWS ${id}`)
             const stream = createReadStream();
 
             let result;

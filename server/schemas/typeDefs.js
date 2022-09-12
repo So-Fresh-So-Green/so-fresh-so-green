@@ -128,7 +128,7 @@ const typeDefs = gql`
     deleteComment(postId: String!, commentId: ID!): Post!
     addPlant(name: String!, waterSched: String, image: String, description: String): Plant!
     deletePlant(plantId: ID!): String!
-    fileUpload(file: Upload!): FileUploadResponse!
+    fileUpload(file: Upload!, id: String!): File!
   }
 `;
 

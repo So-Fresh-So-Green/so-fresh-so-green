@@ -4,17 +4,20 @@ import { useMutation } from '@apollo/client';
 
 import { UPLOAD_PROFILE_PIC } from '../utils/mutations';
 
-// import { useGlobalUserContext } from '../../utils/GlobalState';
+// import { useGlobalUserContext } from '../utils/GlobalState';
 
 export default function Profile() {
+
+        // const [state, dispatch] = useGlobalUserContext();
 
         //profile picture upload
         const [file, setFile] = useState()
         const [fileName, setFileName] = useState('')
-        const [uploadPicture] = useMutation(UPLOAD_PROFILE_PIC, {
+        const [fileUpload] = useMutation(UPLOAD_PROFILE_PIC, {
             onCompleted: data => console.log(data)
         })
     
+        //Sets the state of file and filename based on chosen upload file
         const handlePictureUploadChange = event => {
             console.log("handlePictureUploadChange executed")
             if (!event.target.files[0]) return;
@@ -28,6 +31,7 @@ export default function Profile() {
             setFileName(imgString)
         }
     
+        //handler for submitting the upload
         const handlePictureUploadSubmit = async (event) => {
             console.log("handlePictureUploadSubmit executed")
             event.preventDefault();
@@ -36,14 +40,15 @@ export default function Profile() {
             if (!file) return;
     
             try {
-                const response = await uploadPicture({
+                const response = await fileUpload({
                     variables: {
                         file: file,
-                        //hardcoded, should be a uuid num
-                        id: 1
+                        //hardcoded
+                        id: 'image id'
                     }
                 });
-    
+                console.log(response);
+
                 const updatedUserData = response.data.uploadPicture.user
                 console.log('updated user data:' + updatedUserData)
     
@@ -82,7 +87,7 @@ Hi div!
                 </div>
                 <br></br>
                 <div className="col-sm-10">
-                  <button type="submit">Upload {fileName}</button>
+                  <button type="submit">Upload Photo</button>
                 </div>
                 <br></br>
               </form>
