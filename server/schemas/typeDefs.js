@@ -52,7 +52,6 @@ const typeDefs = gql`
     createdAt: String!
     image: String
     username: String!
-    plant: Plant
     userId: ID!
     comments: [Comment]
     likes: [Like]!

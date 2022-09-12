@@ -50,7 +50,8 @@ module.exports = {
                 body, 
                 username: context.user.username,
                 createdAt: new Date().toISOString(),
-                image
+                image,
+                userId: context.user._id
               });
       
               const post = await newPost.save();

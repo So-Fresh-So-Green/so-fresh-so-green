@@ -311,9 +311,9 @@ db.once('open', async () => {
   const posts = await Post.insertMany([
     {
       body: "This is a sample post",
-      username: "user",
+      username: "grego",
       createdAt: "lalala",
-      user: grego._id,
+      userId: grego._id,
       comments: [
         {
           body: 'blah blah blah blah',
@@ -339,15 +339,15 @@ db.once('open', async () => {
     },
     {
       body: "Another lovely post",
-      username: "user2",
+      username: "niki",
       createdAt: "woohoo",
-      user: niki._id
+      userId: niki._id
     },
     {
       body: "alsdgjsadkghsaldkgjsaldf",
-      username: "user",
+      username: "pam",
       createdAt: "lalala",
-      user: pam._id,
+      userId: pam._id,
       comments: [
         {
           body: 'blah blah blah blah',
@@ -373,21 +373,21 @@ db.once('open', async () => {
     },
     {
       body: "blah blah blah",
-      username: "Grego",
+      username: "pam",
       createdAt: "woohoo",
-      user: pam._id
+      userId: pam._id
     },
     {
       body: "sample x2",
-      username: "Niki",
+      username: "pam",
       createdAt: "lalala",
-      user: pam._id
+      userId: pam._id
     },
     {
       body: "plants plants plants",
-      username: "Niki",
+      username: "syd",
       createdAt: "woohoo",
-      user: syd._id
+      userId: syd._id
     },
   ]); 
 

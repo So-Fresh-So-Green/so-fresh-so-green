@@ -11,7 +11,7 @@ function Post() {
     })
 
     const post = data?.getPost || {};
-    console.log(post.comments)
+    
     return(
         <div>
             <br></br>
