@@ -86,3 +86,9 @@ export const LIKE_POST = gql`
     }
   }
 `
+
+export const DELETE_POST = gql`
+  mutation deletePost($postId: ID!) {
+    deletePost(postId: $postId)
+  }
+`

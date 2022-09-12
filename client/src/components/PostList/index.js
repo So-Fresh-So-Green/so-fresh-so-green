@@ -2,6 +2,7 @@ import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import Auth from '../../utils/auth'
 import LikeButton from '../LikeButton'
+import DeletePostButton from '../DeletePostButton'
 
 function PostItem({post: {
     _id,
@@ -19,11 +20,6 @@ function PostItem({post: {
     const profData = Auth.getProfile()
     const userData = profData.data
     const rightUser = userData._id === userId
-    
-    
-    const deletePost = () => {
-        console.log('poof')
-    }
 
     return(
         <div>
@@ -38,7 +34,7 @@ function PostItem({post: {
                 <button>💬</button><label>{commentCount} </label>
             </Link>
             <LikeButton user={userData} post={{_id, likes, likeCount}}/>
-            {rightUser ? <button onClick={deletePost}> 🗑️</button> : <span></span>}
+            {rightUser ? <DeletePostButton postId={_id} /> : <span></span>}
             <hr></hr>
             <br></br>
         </div>

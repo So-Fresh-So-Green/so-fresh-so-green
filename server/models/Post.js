@@ -9,7 +9,10 @@ const postSchema = new Schema({
         {
             body: String,
             username: String,
-            userId: Schema.Types.ObjectId,
+            userId: {
+                type: Schema.Types.ObjectId,
+                ref: 'User'
+            },
             createdAt: String
         }
     ],
