@@ -16,16 +16,20 @@ function Nav() {
               {/* <a href="/plant-shop">
               Plant Shop
             </a> */}
-              <a href="/newsfeed" class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 
+              <Link to="/newsfeed">
+                <a href="/newsfeed" class="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 
             lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">Home</a>
+              </Link>
             </li>
             <li>
               {/* this is not using the Link component to logout or user and then refresh the application to the start */}
               {/* <a href="/newsfeed">
               Newsfeed
             </a> */}
-              <a href="/plant-shop" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
+              <Link to="/plant-shop">
+                <a href="/plant-shop" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
             lg:border-0 lg:hover:text-primary-700 lg:p-0  hover:text-white ">Marketplace</a>
+              </Link>
             </li>
             <li>
               {/* this is not using the Link component to logout or user and then refresh the application to the start */}
