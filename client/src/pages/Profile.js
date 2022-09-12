@@ -4,11 +4,11 @@ import { useMutation } from '@apollo/client';
 
 import { UPLOAD_PROFILE_PIC } from '../utils/mutations';
 
-// import { useGlobalUserContext } from '../utils/GlobalState';
+import { useGlobalUserContext } from '../utils/GlobalState';
 
 export default function Profile() {
 
-        // const [state, dispatch] = useGlobalUserContext();
+        // const [state] = useGlobalUserContext();
 
         //profile picture upload
         const [file, setFile] = useState()
@@ -43,21 +43,21 @@ export default function Profile() {
                 const response = await fileUpload({
                     variables: {
                         file: file,
-                        //hardcoded
-                        id: 'image id'
+                        //hardcoded user id
+                        id: '631a10c8c5a04c2313908f6c',
                     }
                 });
                 console.log(response);
 
-                const updatedUserData = response.data.uploadPicture.user
-                console.log('updated user data:' + updatedUserData)
+                // const updatedUserData = response.data.uploadPicture.user
+                // console.log('updated user data:' + updatedUserData)
     
-                // dispatchEvent({
-                //     type: SET_USER_DATA,
-                //     payload: updatedUserData
-                // });
+                // // dispatchEvent({
+                // //     type: SET_USER_DATA,
+                // //     payload: updatedUserData
+                // // });
     
-                console.log('This is the response: ' + response)
+                // console.log('This is the response: ' + response)
             } catch (error) {
                 console.log(error)
             }

@@ -1,5 +1,7 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useReducer } from "react";
 import { useProductReducer } from './reducers'
+
+import { reducer } from './reducers';
 
 const StoreContext = createContext();
 const { Provider } = StoreContext;
@@ -20,4 +22,21 @@ const useStoreContext = () => {
   return useContext(StoreContext);
 };
 
-export { StoreProvider, useStoreContext };
+const GlobalUserContext = createContext();
+
+const useGlobalUserContext = () => useContext(GlobalUserContext);
+
+const GlobalUserState = {};
+
+const UserContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, GlobalUserState);
+
+  return (
+    <GlobalUserContext.Provider value={[state, dispatch]}>
+      {children}
+    </GlobalUserContext.Provider>
+  );
+};
+
+
+export { StoreProvider, useStoreContext, UserContextProvider, useGlobalUserContext };

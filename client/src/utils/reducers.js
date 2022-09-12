@@ -8,7 +8,9 @@ import {
   UPDATE_CATEGORIES,
   UPDATE_CURRENT_CATEGORY,
   CLEAR_CART,
-  TOGGLE_CART
+  TOGGLE_CART,
+  SET_USER_DATA
+  // CREATE_NEW_CONTACT
 } from "./actions";
 
 export const reducer = (state, action) => {
@@ -79,6 +81,17 @@ export const reducer = (state, action) => {
         ...state,
         currentCategory: action.currentCategory
       }
+
+    case SET_USER_DATA: {
+      const userData = action.payload;
+      console.log(userData);
+      return userData;
+    }
+
+    // case CREATE_NEW_CONTACT: {
+    //   console.log(action.payload)
+    //   break;
+    // }
 
     default:
       return state;
