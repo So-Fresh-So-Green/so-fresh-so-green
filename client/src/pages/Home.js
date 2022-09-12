@@ -27,7 +27,7 @@ const Home = () => {
                   </a>
             </div>
             <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-              <img src="https://www.freeiconspng.com/thumbs/plants-png/beautiful-transparent-plants-image-30.png" alt="mockup" />
+              <img src="https://watchandlearn.scholastic.com/content/dam/classroom-magazines/watchandlearn/videos/animals-and-plants/plants/what-are-plants-/What-Are-Plants.jpg" alt="mockup" />
             </div>                
           </div>
       </section>
