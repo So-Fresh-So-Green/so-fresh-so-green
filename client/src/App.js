@@ -22,6 +22,8 @@ import Profile from './pages/Profile';
 import Newsfeed from './pages/Newsfeed';
 import About from './pages/About';
 import Post from './pages/Post'
+import TestChat from './pages/TestChat/TestChat'
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -49,7 +51,10 @@ function App() {
         <div>
           <StoreProvider>
             <Nav />
-            <Routes>
+            
+            <TestChat />
+
+            {/* <Routes>
               <Route 
                 path="/" 
                 element={<Home />} 
@@ -98,7 +103,7 @@ function App() {
                 path="*" 
                 element={<NoMatch />} 
               />
-            </Routes>
+            </Routes> */}
           </StoreProvider>
         </div>
       </Router>

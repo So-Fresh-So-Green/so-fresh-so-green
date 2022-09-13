@@ -1,0 +1,38 @@
+
+#chatMain {
+    display: flex;
+    justify-content: space-between;
+    margin: 5vh;
+}
+
+#col-1 {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+#col-2 {
+    width: 65%;
+    border: 2px solid black;
+    border-radius: 8px;
+
+}
+
+#msDiv {
+    display: flex;
+    
+}
+
+#msId {
+    width: 80%;
+    border: 2px solid black;
+}
+
+#sendMs {
+    border: 2px solid black;
+    border-radius: 8px;
+    background: lightgreen;
+    padding: 0 20px;
+}
