@@ -35,8 +35,8 @@ function PostItem({post: {
                 <p>by: {username}</p>
                 <p>created at: {createdAt}</p>
                 {/* a link to the individual post page here */}
-                <button>💬</button><label>{commentCount} </label>
             </Link>
+            <button>💬</button><label>{commentCount} </label>
             <LikeButton user={userData} post={{_id, likes, likeCount}}/>
             {rightUser ? <DeletePostButton postId={{_id}} /> : null}
             <hr></hr>

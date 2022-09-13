@@ -313,27 +313,31 @@ db.once('open', async () => {
       body: "This is a sample post",
       username: "grego",
       createdAt: "lalala",
-      userId: syd._id,
+      userId: grego._id,
       comments: [
         {
           body: 'blah blah blah blah',
           username: 'Grego',
-          createdAt: 'blah'
+          createdAt: 'blah',
+          userId: syd._id
         }, 
         {
           body: 'i dont get it',
           username: 'Jimbo',
-          createdAt: 'asdfasdg'
+          createdAt: 'asdfasdg',
+          userId: syd._id
         }, 
         {
           body: 'very cool wow',
           username: 'Grego',
-          createdAt: 'basdgasdglah'
+          createdAt: 'basdgasdglah',
+          userId: syd._id
         }, 
         {
           body: 'i love this',
           username: 'user',
-          createdAt: 'blasdgah'
+          createdAt: 'blasdgah',
+          userId: syd._id
         }, 
       ]
     },
@@ -352,22 +356,26 @@ db.once('open', async () => {
         {
           body: 'blah blah blah blah',
           username: 'Grego',
-          createdAt: 'blah'
+          createdAt: 'blah',
+          userId: syd._id
         }, 
         {
           body: 'not very cool at all',
           username: 'Jimbo',
-          createdAt: 'asdfasdg'
+          createdAt: 'asdfasdg',
+          userId: syd._id
         }, 
         {
           body: 'not very cool at all',
           username: 'Grego',
-          createdAt: 'basdgasdglah'
+          createdAt: 'basdgasdglah',
+          userId: syd._id
         }, 
         {
           body: 'i hate this',
           username: 'user',
-          createdAt: 'blasdgah'
+          createdAt: 'blasdgah',
+          userId: syd._id
         }, 
       ]
     },
@@ -375,13 +383,27 @@ db.once('open', async () => {
       body: "blah blah blah",
       username: "pam",
       createdAt: "woohoo",
-      userId: syd._id
+      userId: pam._id
     },
     {
       body: "sample x2",
-      username: "pam",
+      username: "jimbo",
       createdAt: "lalala",
-      userId: syd._id
+      userId: jimbo._id,
+      comments: [
+        {
+          body: 'blah blah blah blah',
+          username: 'Grego',
+          createdAt: 'blah',
+          userId: syd._id
+        }, 
+        {
+          body: 'not very cool at all',
+          username: 'syd',
+          createdAt: 'asdfasdg',
+          userId: syd._id
+        }
+      ]
     },
     {
       body: "plants plants plants",

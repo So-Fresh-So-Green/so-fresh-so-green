@@ -12,7 +12,7 @@ function Post(props) {
     const {loading, data} = useQuery(QUERY_POST, {
         variables: {postId: postId}
     })
-    const comPost = () => console.log('commented on post')
+    const comPost = () => console.log(comments)
     const history = useNavigate()
     const delCallback = () => {
         history('/newsfeed')
@@ -42,6 +42,12 @@ function Post(props) {
                     <br></br><hr></hr>
                     <h4>comment: {comment.body}</h4>
                     <p>by: {comment.username}</p>
+                    <p>at: {comment.createdAt}</p>
+                    <DeletePostButton postId={{_id}} commentId={comment.id} />
+                    {/* {userData._id === comment.userId ?
+                        <DeletePostButton postId={{_id}} commentId={comment.id} /> :
+                        null
+                    } */}
                 </div>
             )}
             <br></br>
