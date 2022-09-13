@@ -114,6 +114,7 @@ export const DELETE_COMMENT = gql`
         username
         createdAt
         body
+        userId
       }
       commentCount
     }

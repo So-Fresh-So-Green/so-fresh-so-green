@@ -116,6 +116,14 @@ const typeDefs = gql`
     createdAt: String,
   }
 
+  type File {
+    filename: String!
+    mimetype: String!
+    encoding: String!
+    url: String
+    user: User
+  }
+
   type Query {
     categories: [Category]
     products(category: ID, name: String): [Product]
@@ -128,15 +136,6 @@ const typeDefs = gql`
     getUserPost(user: ID!): [Post]
     getMessages: [Message]
     getChats(email: String!): [Chat]
-
-  }
-
-  type File {
-    filename: String!
-    mimetype: String!
-    encoding: String!
-    url: String
-    user: User
   }
 
   type Mutation {
@@ -158,7 +157,6 @@ const typeDefs = gql`
     addChat(recipientsId: [String]!): Chat
     fileUpload(file: Upload!): File!
   }
- 
 `;
 
 module.exports = typeDefs;
