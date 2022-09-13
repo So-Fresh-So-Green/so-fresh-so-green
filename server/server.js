@@ -22,8 +22,8 @@ const server = new ApolloServer({
   resolvers,
   // Using graphql-upload without CSRF prevention is very insecure.
   csrfPrevention: true,
-  // cache: 'bounded',
-  // plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
+  cache: 'bounded',
+  plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
   context: authMiddleware,
 });
 

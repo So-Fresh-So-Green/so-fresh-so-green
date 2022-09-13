@@ -112,6 +112,14 @@ const typeDefs = gql`
     getUserPost(user: ID!): [Post]
   }
 
+  type File {
+    filename: String!
+    mimetype: String!
+    encoding: String!
+    url: String
+    user: User
+  }
+
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     addOrder(products: [ID]!): Order
@@ -127,7 +135,7 @@ const typeDefs = gql`
     deleteComment(postId: ID!, commentId: ID!): Post!
     addPlant(name: String!, waterSched: String, image: String, description: String): Plant!
     deletePlant(plantId: ID!): String!
-    fileUpload(file: Upload!): FileUploadResponse!
+    fileUpload(file: Upload!): File!
   }
 `;
 

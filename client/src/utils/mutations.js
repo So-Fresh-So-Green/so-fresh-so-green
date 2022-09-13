@@ -74,6 +74,18 @@ export const CREATE_POST = gql`
   }
 `
 
+export const UPLOAD_PROFILE_PIC = gql`
+  mutation fileUpload(
+  $file: Upload!
+  # $id: String!
+  ) {
+    fileUpload(
+      file: $file
+      # id: $id
+  )
+  }
+`
+
 export const LIKE_POST = gql`
   mutation likePost($postId: ID!) {
     likePost(postId: $postId) {
