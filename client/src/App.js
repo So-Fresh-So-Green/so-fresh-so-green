@@ -54,7 +54,7 @@ function App() {
             
             <TestChat />
 
-            {/* <Routes>
+            <Routes>
               <Route 
                 path="/" 
                 element={<Home />} 
@@ -103,7 +103,7 @@ function App() {
                 path="*" 
                 element={<NoMatch />} 
               />
-            </Routes> */}
+            </Routes>
           </StoreProvider>
         </div>
       </Router>

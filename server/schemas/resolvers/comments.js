@@ -30,7 +30,7 @@ module.exports = {
           deleteComment: async(_, {postId, commentId}, context) => {
             const post = await Post.findById(postId)
             if (post) {
-              const commentIndex = post.comments.findIndex(comment => comment.id === commentId)
+              const commentIndex = post.comments.findIndex(comment => comment._id === commentId)
               if(post.comments[commentIndex].userId === context.user._id) {
                 post.comments.splice(commentIndex, 1)
                 await post.save()
