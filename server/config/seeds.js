@@ -311,83 +311,105 @@ db.once('open', async () => {
   const posts = await Post.insertMany([
     {
       body: "This is a sample post",
-      username: "user",
+      username: "grego",
       createdAt: "lalala",
-      user: grego._id,
+      userId: grego._id,
       comments: [
         {
           body: 'blah blah blah blah',
           username: 'Grego',
-          createdAt: 'blah'
+          createdAt: 'blah',
+          userId: syd._id
         }, 
         {
           body: 'i dont get it',
           username: 'Jimbo',
-          createdAt: 'asdfasdg'
+          createdAt: 'asdfasdg',
+          userId: syd._id
         }, 
         {
           body: 'very cool wow',
           username: 'Grego',
-          createdAt: 'basdgasdglah'
+          createdAt: 'basdgasdglah',
+          userId: syd._id
         }, 
         {
           body: 'i love this',
           username: 'user',
-          createdAt: 'blasdgah'
+          createdAt: 'blasdgah',
+          userId: syd._id
         }, 
       ]
     },
     {
       body: "Another lovely post",
-      username: "user2",
+      username: "niki",
       createdAt: "woohoo",
-      user: niki._id
+      userId: niki._id
     },
     {
       body: "alsdgjsadkghsaldkgjsaldf",
-      username: "user",
+      username: "pam",
       createdAt: "lalala",
-      user: pam._id,
+      userId: pam._id,
       comments: [
         {
           body: 'blah blah blah blah',
           username: 'Grego',
-          createdAt: 'blah'
+          createdAt: 'blah',
+          userId: syd._id
         }, 
         {
           body: 'not very cool at all',
           username: 'Jimbo',
-          createdAt: 'asdfasdg'
+          createdAt: 'asdfasdg',
+          userId: syd._id
         }, 
         {
           body: 'not very cool at all',
           username: 'Grego',
-          createdAt: 'basdgasdglah'
+          createdAt: 'basdgasdglah',
+          userId: syd._id
         }, 
         {
           body: 'i hate this',
           username: 'user',
-          createdAt: 'blasdgah'
+          createdAt: 'blasdgah',
+          userId: syd._id
         }, 
       ]
     },
     {
       body: "blah blah blah",
-      username: "Grego",
+      username: "pam",
       createdAt: "woohoo",
-      user: pam._id
+      userId: pam._id
     },
     {
       body: "sample x2",
-      username: "Niki",
+      username: "jimbo",
       createdAt: "lalala",
-      user: pam._id
+      userId: jimbo._id,
+      comments: [
+        {
+          body: 'blah blah blah blah',
+          username: 'Grego',
+          createdAt: 'blah',
+          userId: syd._id
+        }, 
+        {
+          body: 'not very cool at all',
+          username: 'syd',
+          createdAt: 'asdfasdg',
+          userId: syd._id
+        }
+      ]
     },
     {
       body: "plants plants plants",
-      username: "Niki",
+      username: "syd",
       createdAt: "woohoo",
-      user: syd._id
+      userId: syd._id
     },
   ]); 
 
