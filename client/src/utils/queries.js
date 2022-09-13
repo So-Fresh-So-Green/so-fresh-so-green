@@ -114,3 +114,36 @@ export const QUERY_POST = gql`
     }
   }
 `;
+
+export const QUERY_Messgaes = gql`
+  {
+    getMessages
+  {
+    _id
+    sender
+    content
+    createdAt
+    }
+  }
+  `
+
+
+
+export const QUERY_Chats = gql`
+  query getChats($email: String!) {
+    getChats(email: $email) {
+      _id
+      createdAt
+      recipientsId {
+        _id
+        username
+        email
+      }
+      messages {
+        _id
+        sender
+        content
+      }
+    }
+  }
+  `;

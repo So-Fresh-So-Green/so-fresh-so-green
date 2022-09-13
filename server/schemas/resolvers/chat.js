@@ -2,48 +2,48 @@ const { AuthenticationError, UserInputError } = require('apollo-server-express')
 const Chat = require('../../models/Chat/Chat');
 const Message = require('../../models/Chat/Message')
 
-const messages = [{ _id: 1, content: 'test', sender: 'jack' }]
+// const messages = [{ _id: 1, content: 'test', sender: 'jack' }]
 
 
 module.exports = {
 
     Query: {
 
-        getMessages: () => messages,
+        // getMessages: () => messages,
 
 
-        getChats: async (parent, { email }) => {
+        // getChats: async (parent, { email }) => {
+        //     try {
+        //         const getUserChats = await Chat.find({ recipientsId: { $all: [email] } })
+
+        //         return getUserChats
+
+        //     } catch (err) {
+        //         console.log(err)
+        //     }
+        // },
+
+        async getMessages() {
             try {
-                const getUserChats = await Chat.find({ recipientId: { $all: [email] } })
-
-                return getUserChats
-
+                const messages = await Message.find().sort({ createdAt: -1 });
+                return messages;
             } catch (err) {
-                console.log(err)
+                throw new Error(err)
             }
         }
-
-        // async messages() {
-        //     try {
-        //         const messages = await Message.findAll();
-        //         return messages;
-        //     } catch (err) {
-        //         throw new Error(err)
-        //     }
-        // }
     },
 
     Mutation: {
 
-        postMessageTest: async (parent, { sender, content }) => {
-            const id = messages.length;
-            messages.push({
-                id,
-                sender,
-                content
-            });
-            return id;
-        },
+        // postMessageTest: async (parent, { sender, content }) => {
+        //     const id = messages.length;
+        //     messages.push({
+        //         id,
+        //         sender,
+        //         content
+        //     });
+        //     return id;
+        // },
         // postMessage: async (parent, { content }, context) => {
 
 
@@ -52,7 +52,7 @@ module.exports = {
         //             throw new Error('Post must include either a body')
         //         }
         //         const newMessage = new Message({
-                    // sender: context.user.username,
+        //             // sender: context.user.username,
         //             content,
         //         });
 
