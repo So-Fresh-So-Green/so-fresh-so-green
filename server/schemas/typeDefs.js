@@ -83,20 +83,6 @@ const typeDefs = gql`
     username: String!
     userId: ID!
   }
-  type Message {
-    _id: ID!
-    content: String
-    sender: String
-    createdAt: String
-    
-  }
-
-  type Chat {
-    _id: ID!
-    messages: [Message]
-    recipientsId: [User]
-    createdAt: String,
-  }
 
   input RegisterInput {
     username: String!
@@ -114,6 +100,22 @@ const typeDefs = gql`
     user: User
   }
 
+
+  type Message {
+    _id: ID!
+    content: String!
+    sender: String!
+    createdAt: String!
+    
+  }
+
+  type Chat {
+    _id: ID!
+    messages: [Message]
+    recipientsId: String!
+    createdAt: String,
+  }
+
   type Query {
     categories: [Category]
     products(category: ID, name: String): [Product]
@@ -124,7 +126,7 @@ const typeDefs = gql`
     posts: [Post]
     getPost(postId: ID!): Post
     getUserPost(user: ID!): [Post]
-    getMessages: [Message!]
+    getMessages: [Message]
     getChats(email: String!): [Chat]
 
   }
