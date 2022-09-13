@@ -52,7 +52,6 @@ const typeDefs = gql`
     createdAt: String!
     image: String
     username: String!
-    plant: Plant
     userId: ID!
     comments: [Comment]
     likes: [Like]!
@@ -127,13 +126,13 @@ const typeDefs = gql`
     updateUser(username: String, email: String, password: String): User
     createProduct(name: String!, description: String, image: String, price: Int, plant: ID, category: ID): Product
     updateProduct(_id: ID!, name: String, description: String, image: String, price: Int, plant: ID, category: ID): Product
-    likePost(postId: ID!): Post!
     login(email: String!, password: String!): Auth
     register(registerInput: RegisterInput): User
     createPost(body: String!, image: String): Post!
     deletePost(postId: ID!): String!
+    likePost(postId: ID!): Post!
     createComment(postId: String!, body: String!): Post!
-    deleteComment(postId: String!, commentId: ID!): Post!
+    deleteComment(postId: ID!, commentId: ID!): Post!
     addPlant(name: String!, waterSched: String, image: String, description: String): Plant!
     deletePlant(plantId: ID!): String!
     fileUpload(file: Upload!): File!

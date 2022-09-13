@@ -1,5 +1,8 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
+import Auth from '../../utils/auth'
+import LikeButton from '../LikeButton'
+import DeletePostButton from '../DeletePostButton'
 
 function PostItem({post: {
     _id,
@@ -10,11 +13,18 @@ function PostItem({post: {
     comments,
     commentCount,
     likes,
-    likeCount
+    likeCount,
+    userId
 }}) {
-    const likePost = () => {
-        console.log('post liked')
-    }
+
+    const profData = Auth.getProfile()
+    const userData = profData.data
+    const rightUser = userData._id === userId
+
+    // const deleteCb = () => {
+    //     props.history.push
+    // }
+
     return(
         <div>
             <br></br>
@@ -25,9 +35,10 @@ function PostItem({post: {
                 <p>by: {username}</p>
                 <p>created at: {createdAt}</p>
                 {/* a link to the individual post page here */}
-                <button>💬</button><label>{commentCount} </label>
             </Link>
-            <button onClick={likePost}> ❤️</button><label>{likeCount}</label>
+            <button>💬</button><label>{commentCount} </label>
+            <LikeButton user={userData} post={{_id, likes, likeCount}}/>
+            {rightUser ? <DeletePostButton postId={{_id}} /> : null}
             <hr></hr>
             <br></br>
         </div>

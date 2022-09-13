@@ -56,6 +56,7 @@ export const CREATE_POST = gql`
       createdAt
       image
       username
+      userId
       comments {
         id
         body
@@ -82,5 +83,39 @@ export const UPLOAD_PROFILE_PIC = gql`
       file: $file
       # id: $id
   )
+  }
+`
+
+export const LIKE_POST = gql`
+  mutation likePost($postId: ID!) {
+    likePost(postId: $postId) {
+      _id
+      likes {
+        id
+        username
+      }
+      likeCount
+    }
+  }
+`
+
+export const DELETE_POST = gql`
+  mutation deletePost($postId: ID!) {
+    deletePost(postId: $postId)
+  }
+`
+
+export const DELETE_COMMENT = gql`
+  mutation deleteComment($postId: ID!, $commentId: ID!) {
+    deleteComment(postId: $postId, commentId: $commentId) {
+      _id
+      comments {
+        id
+        username
+        createdAt
+        body
+      }
+      commentCount
+    }
   }
 `
