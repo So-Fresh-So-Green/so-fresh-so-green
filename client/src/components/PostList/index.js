@@ -38,7 +38,7 @@ function PostItem({post: {
                 <button>💬</button><label>{commentCount} </label>
             </Link>
             <LikeButton user={userData} post={{_id, likes, likeCount}}/>
-            {rightUser ? <DeletePostButton postId={{_id}} /> : <span></span>}
+            {rightUser ? <DeletePostButton postId={{_id}} /> : null}
             <hr></hr>
             <br></br>
         </div>

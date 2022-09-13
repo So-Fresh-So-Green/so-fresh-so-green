@@ -3,26 +3,22 @@ import {useMutation} from '@apollo/client'
 import {DELETE_POST} from '../../utils/mutations'
 import {QUERY_ALL_POSTS} from '../../utils/queries'
 
-function DeletePostButton({postId: {_id}}) {
+function DeletePostButton({postId: {_id}, callback}) {
     const [deletePost] = useMutation(DELETE_POST, {
-        update(proxy) {
-            const data = proxy.readQuery({
+        update(cache) {
+            const data = cache.readQuery({
                 query: QUERY_ALL_POSTS
             })
             let newData = [...data.posts]
             newData = newData.filter(post => post._id !== _id)
-            proxy.writeQuery({query: QUERY_ALL_POSTS, data: {posts: newData}})
+            cache.writeQuery({query: QUERY_ALL_POSTS, data: {posts: newData}})
+            if (callback) callback()
         },
         variables: {postId: _id}        
     })
-
-    // const deletePost = () => {
-    //     let result = window.confirm('wow')
-    //     console.log(result)
-    // }
-
+    // TODO: Implement a react/tailwinds modal to confirm deletion
     return(
-        <button onClick={deletePost}> 🗑️</button>
+        <button onClick={deletePost} > 🗑️</button>
     )
 }
 

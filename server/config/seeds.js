@@ -341,13 +341,13 @@ db.once('open', async () => {
       body: "Another lovely post",
       username: "niki",
       createdAt: "woohoo",
-      userId: syd._id
+      userId: niki._id
     },
     {
       body: "alsdgjsadkghsaldkgjsaldf",
       username: "pam",
       createdAt: "lalala",
-      userId: syd._id,
+      userId: pam._id,
       comments: [
         {
           body: 'blah blah blah blah',
