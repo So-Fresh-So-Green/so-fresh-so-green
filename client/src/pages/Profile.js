@@ -8,7 +8,8 @@ import { useGlobalUserContext } from '../utils/GlobalState';
 
 export default function Profile() {
 
-        // const [state] = useGlobalUserContext();
+        // const [state, dispatch] = useGlobalUserContext();
+        // console.log(state)
 
         //profile picture upload
         const [file, setFile] = useState()
@@ -18,17 +19,36 @@ export default function Profile() {
         })
     
         //Sets the state of file and filename based on chosen upload file
-        const handlePictureUploadChange = event => {
+        const handlePictureUploadChange = async (event) => {
             console.log("handlePictureUploadChange executed")
             if (!event.target.files[0]) return;
     
-            console.log(event.target.files)
-            console.log(event.target.files[0])
-            console.log(event.target.files[0].name)
-            const imgString = event.target.files[0].name
-            console.log(imgString);
-            setFile(event.target.files[0])
-            setFileName(imgString)
+            // console.log(event.target.files)
+            // console.log(event.target.files[0])
+            // console.log(event.target.files[0].name)
+            // const imgString = event.target.files[0].name
+            // console.log(imgString);
+            // setFile(event.target.files[0])
+            // setFileName(imgString)
+
+            const file = event.target.files[0];
+            console.log(file);
+
+            let formData = new FormData();
+            formData.append("image", file);
+            console.log([...formData])
+            
+            try {
+              const { data } = await fileUpload ({
+                variables: {
+                    file: formData,
+                    // //hardcoded user id
+                    // _id: '631a10c8c5a04c2313908f6c',
+                }
+            })
+            } catch {
+
+            }
         }
     
         //handler for submitting the upload
@@ -44,7 +64,7 @@ export default function Profile() {
                     variables: {
                         file: file,
                         //hardcoded user id
-                        id: '631a10c8c5a04c2313908f6c',
+                        _id: '631a10c8c5a04c2313908f6c',
                     }
                 });
                 console.log(response);

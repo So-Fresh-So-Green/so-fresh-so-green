@@ -1,8 +1,7 @@
 // const { ApolloError } = require('apollo-server-express');
 // const { GraphQLUpload } = require('graphql-upload');
 // const { createUploadStream } = require('../../modules/streams');
-
-
+// 
 require(`dotenv`).config();
 const aws = require(`aws-sdk`)
 
@@ -19,8 +18,7 @@ const s3 = new aws.S3({
 
 module.exports = {
     Mutation: {
-
-        fileUpload: async (parent, { file, id }) => {
+        fileUpload: async (parent, { file }) => {
             console.log(`uploadPicture Fired!`)
             const { createReadStream, filename, mimetype, encoding } = await file;
       
@@ -38,17 +36,17 @@ module.exports = {
             console.log(Location)
       
             // Set Location as User profileImage attribute
-            const user = await User.findByIdAndUpdate(id, {
-              profileImage: Location
-            }, { new: true })
+            // const user = await User.findByIdAndUpdate(id, {
+            //   profileImage: Location
+            // }, { new: true })
             
-            return {
-              filename,
-              mimetype,
-              encoding,
-              url: Location,
-              user: user
-            }
+            // return {
+            //   filename,
+            //   mimetype,
+            //   encoding,
+            //   url: Location,
+              // user: user
+            // }
           },
 
 
