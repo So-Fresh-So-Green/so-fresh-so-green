@@ -36,6 +36,7 @@ const io = require("socket.io")(8800, {
 
 let activeUsers = [];
 
+//socket instance everytime user logs on
 io.on("connection", (socket) => {
   // add new User
   socket.on("new-user-add", (newUserId) => {

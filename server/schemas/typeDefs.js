@@ -83,6 +83,20 @@ const typeDefs = gql`
     username: String!
     userId: ID!
   }
+  type Message {
+    _id: ID!
+    content: String
+    sender: String
+    createdAt: String
+    
+  }
+
+  type Chat {
+    _id: ID!
+    messages: [Message]
+    recipientsId: [User]
+    createdAt: String,
+  }
 
   input RegisterInput {
     username: String!
@@ -110,6 +124,9 @@ const typeDefs = gql`
     posts: [Post]
     getPost(postId: ID!): Post
     getUserPost(user: ID!): [Post]
+    getMessages: [Message!]
+    getChats(email: String!): [Chat]
+
   }
 
   type File {
@@ -135,8 +152,11 @@ const typeDefs = gql`
     deleteComment(postId: ID!, commentId: ID!): Post!
     addPlant(name: String!, waterSched: String, image: String, description: String): Plant!
     deletePlant(plantId: ID!): String!
+    postMessage(recipientsId: [String!], sender: String, content: String): Chat
+    addChat(recipientsId: [String]!): Chat
     fileUpload(file: Upload!): File!
   }
+ 
 `;
 
 module.exports = typeDefs;
