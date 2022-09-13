@@ -70,7 +70,8 @@ module.exports = {
           deletePost: async (_, { postId }, context) => {
             if (context.user) {
               const post = await Post.findById(postId);
-                if (context.user._id === post.userId){
+                // context.user._id is a string whereas post.userId is an object, so it must be two equal signs
+                if (context.user._id == post.userId){
                   await post.delete();
                   return 'Post deleted successfully';
                 } else {

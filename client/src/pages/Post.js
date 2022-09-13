@@ -18,7 +18,6 @@ function Post() {
 
     const {_id, likeCount, body, username, image, createdAt, comments} = data?.getPost || {};
     const likes = data?.getPost?.likes || [];
-    console.log(likes)
     
     return(
         <div>

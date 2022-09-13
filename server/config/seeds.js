@@ -313,7 +313,7 @@ db.once('open', async () => {
       body: "This is a sample post",
       username: "grego",
       createdAt: "lalala",
-      userId: grego._id,
+      userId: syd._id,
       comments: [
         {
           body: 'blah blah blah blah',
@@ -341,13 +341,13 @@ db.once('open', async () => {
       body: "Another lovely post",
       username: "niki",
       createdAt: "woohoo",
-      userId: niki._id
+      userId: syd._id
     },
     {
       body: "alsdgjsadkghsaldkgjsaldf",
       username: "pam",
       createdAt: "lalala",
-      userId: pam._id,
+      userId: syd._id,
       comments: [
         {
           body: 'blah blah blah blah',
@@ -375,13 +375,13 @@ db.once('open', async () => {
       body: "blah blah blah",
       username: "pam",
       createdAt: "woohoo",
-      userId: pam._id
+      userId: syd._id
     },
     {
       body: "sample x2",
       username: "pam",
       createdAt: "lalala",
-      userId: pam._id
+      userId: syd._id
     },
     {
       body: "plants plants plants",

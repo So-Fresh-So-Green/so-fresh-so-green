@@ -21,6 +21,10 @@ function PostItem({post: {
     const userData = profData.data
     const rightUser = userData._id === userId
 
+    // const deleteCb = () => {
+    //     props.history.push
+    // }
+
     return(
         <div>
             <br></br>
@@ -34,7 +38,7 @@ function PostItem({post: {
                 <button>💬</button><label>{commentCount} </label>
             </Link>
             <LikeButton user={userData} post={{_id, likes, likeCount}}/>
-            {rightUser ? <DeletePostButton postId={_id} /> : <span></span>}
+            {rightUser ? <DeletePostButton postId={{_id}} /> : <span></span>}
             <hr></hr>
             <br></br>
         </div>
