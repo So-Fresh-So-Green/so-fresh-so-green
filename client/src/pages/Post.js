@@ -28,6 +28,22 @@ function Post() {
         }
     })
 
+    const handleFormSubmit = async (e) => {
+        e.preventDefault()
+
+        // try {
+        //     const {data} = await createPost({
+        //         variables: {...formState}
+        //     })
+        //     setFormState({
+        //         body: '',
+        //         image: ''
+        //     })
+        // } catch (err) {
+        //     console.error(err)
+        // }
+    }
+
     const comPost = () => console.log(comments)
     const history = useNavigate()
     const deleteReroute = () => {
@@ -56,7 +72,7 @@ function Post() {
             {Auth.loggedIn() && 
                 <div>
                     <p>Post a comment</p>
-                    <form>
+                    <form onSubmit={handleFormSubmit}>
                         <div>
                             <input 
                                 type={"text"} 
