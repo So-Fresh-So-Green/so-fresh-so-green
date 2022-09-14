@@ -1,35 +1,49 @@
 import React, {useState} from 'react'
+import {useParams} from 'react-router-dom'
 import {useMutation} from '@apollo/client'
-import {DELETE_POST, DELETE_COMMENT} from '../../utils/mutations'
+import {CREATE_COMMENT} from '../../utils/mutations'
 import {QUERY_ALL_POSTS} from '../../utils/queries'
+import Auth from '../../utils/auth'
+
 
 function CommentButton() {
-    // const mutation = commentId ? DELETE_COMMENT : DELETE_POST
-    
-    // const [deletePostComm] = useMutation(mutation, {
-    //     update(cache) {
-    //         if(!commentId) {
-    //             const data = cache.readQuery({
-    //                 query: QUERY_ALL_POSTS
-    //             })
-    //             let newData = [...data.posts]
-    //             newData = newData.filter(post => post._id !== _id)
-    //             cache.writeQuery({query: QUERY_ALL_POSTS, data: {posts: newData}})
-    //         }
-    //         if (callback) callback()
-    //     },
-    //     variables: {postId: _id, commentId}        
-    // })
+    const {postId} = useParams()
+    const [comment, setComment] = useState('')
 
-// curUrl.pathname === newsUrl ? console.log('wow') : null
-const newComment = () => {
-    console.log('wow')
-}
+    const [createComment] = useMutation(CREATE_COMMENT, {
+        update() {
+            setComment('')
+        },
+        variables: {
+            postId: postId,
+            body: comment
+        }
+    })
 
+    const handleFormSubmit = async (e) => {
+        e.preventDefault()
+    }
     return(
-        <>
-        <button onClick={newComment} > test button</button>
-        </>
+        Auth.loggedIn() && 
+            <div>
+                <p>Post a comment</p>
+                <form onSubmit={handleFormSubmit}>
+                    <div>
+                        <input 
+                            type={"text"} 
+                            placeholder={"comment.."} 
+                            value={comment} 
+                            onChange={e => setComment(e.target.value)} 
+                        />
+                        <button 
+                            type='submit' 
+                            disabled={comment.trim() === ''}
+                            onClick={createComment}
+                        >Create Comment</button>
+                    </div>
+                </form>
+            </div>
+        
     )
 }
 
