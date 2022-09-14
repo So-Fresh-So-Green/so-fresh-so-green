@@ -18,6 +18,7 @@ function Post() {
     const [comment, setComment] = useState('')
 
     const [createComment] = useMutation(CREATE_COMMENT, {
+        //TODO: i think i have to update the cache for this to work?
         update() {
             setComment('')
         },
