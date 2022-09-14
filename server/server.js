@@ -7,9 +7,9 @@ const { authMiddleware } = require('./utils/auth');
 
 //graphQL-Upload package
 const { graphqlUploadExpress } = require(`graphql-upload`);
-const {
-  ApolloServerPluginLandingPageLocalDefault,
-} = require('apollo-server-core');
+// const {
+//   ApolloServerPluginLandingPageLocalDefault,
+// } = require('apollo-server-core');
 
 //GraphQL Schemas
 const { typeDefs, resolvers } = require('./schemas');
@@ -21,9 +21,9 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   // Using graphql-upload without CSRF prevention is very insecure.
-  csrfPrevention: true,
+  // csrfPrevention: true,
   cache: 'bounded',
-  plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
+  // plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
   context: authMiddleware,
 });
 

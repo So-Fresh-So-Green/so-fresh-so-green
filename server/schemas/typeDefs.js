@@ -3,13 +3,13 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   scalar Upload
 
-  type FileUploadResponse {
-    ETag: String!
-    Location: String!
-    key: String!
-    Key: String!
-    Bucket: String!
-  }
+  # type FileUploadResponse {
+  #   ETag: String!
+  #   Location: String!
+  #   key: String!
+  #   Key: String!
+  #   Bucket: String!
+  # }
 
   type Category {
     _id: ID
@@ -116,14 +116,6 @@ const typeDefs = gql`
     createdAt: String,
   }
 
-  type File {
-    filename: String!
-    mimetype: String!
-    encoding: String!
-    url: String
-    user: User
-  }
-
   type Query {
     categories: [Category]
     products(category: ID, name: String): [Product]
@@ -136,6 +128,19 @@ const typeDefs = gql`
     getUserPost(user: ID!): [Post]
     getMessages: [Message]
     getChats(email: String!): [Chat]
+    greetings: String
+  }
+
+  type File {
+    filename: String!
+    mimetype: String!
+    encoding: String!
+    url: String
+    user: User
+  }
+
+  type SuccessMessage {
+    message: String
   }
 
   type Mutation {
@@ -155,7 +160,7 @@ const typeDefs = gql`
     deletePlant(plantId: ID!): String!
     postMessage(recipientsId: [String!], sender: String, content: String): Chat
     addChat(recipientsId: [String]!): Chat
-    fileUpload(file: Upload!): File!
+    singleUpload(file: Upload!): SuccessMessage
   }
 `;
 

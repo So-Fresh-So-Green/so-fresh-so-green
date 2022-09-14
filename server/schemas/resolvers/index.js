@@ -9,9 +9,13 @@ const chatResolvers = require('./chat')
 
 const { GraphQLUpload } = require('graphql-upload');
 
+// const customResolvers = {
+//     Upload: GraphQLUpload
+// }
 
 module.exports = {
     Upload: GraphQLUpload,
+    // customResolvers,
     Post: {
         likeCount: (parent) => parent.likes.length,
         commentCount: (parent) => parent.comments.length
@@ -21,8 +25,8 @@ module.exports = {
         ...userResolvers.Query,
         ...productResolvers.Query,
         ...orderResolvers.Query,
+        ...uploadResolvers.Query,
         ...chatResolvers.Query
-
     },
     Mutation: {
         ...userResolvers.Mutation,
