@@ -149,7 +149,7 @@ const typeDefs = gql`
     createPost(body: String!, image: String): Post!
     deletePost(postId: ID!): String!
     likePost(postId: ID!): Post!
-    createComment(postId: String!, body: String!): Post!
+    createComment(postId: ID!, body: String!): Post!
     deleteComment(postId: ID!, commentId: ID!): Post!
     addPlant(name: String!, waterSched: String, image: String, description: String): Plant!
     deletePlant(plantId: ID!): String!

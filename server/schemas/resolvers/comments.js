@@ -12,7 +12,7 @@ module.exports = {
                   }
                 })
               }
-              const post = await Post.findById(postId)
+              const post = await Post.findById(postId).populate('comments')
               if(post) {
                 post.comments.unshift({
                   body,
@@ -21,7 +21,7 @@ module.exports = {
                   createdAt: new Date().toISOString()
                 })
                 await post.save()
-                
+                console.log(post)
                 return post;
               }
             }

@@ -9,7 +9,7 @@ import CommentButton from '../components/CommentButton';
 import LikeButton from '../components/LikeButton';
 import DeletePostButton from '../components/DeletePostButton'
 
-function Post(props) {
+function Post() {
     const {postId} = useParams()
     const {loading, data} = useQuery(QUERY_POST, {
         variables: {postId: postId}
@@ -22,7 +22,7 @@ function Post(props) {
             setComment('')
         },
         variables: {
-            postId,
+            postId: postId,
             body: comment
         }
     })
@@ -49,7 +49,7 @@ function Post(props) {
             <h4>By: {username}</h4>
             <hr/>
             {/* <button onClick={comPost}>💬</button> */}
-            <CommentButton />
+            {/* <CommentButton /> */}
             <LikeButton user={userData} post={{_id, likes, likeCount}}/>
             {rightUser ? <DeletePostButton postId={{_id}} callback={deleteReroute} /> : null}
             {Auth.loggedIn() && 
