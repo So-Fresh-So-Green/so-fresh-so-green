@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import Auth from '../utils/auth'
 import { QUERY_POST } from '../utils/queries';
+import { CREATE_COMMENT } from '../utils/mutations';
 
+import CommentButton from '../components/CommentButton';
 import LikeButton from '../components/LikeButton';
 import DeletePostButton from '../components/DeletePostButton'
 
@@ -12,9 +14,22 @@ function Post(props) {
     const {loading, data} = useQuery(QUERY_POST, {
         variables: {postId: postId}
     })
+
+    const [comment, setComment] = useState('')
+
+    const [createComment] = useMutation(CREATE_COMMENT, {
+        update() {
+            setComment('')
+        },
+        variables: {
+            postId,
+            body: comment
+        }
+    })
+
     const comPost = () => console.log(comments)
     const history = useNavigate()
-    const delCallback = () => {
+    const deleteReroute = () => {
         history('/newsfeed')
     }
 
@@ -33,10 +48,30 @@ function Post(props) {
             <h3>{body}</h3>
             <h4>By: {username}</h4>
             <hr/>
-            <button onClick={comPost}>💬</button>
+            {/* <button onClick={comPost}>💬</button> */}
+            <CommentButton />
             <LikeButton user={userData} post={{_id, likes, likeCount}}/>
-            {rightUser ? <DeletePostButton postId={{_id}} callback={delCallback} /> : null}
-
+            {rightUser ? <DeletePostButton postId={{_id}} callback={deleteReroute} /> : null}
+            {Auth.loggedIn() && 
+                <div>
+                    <p>Post a comment</p>
+                    <form>
+                        <div>
+                            <input 
+                                type={"text"} 
+                                placeholder={"comment.."} 
+                                value={comment} 
+                                onChange={e => setComment(e.target.value)} 
+                            />
+                            <button 
+                                type='submit' 
+                                disabled={comment.trim() === ''}
+                                onClick={createComment}
+                            >Create Comment</button>
+                        </div>
+                    </form>
+                </div>
+            }
             {comments?.map(comment =>
                 <div key={comment.id}>
                     <br></br><hr></hr>
