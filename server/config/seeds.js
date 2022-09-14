@@ -1,5 +1,6 @@
 const db = require('./connection');
-const { User, Product, Category, Plant, Post } = require('../models');
+const { User, Product, Category, Plant, Post, Message } = require('../models');
+
 
 db.once('open', async () => {
   await Category.deleteMany();
@@ -13,7 +14,7 @@ db.once('open', async () => {
   console.log('categories seeded');
 
   await Plant.deleteMany();
-  
+
   const plants = await Plant.insertMany([
     {
       name: 'bamboo',
@@ -243,24 +244,24 @@ db.once('open', async () => {
   })
 
   const grego = await User.create({
-      username: 'Grego',
-      email: 'greggg@testmail.com',
-      password: 'password12345',
-      profPic: 'profile.jpg',
-      plants: [
-        plants[6]._id
-      ],
-      orders: [
-        {
-          products: [products[2]._id, products[2]._id, products[3]._id]
-        }
-      ],
-      followers: [
-        niki._id,
-        jimbo._id
-      ],
-      following: [pam._id]
-    })
+    username: 'Grego',
+    email: 'greggg@testmail.com',
+    password: 'password12345',
+    profPic: 'profile.jpg',
+    plants: [
+      plants[6]._id
+    ],
+    orders: [
+      {
+        products: [products[2]._id, products[2]._id, products[3]._id]
+      }
+    ],
+    followers: [
+      niki._id,
+      jimbo._id
+    ],
+    following: [pam._id]
+  })
 
   const syd = await User.create({
     username: 'Syd',
@@ -306,6 +307,18 @@ db.once('open', async () => {
 
   console.log('users seeded');
 
+  await Message.deleteMany();
+
+  const messages = await Message.create({
+    sender: 'Ian',
+    content: 'this is a test',
+    createdAt: 'death'
+  })
+
+  console.log('messagecreated')
+
+
+
   await Post.deleteMany();
 
   const posts = await Post.insertMany([
@@ -320,25 +333,25 @@ db.once('open', async () => {
           username: 'Grego',
           createdAt: 'blah',
           userId: syd._id
-        }, 
+        },
         {
           body: 'i dont get it',
           username: 'Jimbo',
           createdAt: 'asdfasdg',
           userId: syd._id
-        }, 
+        },
         {
           body: 'very cool wow',
           username: 'Grego',
           createdAt: 'basdgasdglah',
           userId: syd._id
-        }, 
+        },
         {
           body: 'i love this',
           username: 'user',
           createdAt: 'blasdgah',
           userId: syd._id
-        }, 
+        },
       ]
     },
     {
@@ -358,25 +371,25 @@ db.once('open', async () => {
           username: 'Grego',
           createdAt: 'blah',
           userId: syd._id
-        }, 
+        },
         {
           body: 'not very cool at all',
           username: 'Jimbo',
           createdAt: 'asdfasdg',
           userId: syd._id
-        }, 
+        },
         {
           body: 'not very cool at all',
           username: 'Grego',
           createdAt: 'basdgasdglah',
           userId: syd._id
-        }, 
+        },
         {
           body: 'i hate this',
           username: 'user',
           createdAt: 'blasdgah',
           userId: syd._id
-        }, 
+        },
       ]
     },
     {
@@ -396,7 +409,7 @@ db.once('open', async () => {
           username: 'Grego',
           createdAt: 'blah',
           userId: syd._id
-        }, 
+        },
         {
           body: 'not very cool at all',
           username: 'syd',
@@ -411,7 +424,7 @@ db.once('open', async () => {
       createdAt: "woohoo",
       userId: syd._id
     },
-  ]); 
+  ]);
 
   console.log('posts seeded')
 

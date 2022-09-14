@@ -5,6 +5,7 @@ const plantResolvers = require('./plants')
 const productResolvers = require('./products')
 const orderResolvers = require('./orders')
 const uploadResolvers = require('./uploads')
+const chatResolvers = require('./chat')
 
 const { GraphQLUpload } = require('graphql-upload');
 
@@ -24,7 +25,8 @@ module.exports = {
         ...userResolvers.Query,
         ...productResolvers.Query,
         ...orderResolvers.Query,
-        ...uploadResolvers.Query
+        ...uploadResolvers.Query,
+        ...chatResolvers.Query
     },
     Mutation: {
         ...userResolvers.Mutation,
@@ -33,6 +35,7 @@ module.exports = {
         ...plantResolvers.Mutation,
         ...productResolvers.Mutation,
         ...orderResolvers.Mutation,
-        ...uploadResolvers.Mutation
+        ...uploadResolvers.Mutation,
+        ...chatResolvers.Mutation
     }
 };
