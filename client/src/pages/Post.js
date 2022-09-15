@@ -44,11 +44,12 @@ function Post() {
                     <h4>comment: {comment.body}</h4>
                     <p>by: {comment.username}</p>
                     <p>at: {comment.createdAt}</p>
-                    <DeletePostButton postId={{_id}} commentId={comment.id} />
-                    {/* {userData._id === comment.userId ?
+                    {/* <DeletePostButton postId={{_id}} commentId={comment.id} /> */}
+                    {/* not passing in userId when creating comment */}
+                    {userData._id === comment.userId ?
                         <DeletePostButton postId={{_id}} commentId={comment.id} /> :
                         null
-                    } */}
+                    }
                 </div>
             )}
             <br></br>

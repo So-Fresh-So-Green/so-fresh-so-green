@@ -16,10 +16,6 @@ function LikeButton({post: {_id, likeCount, likes}, user}) {
         variables: {postId: _id}
     })
 
-    const fakelikepost = () => {
-        console.log("rightUser")
-    }
-
     const likeButton = user ? (
         liked ? (
             <button onClick={likePost}> ❤️</button>
