@@ -68,6 +68,7 @@ export const QUERY_USER_EXT = gql`
         description
         createdAt
       }
+      plantCount
       followerCount
       followingCount
       following {

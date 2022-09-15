@@ -21,6 +21,7 @@ module.exports = {
         commentCount: (parent) => parent.comments.length
     },
     User: {
+        plantCount: (parent) => parent.plants.length,
         followerCount: (parent) => parent.followers.length,
         followingCount: (parent) => parent.following.length
     },

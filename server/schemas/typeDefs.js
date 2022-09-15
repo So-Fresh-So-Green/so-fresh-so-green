@@ -41,6 +41,7 @@ const typeDefs = gql`
     profPic: String
     posts: [Post]
     plants: [Plant]
+    plantCount: Int!
     followers: [User]
     following: [User]
     orders: [Order]
