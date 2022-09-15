@@ -51,5 +51,34 @@ module.exports = {
             const token = signToken(user);
             return { token, user };
           },
+
+          followUser: async (_, {userId: _id}, context) => {
+            const shepherd = await User.findById(_id)
+
+            if (context.user) {
+              if (shepherd.followers.find((sheep) => sheep == context.user._id)) {
+                return new UserInputError('User is already following them')
+              } else {
+                const followedUser = await User.findByIdAndUpdate(
+                  _id, 
+                  {
+                    $push: {followers: context.user._id}
+                  },
+                  {new: true}
+                )
+
+                const curUser = await User.findByIdAndUpdate(
+                  context.user._id,
+                  {
+                    $push: {following: _id}
+                  },
+                  {new: true}
+                )
+
+                return followedUser.populate('followers')
+              }
+            }
+            throw new AuthenticationError('Not logged in');
+          }
     }
 }
