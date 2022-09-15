@@ -197,6 +197,7 @@ db.once('open', async () => {
   const pam = await User.create({
     username: 'Pamela',
     email: 'pamela@testmail.com',
+    bio: 'I love plants duh',
     password: 'password12345',
     profPic: 'profile.jpg',
     plants: [
@@ -214,6 +215,7 @@ db.once('open', async () => {
     username: 'Leonard',
     email: 'eholt@testmail.com',
     password: 'password12345',
+    bio: 'I hate plants',
     profPic: 'profile.jpg',
     plants: [
       plants[2]._id,
@@ -226,6 +228,7 @@ db.once('open', async () => {
     username: 'Jimbo',
     email: 'jim@testmail.com',
     password: 'password12345',
+    bio: 'I am allergic to plants',
     profPic: 'profile.jpg',
     plants: [
       plants[3]._id,
@@ -238,10 +241,11 @@ db.once('open', async () => {
     ]
   })
 
-  const niki = await User.create({
-    username: 'Niki',
-    email: 'niki@testmail.com',
+  const frankie = await User.create({
+    username: 'frankie',
+    email: 'frankie@testmail.com',
     password: 'password12345',
+    bio: 'I have too many plants',
     profPic: 'profile.jpg',
     plants: [
       plants[4]._id,
@@ -254,6 +258,7 @@ db.once('open', async () => {
     username: 'Grego',
     email: 'greggg@testmail.com',
     password: 'password12345',
+    bio: 'I am scared of plants',
     profPic: 'profile.jpg',
     plants: [
       plants[6]._id
@@ -264,7 +269,7 @@ db.once('open', async () => {
       }
     ],
     followers: [
-      niki._id,
+      frankie._id,
       jimbo._id
     ],
     following: [pam._id]
@@ -273,6 +278,7 @@ db.once('open', async () => {
   const syd = await User.create({
     username: 'Syd',
     email: 'sydo@testmail.com',
+    bio: 'I only eat plants',
     password: 'password12345',
     profPic: 'profile.jpg',
     plants: [
@@ -296,6 +302,7 @@ db.once('open', async () => {
     username: 'Blah',
     email: 'blah@testmail.com',
     password: 'password12345',
+    bio: 'I dont know what to put here lmao lol',
     profPic: 'profile.jpg',
     plants: [
       plants[6]._id
@@ -309,7 +316,7 @@ db.once('open', async () => {
       syd._id,
       grego._id
     ],
-    following: [pam._id, niki._id, syd._id]
+    following: [pam._id, frankie._id, syd._id]
   })
 
   console.log('users seeded');
@@ -323,7 +330,7 @@ db.once('open', async () => {
   })
 
   const messages2 = await Message.create({
-    sender: niki._id,
+    sender: syd._id,
     content: 'this is a test 2',
     createdAt: 'sunrise'
   })
@@ -333,7 +340,7 @@ db.once('open', async () => {
   await Chat.deleteMany();
 
   const chat = await Chat.create({
-    recipientsId: syd._id,
+    recipientsId: frankie._id,
     messages: [messages1],
     createdAt: 'Today'
 
@@ -378,9 +385,9 @@ db.once('open', async () => {
     },
     {
       body: "Another lovely post",
-      username: "niki",
+      username: "frankie",
       createdAt: "woohoo",
-      userId: niki._id
+      userId: frankie._id
     },
     {
       body: "alsdgjsadkghsaldkgjsaldf",

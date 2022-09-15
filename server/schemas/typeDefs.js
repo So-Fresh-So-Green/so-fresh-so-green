@@ -37,9 +37,11 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String!
+    bio: String
     password: String
     profPic: String
     posts: [Post]
+    postCount: Int!
     plants: [Plant]
     plantCount: Int!
     followers: [User]
@@ -151,6 +153,8 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     addOrder(products: [ID]!): Order
     updateUser(username: String, email: String, password: String): User
+    followUser(userId: ID!): User!
+    unfollowUser(userId: ID!): User!
     createProduct(name: String!, description: String, image: String, price: Int, plant: ID, category: ID): Product
     updateProduct(_id: ID!, name: String, description: String, image: String, price: Int, plant: ID, category: ID): Product
     login(email: String!, password: String!): Auth

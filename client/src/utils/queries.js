@@ -51,6 +51,7 @@ export const QUERY_USER_EXT = gql`
     getUser(_id: $_id) {
       username
       profPic
+      bio
       posts {
         _id
         body
@@ -60,6 +61,7 @@ export const QUERY_USER_EXT = gql`
         likeCount
         commentCount
       }
+      postCount
       plants {
         _id
         name
