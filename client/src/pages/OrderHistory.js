@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { useQuery } from '@apollo/client';
-import { QUERY_USER } from '../utils/queries';
+import { QUERY_USER_INT } from '../utils/queries';
 
 function OrderHistory() {
-  const { data } = useQuery(QUERY_USER);
+  const { data } = useQuery(QUERY_USER_INT);
   let user;
 
   if (data) {

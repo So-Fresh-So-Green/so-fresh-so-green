@@ -4,9 +4,9 @@ const { signToken } = require('../../utils/auth');
 
 module.exports = {
     Query: {
-        getUser: async (parent, args, context) => {
+        getUser: async (parent, {_id}, context) => {
             if (context.user) {
-              const user = await User.findById(context.user._id)
+              const user = await User.findById(_id)
                 .populate('plants')
                 .populate('posts')
                 .populate('followers')
@@ -17,6 +17,7 @@ module.exports = {
                 });
       
               user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+              user.posts.sort((a, b) => b.createdAt - a.createdAt)
       
               return user;
             }

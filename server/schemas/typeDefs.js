@@ -41,9 +41,12 @@ const typeDefs = gql`
     profPic: String
     posts: [Post]
     plants: [Plant]
+    plantCount: Int!
     followers: [User]
     following: [User]
     orders: [Order]
+    followerCount: Int!
+    followingCount: Int!
   }
 
   type Post {
@@ -116,22 +119,6 @@ const typeDefs = gql`
     createdAt: String,
   }
 
-  type Query {
-    categories: [Category]
-    products(category: ID, name: String): [Product]
-    getProduct(_id: ID!): Product
-    getUser: User
-    getOrder(_id: ID!): Order
-    checkout(products: [ID]!): Checkout
-    posts: [Post]
-    getPost(postId: ID!): Post
-    getUserPost(user: ID!): [Post]
-    getMessages: [Message]
-    getChats: [Chat]
-    # getChats(email: String!): [Chat]
-    greetings: String
-  }
-
   type File {
     filename: String!
     mimetype: String!
@@ -142,6 +129,22 @@ const typeDefs = gql`
 
   type SuccessMessage {
     message: String
+  }
+
+  type Query {
+    categories: [Category]
+    products(category: ID, name: String): [Product]
+    getProduct(_id: ID!): Product
+    getUser(_id: ID!): User
+    getOrder(_id: ID!): Order
+    checkout(products: [ID]!): Checkout
+    posts: [Post]
+    getPost(postId: ID!): Post
+    getUserPost(user: ID!): [Post]
+    getMessages: [Message]
+    getChats: [Chat]
+    # getChats(email: String!): [Chat]
+    greetings: String
   }
 
   type Mutation {

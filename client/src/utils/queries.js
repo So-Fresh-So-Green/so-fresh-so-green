@@ -30,7 +30,6 @@ export const QUERY_ALL_PRODUCTS = gql`
       name
       description
       price
-      quantity
       category {
         name
       }
@@ -47,25 +46,61 @@ export const QUERY_CATEGORIES = gql`
   }
 `;
 
-export const QUERY_USER = gql`
-  {
-    user {
+export const QUERY_USER_EXT = gql`
+  query GetUser($_id: ID!){
+    getUser(_id: $_id) {
       username
-      orders {
+      profPic
+      posts {
         _id
-        purchaseDate
-        products {
-          _id
-          name
-          description
-          price
-          quantity
-          image
-        }
+        body
+        createdAt
+        image
+        username
+        likeCount
+        commentCount
+      }
+      plants {
+        _id
+        name
+        waterSched
+        image
+        description
+        createdAt
+      }
+      plantCount
+      followerCount
+      followingCount
+      following {
+        _id
+        username
+      }
+      followers {
+        _id
+        username
       }
     }
   }
 `;
+
+export const QUERY_USER_INT = gql`
+query GetUser($_id: ID!){
+  getUser(_id: $_id) {
+    username
+    orders {
+      _id
+      purchaseDate
+      products {
+        _id
+        name
+        description
+        price
+        image
+      }
+    }
+  }
+}
+`
 
 export const QUERY_ALL_POSTS = gql`
   {
