@@ -139,6 +139,8 @@ const typeDefs = gql`
     user: User
   }
 
+  
+
   type SuccessMessage {
     message: String
   }

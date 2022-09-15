@@ -7,6 +7,7 @@ export const singleUploadApi = async (data) => {
     formData.append('operations', '{"query" : "mutation singleUpload($file: Upload!) {singleUpload(file: $file){message}}", "variables" : {"file" : null}}');
     formData.append('map', '{"0": ["variables.file"]}');
     formData.append('0', data.picture[0]);
+    console.log('This is the formData ' + formData)
     await axios.post("http://localhost:3001/graphql", formData, {
         headers: {
             'Content-Type': 'application/json'
