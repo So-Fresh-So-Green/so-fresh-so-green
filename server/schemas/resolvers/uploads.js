@@ -12,6 +12,7 @@ module.exports = {
       const imageUrl = await readFile(file);
 
       const singlefile = new SingleFile({image: imageUrl});
+      console.log(imageUrl);
       await singlefile.save();
       return {
         message: "Single File uploaded successfully!"
