@@ -4,12 +4,11 @@ const { Schema, model } = mongoose;
 
 const messageSchema = new Schema({
 
-    sender: String,
+    sender: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     content: String,
-    // chat: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Chat'
-    // },
     createdAt: String,
 
 });

@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { User, Product, Category, Plant, Post, Message } = require('../models');
+const { User, Product, Category, Plant, Post, Message, Chat } = require('../models');
 
 
 db.once('open', async () => {
@@ -309,13 +309,28 @@ db.once('open', async () => {
 
   await Message.deleteMany();
 
-  const messages = await Message.create({
-    sender: 'Ian',
+  const messages1 = await Message.create({
+    sender: pam._id,
     content: 'this is a test',
     createdAt: 'death'
   })
 
+  const messages2 = await Message.create({
+    sender: niki._id,
+    content: 'this is a test 2',
+    createdAt: 'sunrise'
+  })
+
   console.log('messagecreated')
+
+  await Chat.deleteMany();
+
+  const chat = await Chat.create({
+    recipientsId: syd._id,
+    messages: [messages1],
+    createdAt: 'Today'
+
+  })
 
 
 
