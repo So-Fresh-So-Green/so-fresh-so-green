@@ -2,36 +2,36 @@ const { AuthenticationError, UserInputError } = require('apollo-server-express')
 const Chat = require('../../models/Chat/Chat');
 const Message = require('../../models/Chat/Message')
 
-// const messages = [{ _id: 1, content: 'test', sender: 'jack' }]
 
 
 module.exports = {
 
     Query: {
 
-        // getMessages: () => messages,
-
-
-        // getChats: async (parent, { email }) => {
-        //     try {
-        //         const getUserChats = await Chat.find({ recipientsId: { $all: [email] } })
-
-        //         return getUserChats
-
-        //     } catch (err) {
-        //         console.log(err)
-        //     }
-        // },
-
         async getMessages() {
             try {
-                const messages = await Message.find().sort({ createdAt: -1 });
+                const messages = await Message.find().sort({ createdAt: -1 }).populate('sender');
                 return messages;
             } catch (err) {
                 throw new Error(err)
             }
+        },
+
+
+        async getChats() {
+            try {
+                const chats = await Chat.find()
+                    .populate('recipientsId')
+                    .populate('messages');
+                return chats;
+            } catch (err) {
+                throw new Error(err)
+            }
         }
+
     },
+
+
 
     Mutation: {
 
@@ -90,7 +90,7 @@ module.exports = {
             try {
                 const newChat = await Chat.create({
                     messages: [],
-                    recipientsId: args.recipientsId
+                    recipientsId: ''
                 })
                 console.log(newChat)
 

@@ -104,7 +104,7 @@ const typeDefs = gql`
   type Message {
     _id: ID!
     content: String!
-    sender: String!
+    sender: User
     createdAt: String!
     
   }
@@ -112,7 +112,7 @@ const typeDefs = gql`
   type Chat {
     _id: ID!
     messages: [Message]
-    recipientsId: String!
+    recipientsId: User
     createdAt: String,
   }
 
@@ -127,7 +127,8 @@ const typeDefs = gql`
     getPost(postId: ID!): Post
     getUserPost(user: ID!): [Post]
     getMessages: [Message]
-    getChats(email: String!): [Chat]
+    getChats: [Chat]
+    # getChats(email: String!): [Chat]
     greetings: String
   }
 
@@ -158,8 +159,8 @@ const typeDefs = gql`
     deleteComment(postId: ID!, commentId: ID!): Post!
     addPlant(name: String!, waterSched: String, image: String, description: String): Plant!
     deletePlant(plantId: ID!): String!
-    postMessage(recipientsId: [String!], sender: String, content: String): Chat
-    addChat(recipientsId: [String]!): Chat
+    postMessage( sender: String, content: String): Message
+    addChat(recipientsId: [String!]): Chat
     singleUpload(file: Upload!): SuccessMessage
   }
  
