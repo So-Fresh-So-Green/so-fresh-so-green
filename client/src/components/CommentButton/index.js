@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import {useParams} from 'react-router-dom'
 import {useMutation} from '@apollo/client'
 import {CREATE_COMMENT} from '../../utils/mutations'
-import {QUERY_ALL_POSTS} from '../../utils/queries'
 import Auth from '../../utils/auth'
 
 

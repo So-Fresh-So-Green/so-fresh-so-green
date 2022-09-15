@@ -102,6 +102,7 @@ export const QUERY_POST = gql`
         body
         username
         createdAt
+        userId
         id
       }
       likes {

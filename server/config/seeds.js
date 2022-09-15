@@ -203,8 +203,8 @@ db.once('open', async () => {
     ]
   })
 
-  const elijah = await User.create({
-    username: 'Elijah',
+  const leonard = await User.create({
+    username: 'Leonard',
     email: 'eholt@testmail.com',
     password: 'password12345',
     profPic: 'profile.jpg',
@@ -330,27 +330,27 @@ db.once('open', async () => {
       comments: [
         {
           body: 'blah blah blah blah',
-          username: 'Grego',
+          username: 'Leonard',
           createdAt: 'blah',
-          userId: syd._id
+          userId: leonard._id
         },
         {
           body: 'i dont get it',
           username: 'Jimbo',
           createdAt: 'asdfasdg',
-          userId: syd._id
+          userId: jimbo._id
         },
         {
           body: 'very cool wow',
-          username: 'Grego',
+          username: 'Syd',
           createdAt: 'basdgasdglah',
           userId: syd._id
         },
         {
           body: 'i love this',
-          username: 'user',
+          username: 'Pam',
           createdAt: 'blasdgah',
-          userId: syd._id
+          userId: pam._id
         },
       ]
     },
@@ -370,23 +370,23 @@ db.once('open', async () => {
           body: 'blah blah blah blah',
           username: 'Grego',
           createdAt: 'blah',
-          userId: syd._id
+          userId: grego._id
         },
         {
           body: 'not very cool at all',
           username: 'Jimbo',
           createdAt: 'asdfasdg',
-          userId: syd._id
+          userId: jimbo._id
         },
         {
           body: 'not very cool at all',
-          username: 'Grego',
+          username: 'Leonard',
           createdAt: 'basdgasdglah',
-          userId: syd._id
+          userId: leonard._id
         },
         {
           body: 'i hate this',
-          username: 'user',
+          username: 'Syd',
           createdAt: 'blasdgah',
           userId: syd._id
         },
@@ -408,7 +408,7 @@ db.once('open', async () => {
           body: 'blah blah blah blah',
           username: 'Grego',
           createdAt: 'blah',
-          userId: syd._id
+          userId: grego._id
         },
         {
           body: 'not very cool at all',
