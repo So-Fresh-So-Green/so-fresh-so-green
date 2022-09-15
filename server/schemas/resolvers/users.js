@@ -53,9 +53,9 @@ module.exports = {
           },
 
           followUser: async (_, {userId: _id}, context) => {
-            const shepherd = await User.findById(_id)
-
             if (context.user) {
+              const shepherd = await User.findById(_id)
+              console.log(shepherd)
               if (shepherd.followers.find((sheep) => sheep == context.user._id)) {
                 return new UserInputError('User is already following them')
               } else {
@@ -76,6 +76,34 @@ module.exports = {
                 )
 
                 return followedUser.populate('followers')
+              }
+            }
+            throw new AuthenticationError('Not logged in');
+          },
+
+          unfollowUser: async (_, {userId: _id}, context) => {
+            if (context.user) {
+              const sheep = await User.findById(context.user._id)
+              if (sheep.following.find((shepherd) => shepherd == _id)) {
+                const followedUser = await User.findByIdAndUpdate(
+                  _id,
+                  {
+                    $pull: {followers: context.user._id}
+                  },
+                  {new: true}
+                )
+
+                const curUser = await User.findByIdAndUpdate(
+                  context.user._id,
+                  {
+                    $pull: {following: _id}
+                  },
+                  {new: true}
+                )
+
+                return followedUser.populate('followers')
+              } else {
+                return new UserInputError('You do not follow that user')
               }
             }
             throw new AuthenticationError('Not logged in');
