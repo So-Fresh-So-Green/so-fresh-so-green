@@ -15,13 +15,14 @@ export default function Newsfeed() {
     }
 
     return (
+        loading ? <div>loading...</div> :
         <div>
             <h1>This the Newsfeed</h1>
             {/* must be logged in to create new post */}
             {Auth.loggedIn() ? (
                 <button onClick={newPostBtn}>Create a new post</button>
             ) : (
-                <span></span>
+                null
             )}
             
             <div id="post-form" className="invis">
