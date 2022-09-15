@@ -21,7 +21,6 @@ module.exports = {
                   createdAt: new Date().toISOString()
                 })
                 await post.save()
-                console.log(post)
                 return post;
               }
             }
@@ -34,7 +33,6 @@ module.exports = {
               if(post.comments[commentIndex].userId == context.user._id) {
                 post.comments.splice(commentIndex, 1)
                 await post.save()
-                console.log(post)
                 return post;
               }
             }

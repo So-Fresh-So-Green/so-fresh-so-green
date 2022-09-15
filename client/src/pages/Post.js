@@ -25,9 +25,6 @@ function Post() {
     const profData = Auth.getProfile()
     const userData = profData.data
     const rightUser = userData._id === userId
-
-    // console.log(comments)
-    // console.log(userData._id)
     
     return(
         <div>
