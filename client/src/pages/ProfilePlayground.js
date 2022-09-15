@@ -20,11 +20,11 @@ export default function ProfilePlayground() {
     console.log(user)
 
     return(
+        loading ? <div>loading...</div> :
         <div>
             {rightUser? 
                 <h1>Your profile</h1> : 
                 <ExtProfile user={user}/>
-                // <h1>NO</h1>
             }
         </div>
     )

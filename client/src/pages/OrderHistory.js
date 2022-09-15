@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_USER_INT } from '../utils/queries';
 
 function OrderHistory() {
-  const { data } = useQuery(QUERY_USER_INT);
+  const { loading, data } = useQuery(QUERY_USER_INT);
   let user;
 
   if (data) {
@@ -13,6 +13,7 @@ function OrderHistory() {
   }
 
   return (
+    loading ? <div>loading...</div> :
     <>
       <div className="container my-1">
         <Link to="/">← Back to Products</Link>

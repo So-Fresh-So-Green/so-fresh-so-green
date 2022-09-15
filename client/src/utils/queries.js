@@ -49,6 +49,7 @@ export const QUERY_CATEGORIES = gql`
 export const QUERY_USER_EXT = gql`
   query GetUser($_id: ID!){
     getUser(_id: $_id) {
+      _id
       username
       profPic
       bio

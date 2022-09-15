@@ -4,12 +4,15 @@ import Auth from '../../utils/auth'
 
 import ProfPost from '../ProfPost'
 import PlantCard from '../PlantCard'
+import FollowButton from "../FollowButton";
 
 export default function ExtProfile({user: {
+    _id,
     username,
     profPic,
     bio,
     posts,
+    postCount,
     plants,
     plantCount,
     following,
@@ -17,6 +20,9 @@ export default function ExtProfile({user: {
     followers,
     followerCount
 }}) {
+    const profData = Auth.getProfile()
+    const sheepId = profData.data._id
+
     return(
         <div>
             {username}'s profile
@@ -28,7 +34,9 @@ export default function ExtProfile({user: {
             <p>{followerCount} followers</p>
             <p>following: {followingCount}</p>
             <br></br>
-            <h2>{username}'s recent posts</h2>
+            <FollowButton sheepId={sheepId} shepherd={{_id, followers}} />
+            <br></br><br></br>
+            <h2>{username} has {postCount} posts</h2>
             <hr></hr><br></br>
             {posts?.map((post) => (
                 <ProfPost 

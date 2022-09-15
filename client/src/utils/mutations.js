@@ -48,6 +48,17 @@ export const ADD_USER = gql`
   }
 `;
 
+export const FOLLOW_USER = gql`
+  mutation FollowUser($userId: ID!) {
+    followUser(userId: $userId) {
+      username
+      followers {
+        username
+      }
+    }
+  }
+`
+
 export const CREATE_POST = gql`
   mutation createPost($body: String! $image: String) {
     createPost(body: $body image: $image) {
@@ -136,3 +147,5 @@ export const DELETE_COMMENT = gql`
     }
   }
 `
+
+
