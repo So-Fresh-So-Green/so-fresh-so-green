@@ -12,6 +12,5 @@ export default function ExtProfile({user}) {
             {user.username}'s profile
         </div>
     )
-
     
 }

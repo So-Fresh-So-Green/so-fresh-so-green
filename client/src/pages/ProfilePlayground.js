@@ -16,8 +16,8 @@ export default function ProfilePlayground() {
     const {loading, data} = useQuery(QUERY_USER_EXT, {
         variables: {_id: id}
     })
-    console.log(data)
-    const user = data?.getUser
+    const user = data?.getUser || {}
+    console.log(user)
 
     return(
         <div>
