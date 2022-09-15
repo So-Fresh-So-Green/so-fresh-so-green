@@ -3,7 +3,9 @@ const {createWriteStream} = require("fs"); // this is node built in package
 const fs = require("fs"); // this is node built in package
 const aws = require(`aws-sdk`);
 const { PassThrough } = require("stream");
+
 const {v4 : uuidv4} = require('uuid')
+
 
 
 const bucketName = process.env.AWS_BUCKET_NAME;
@@ -18,11 +20,11 @@ const s3 = new aws.S3({
 })
 
 
-
 module.exports.readFile = async (file) => {
     
     const {createReadStream, filename} = await file;
     const stream = createReadStream();
+
     
     // async function uploadFromStream(key) {
     //     var pass = new PassThrough();
@@ -43,6 +45,7 @@ module.exports.readFile = async (file) => {
     let url = `https://sfsg-upload.s3.us-east-2.amazonaws.com/${key}` 
     
     
+
     // const imageStream = await createWriteStream(url)
     // await stream.pipe(imageStream);
 
@@ -50,7 +53,7 @@ module.exports.readFile = async (file) => {
     // const port = process.env.PORT
     // url = `${baseUrl}${port}${url.split('Upload')[1]}`;
     // return url;
-
+    
     await s3.upload({
         Bucket: bucketName,
         Body: createReadStream(),
@@ -61,3 +64,4 @@ module.exports.readFile = async (file) => {
 
     // stream.pipe(uploadFromStream(key))
 }
+
