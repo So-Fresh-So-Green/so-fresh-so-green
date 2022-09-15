@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 import Auth from '../utils/auth'
 import { QUERY_POST } from '../utils/queries';
@@ -32,7 +32,7 @@ function Post() {
             <p>created at: {createdAt}</p>
             <img src={`/images/${image}`}/>
             <h3>{body}</h3>
-            <h4>By: {username}</h4>
+            <h4>By: <Link to={`/profile/${_id}`}>{username}</Link></h4>
             <hr/>
             <LikeButton user={userData} post={{_id, likes, likeCount}}/>
             {rightUser ? <DeletePostButton postId={{_id}} callback={deleteReroute} /> : null}
@@ -42,7 +42,7 @@ function Post() {
                 <div key={comment.id}>
                     <br></br><hr></hr>
                     <h4>comment: {comment.body}</h4>
-                    <p>by: {comment.username}</p>
+                    <p>by: <Link to={`/profile/${comment.userId}`}>{comment.username}</Link></p>
                     <p>at: {comment.createdAt}</p>
                     {/* <DeletePostButton postId={{_id}} commentId={comment.id} /> */}
                     {/* not passing in userId when creating comment */}

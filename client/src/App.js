@@ -90,7 +90,7 @@ function App() {
                 element={<Profile />} 
               />
               <Route 
-                path="/profile-playground/:username" 
+                path="/profile/:id" 
                 element={<ProfilePlayground />} 
               />
               <Route 

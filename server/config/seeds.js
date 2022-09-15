@@ -21,49 +21,56 @@ db.once('open', async () => {
       waterSched: '2x/day',
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
-      username: 'Pamela'
+      username: 'Pamela',
+      createdAt: 'monday'
     },
     {
       name: 'grass',
       waterSched: '2x/day',
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
-      username: 'Pamela'
+      username: 'Pamela',
+      createdAt: 'tuesday'
     },
     {
       name: 'fern',
       waterSched: '1x/week',
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
-      username: 'Elijah'
+      username: 'Elijah',
+      createdAt: 'wed'
     },
     {
       name: 'monstera',
       waterSched: '2x/week',
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
-      username: 'Jimbo'
+      username: 'Jimbo',
+      createdAt: 'thu'
     },
     {
       name: 'tree',
       waterSched: '2x/year',
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
-      username: 'Jimbo'
+      username: 'Jimbo',
+      createdAt: 'fri'
     },
     {
       name: 'moss',
       waterSched: '1x/week',
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
-      username: 'Niki'
+      username: 'Niki',
+      createdAt: 'sat'
     },
     {
       name: 'melon',
       waterSched: '1x/week',
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
-      username: 'Grego'
+      username: 'Grego',
+      createdAt: 'sun'
     },
   ])
 

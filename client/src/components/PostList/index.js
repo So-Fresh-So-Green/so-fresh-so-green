@@ -29,8 +29,8 @@ function PostItem({post: {
             <hr></hr>
             <Link to={`/post/${_id}`}>
                 <h1>{body}</h1>
-                <img src={`/images/${image}`}/>
-                <p>by: {username}</p>
+                {image !== null ? <img src={`/images/${image}`}/> : null}
+                <p><Link to={`/profile/${userId}`}>by: {username}</Link></p>
                 <p>created at: {createdAt}</p>
                 {/* a link to the individual post page here */}
             <button>💬</button><label>{commentCount} </label>
