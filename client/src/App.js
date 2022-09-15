@@ -24,6 +24,8 @@ import About from './pages/About';
 import Post from './pages/Post'
 import TestChat from './pages/TestChat/TestChat'
 
+import ProfilePlayground from './pages/ProfilePlayground'
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -86,6 +88,10 @@ function App() {
               <Route 
                 path="/profile" 
                 element={<Profile />} 
+              />
+              <Route 
+                path="/profile-playground/:username" 
+                element={<ProfilePlayground />} 
               />
               <Route 
                 path="/newsfeed" 
