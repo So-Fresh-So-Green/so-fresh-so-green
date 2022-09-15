@@ -8,6 +8,7 @@ import PlantCard from '../PlantCard'
 export default function ExtProfile({user: {
     username,
     profPic,
+    bio,
     posts,
     plants,
     plantCount,
@@ -23,6 +24,7 @@ export default function ExtProfile({user: {
                 alt={username}
                 src={`/images/${profPic}`}
             />
+            <p>About: {bio}</p>
             <p>{followerCount} followers</p>
             <p>following: {followingCount}</p>
             <br></br>

@@ -37,9 +37,11 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String!
+    bio: String
     password: String
     profPic: String
     posts: [Post]
+    postCount: Int!
     plants: [Plant]
     plantCount: Int!
     followers: [User]
