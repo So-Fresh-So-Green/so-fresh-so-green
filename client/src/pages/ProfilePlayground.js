@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 import Auth from '../utils/auth'
 import ExtProfile from "../components/ExtProfile";
 import IntProfile from "../components/IntProfile";
-import { QUERY_USER_EXT, QUERY_USER_INT } from "../utils/queries";
+import { QUERY_USER_EXT, QUERY_USER_INT, QUERY_USER_PLANTS } from "../utils/queries";
 
 export default function ProfilePlayground() {    
     const {id} = useParams()
@@ -21,12 +21,16 @@ export default function ProfilePlayground() {
         variables: {_id: id}
     })
     const intUser = dataInt?.getUser || {}
-    
+
+    const {loading: loading3, data: dataIntPlant} = useQuery(QUERY_USER_PLANTS, {
+        variables: {id: id}
+    })
+    const intPlant = dataIntPlant?.getUser || {}
     return(
-        loading || loading2 ? <div>loading...</div> :
+        loading || loading2 || loading3 ? <div>loading...</div> :
         <div>
             {rightUser? 
-                <IntProfile user={intUser} /> : 
+                <IntProfile user={intUser} plants={intPlant} /> : 
                 <ExtProfile user={extUser}/>
             }
         </div>

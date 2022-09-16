@@ -6,7 +6,6 @@ import {QUERY_USER_PLANTS} from '../../utils/queries';
 
 const AddPlantForm = () => {
     const {id} = useParams()
-    console.log(id)
     const [formState, setFormState] = useState({
         name: '',
         image: '',
@@ -17,15 +16,15 @@ const AddPlantForm = () => {
     const [addPlant] = useMutation(ADD_PLANT, {
         update(cache, {data: {addPlant}}) {
             try {
-                const {plants} = cache.readQuery({
+                const {getUser} = cache.readQuery({
                     query: QUERY_USER_PLANTS,
-                    variables: {_id: id}
+                    variables: {id: id}
                 })
 
                 cache.writeQuery({
                     query: QUERY_USER_PLANTS,
-                    variables: {_id: id},
-                    data: {plants: [addPlant, ...plants]}
+                    variables: {id: id},
+                    data: {getUser: {plants: [addPlant, ...getUser.plants]}}
                 })
             } catch (err) {
                 console.error(err)
@@ -37,7 +36,7 @@ const AddPlantForm = () => {
         e.preventDefault()
         try {
             const {data} = await addPlant({
-                variables: {...formState}
+                variables: {...formState, createdAt: Date.now()}
             })
             setFormState({
                 name: '',

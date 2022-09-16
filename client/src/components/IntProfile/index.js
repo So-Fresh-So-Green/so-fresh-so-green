@@ -11,17 +11,14 @@ export default function IntProfile({user: {
     bio,
     location,
     posts,
-    postCount,
-    plants,
     plantCount,
+    postCount,
     following,
     followingCount,
     followers,
     followerCount,
     orders
-}}) {
-
-    console.log(orders)
+}, plants : {plants}}) {
     return(
         <div>
             {username}

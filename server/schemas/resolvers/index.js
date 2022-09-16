@@ -32,7 +32,8 @@ module.exports = {
         ...productResolvers.Query,
         ...orderResolvers.Query,
         ...uploadResolvers.Query,
-        ...chatResolvers.Query
+        ...chatResolvers.Query,
+        // ...plantResolvers.Query
     },
     Mutation: {
         ...userResolvers.Mutation,
