@@ -57,32 +57,32 @@ const SellPlantForm = ({plant: {_id, name, image, description}}) => {
 
     const sellPlantBtn = inMarket ? 
         (
-            <button>Plant in shop</button>
+            <p>Plant added to shop!</p>
         ) :
         (
-            <button onClick={sellPlant}>Post to shop</button>
+            <form onSubmit={handleFormSubmit}>
+            <div>
+                <input
+                    onKeyPress={(event) => {
+                        if (!/[0-9]/.test(event.key)) {
+                        event.preventDefault();
+                        // alert('Please only enter numbers')
+                        }
+                    }}
+                    placeholder='Price your plant'
+                    onChange={handleChange}
+                    value={formState.price}
+                    />
+            </div>
+            <div>
+                <button onClick={sellPlant}>Post to shop</button>
+            </div>
+        </form>
         )
 
     return (
         <div>
-            <form onSubmit={handleFormSubmit}>
-                <div>
-                    <input
-                        onKeyPress={(event) => {
-                            if (!/[0-9]/.test(event.key)) {
-                            event.preventDefault();
-                            // alert('Please only enter numbers')
-                            }
-                        }}
-                        placeholder='Price your plant'
-                        onChange={handleChange}
-                        value={formState.price}
-                        />
-                </div>
-                <div>
-                    {sellPlantBtn}
-                </div>
-            </form>
+            {sellPlantBtn}
         </div>
     )
 }
