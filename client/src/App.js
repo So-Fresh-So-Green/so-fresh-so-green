@@ -53,61 +53,65 @@ function App() {
         <div>
           <StoreProvider>
             <Nav />
-            
+
             {/* <TestChat /> */}
 
             <Routes>
-              <Route 
-                path="/" 
-                element={<Home />} 
+              <Route
+                path="/"
+                element={<Home />}
               />
-              <Route 
-                path="/login" 
-                element={<Login />} 
+              <Route
+                path="/login"
+                element={<Login />}
               />
-              <Route 
-                path="/signup" 
-                element={<Signup />} 
+              <Route
+                path="/signup"
+                element={<Signup />}
               />
-              <Route 
-                path="/success" 
-                element={<Success />} 
+              <Route
+                path="/success"
+                element={<Success />}
               />
-              <Route 
-                path="/orderHistory" 
-                element={<OrderHistory />} 
+              <Route
+                path="/orderHistory"
+                element={<OrderHistory />}
               />
-              <Route 
-                path="/products/:id" 
-                element={<Detail />} 
+              <Route
+                path="/products/:id"
+                element={<Detail />}
               />
-              <Route 
-                path="/plant-shop" 
-                element={<PlantShop />} 
+              <Route
+                path="/plant-shop"
+                element={<PlantShop />}
               />
-              <Route 
-                path="/profile" 
-                element={<Profile />} 
+              <Route
+                path="/profile"
+                element={<Profile />}
               />
-              <Route 
-                path="/profile/:id" 
-                element={<ProfilePlayground />} 
+              <Route
+                path="/profile/:id"
+                element={<ProfilePlayground />}
               />
-              <Route 
-                path="/newsfeed" 
-                element={<Newsfeed />} 
+              <Route
+                path="/newsfeed"
+                element={<Newsfeed />}
               />
-              <Route 
-                path="/post/:postId" 
-                element={<Post />} 
+              <Route
+                path="/post/:postId"
+                element={<Post />}
               />
-              <Route 
-                path="/about" 
-                element={<About />} 
+              <Route
+                path="/about"
+                element={<About />}
               />
-              <Route 
-                path="*" 
-                element={<NoMatch />} 
+              <Route
+                path="/chat"
+                element={<TestChat />}
+              />
+              <Route
+                path="*"
+                element={<NoMatch />}
               />
             </Routes>
           </StoreProvider>
