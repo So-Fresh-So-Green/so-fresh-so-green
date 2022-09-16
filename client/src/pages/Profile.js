@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useMutation } from '@apollo/client';
 import { useForm } from "react-hook-form";
 import { singleUploadApi } from "../Functionality/api"
+import Auth from '../utils/auth'
+
 
 // import { useHistory } from 'react-router-dom';
 
@@ -11,6 +13,21 @@ import { singleUploadApi } from "../Functionality/api"
 
 export default function Profile() {
   const [image, setImage] = useState();
+
+  const profData = Auth.getProfile()
+  const userId = profData.data._id
+  const userName = profData.data.username
+
+  console.log(`
+  
+  
+  THIS IS USER ID
+  
+
+  ${userId}
+  ${userName}
+  
+  `)
 
   const {
     register,
