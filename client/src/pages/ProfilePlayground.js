@@ -3,9 +3,8 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from "@apollo/client";
 import Auth from '../utils/auth'
 import ExtProfile from "../components/ExtProfile";
-import { QUERY_USER_EXT } from "../utils/queries";
-
-// TODO: return either an exterior or interior profile view depending on which user is viewing it
+import IntProfile from "../components/IntProfile";
+import { QUERY_USER_EXT, QUERY_USER_INT } from "../utils/queries";
 
 export default function ProfilePlayground() {    
     const {id} = useParams()
@@ -13,17 +12,22 @@ export default function ProfilePlayground() {
     const userData = profData.data
     const rightUser = userData._id === id
 
-    const {loading, data} = useQuery(QUERY_USER_EXT, {
+    const {loading, data: dataExt} = useQuery(QUERY_USER_EXT, {
         variables: {_id: id}
     })
-    const user = data?.getUser || {}
+    const extUser = dataExt?.getUser || {}
 
+    const {loading: loading2, data: dataInt} = useQuery(QUERY_USER_INT, {
+        variables: {_id: id}
+    })
+    const intUser = dataInt?.getUser || {}
+    
     return(
-        loading ? <div>loading...</div> :
+        loading || loading2 ? <div>loading...</div> :
         <div>
             {rightUser? 
-                <h1>Your profile</h1> : 
-                <ExtProfile user={user}/>
+                <IntProfile user={intUser} /> : 
+                <ExtProfile user={extUser}/>
             }
         </div>
     )

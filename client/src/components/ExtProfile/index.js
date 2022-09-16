@@ -11,6 +11,7 @@ export default function ExtProfile({user: {
     username,
     profPic,
     bio,
+    location,
     posts,
     postCount,
     plants,
@@ -30,6 +31,7 @@ export default function ExtProfile({user: {
                 alt={username}
                 src={`/images/${profPic}`}
             />
+            <p>{location}</p>
             <p>About: {bio}</p>
             <p>following: {followingCount}</p>
             <br></br>

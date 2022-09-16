@@ -38,6 +38,7 @@ const typeDefs = gql`
     username: String
     email: String!
     bio: String
+    location: String
     password: String
     profPic: String
     posts: [Post]
