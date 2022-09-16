@@ -20,13 +20,8 @@ export default function ProductItem(plant) {
     useEffect(() => {
         for(let product of products) {
             if(product.plant) {
-                console.log(product.plant._id)
-                console.log(_id)
-                console.log(inMarket)
-                console.log('_______________')
                 if(product.plant._id === _id) {
                     setInMarket(true)
-                    console.log(inMarket)
                     return
                 } else {
                     setInMarket(false)

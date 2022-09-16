@@ -1,10 +1,8 @@
 import React, {useContext} from "react";
-import { Link } from "react-router-dom";
-import Auth from '../../utils/auth'
 
 import ProfPost from '../ProfPost'
 import PlantCard from '../PlantCard'
-import FollowButton from "../FollowButton";
+import AddPlantForm from '../AddPlantForm'
 
 export default function IntProfile({user: {
     _id,
@@ -22,6 +20,8 @@ export default function IntProfile({user: {
     followerCount,
     orders
 }}) {
+
+    console.log(orders)
     return(
         <div>
             {username}
@@ -54,6 +54,7 @@ export default function IntProfile({user: {
             ))}
             <hr></hr><br></br>
             <h2>You have {plantCount} plants in your garden</h2>
+            <AddPlantForm />
             <hr></hr><br></br>
             {plants?.map((plant) => (
                 <PlantCard
