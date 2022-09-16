@@ -11,6 +11,7 @@ export default function IntProfile({user: {
     username,
     profPic,
     bio,
+    location,
     posts,
     postCount,
     plants,
@@ -21,21 +22,22 @@ export default function IntProfile({user: {
     followerCount,
     orders
 }}) {
-    const profData = Auth.getProfile()
-    const sheep = profData.data
-
     return(
         <div>
-            {username}'s profile
+            {username}
             <img
                 alt={username}
                 src={`/images/${profPic}`}
             />
+            <p>{location}</p>
             <p>About: {bio}</p>
             <p>following: {followingCount}</p>
             <br></br>
-            {/* followcount is returned in the button so it can update automatically on click */}
-            <FollowButton sheep={sheep} shepherd={{_id, followers, followerCount}} />
+            followers {followerCount}
+            {followers?.map((follower) => <p key={follower._id}>{follower.username}</p>)}
+
+            following {followingCount}
+            {following?.map((follow) => <p key={follow._id}>{follow.username}</p>)}
             <br></br><br></br>
             <h2>{username} has {postCount} posts</h2>
             <hr></hr><br></br>
@@ -51,7 +53,7 @@ export default function IntProfile({user: {
                 />
             ))}
             <hr></hr><br></br>
-            <h2>{username}'s garden</h2>
+            <h2>You have {plantCount} plants in your garden</h2>
             <hr></hr><br></br>
             {plants?.map((plant) => (
                 <PlantCard

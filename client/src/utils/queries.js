@@ -53,6 +53,7 @@ export const QUERY_USER_EXT = gql`
       username
       profPic
       bio
+      location
       posts {
         _id
         body
@@ -87,12 +88,13 @@ export const QUERY_USER_EXT = gql`
 `;
 
 export const QUERY_USER_INT = gql`
-query GetUser($id: ID!) {
-  getUser(_id: $id) {
+query GetUser($_id: ID!) {
+  getUser(_id: $_id) {
     _id
     username
     profPic
     bio
+    location
     posts {
       body
       createdAt

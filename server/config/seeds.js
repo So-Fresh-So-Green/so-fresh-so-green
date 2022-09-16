@@ -198,6 +198,7 @@ db.once('open', async () => {
     username: 'Pamela',
     email: 'pamela@testmail.com',
     bio: 'I love plants duh',
+    location: 'Chicago, IL',
     password: 'password12345',
     profPic: 'profile.jpg',
     plants: [
@@ -216,6 +217,7 @@ db.once('open', async () => {
     email: 'eholt@testmail.com',
     password: 'password12345',
     bio: 'I hate plants',
+    location: 'Seattle, WA',
     profPic: 'profile.jpg',
     plants: [
       plants[2]._id,
@@ -229,6 +231,7 @@ db.once('open', async () => {
     email: 'jim@testmail.com',
     password: 'password12345',
     bio: 'I am allergic to plants',
+    location: 'Atlanta, GA',
     profPic: 'profile.jpg',
     plants: [
       plants[3]._id,
@@ -246,6 +249,7 @@ db.once('open', async () => {
     email: 'frankie@testmail.com',
     password: 'password12345',
     bio: 'I have too many plants',
+    location: 'Dallas, TX',
     profPic: 'profile.jpg',
     plants: [
       plants[4]._id,
@@ -259,6 +263,7 @@ db.once('open', async () => {
     email: 'greggg@testmail.com',
     password: 'password12345',
     bio: 'I am scared of plants',
+    location: 'Detroit, MI',
     profPic: 'profile.jpg',
     plants: [
       plants[6]._id
@@ -279,6 +284,7 @@ db.once('open', async () => {
     username: 'Syd',
     email: 'sydo@testmail.com',
     bio: 'I only eat plants',
+    location: 'Boulder, CO',
     password: 'password12345',
     profPic: 'profile.jpg',
     plants: [
@@ -303,6 +309,7 @@ db.once('open', async () => {
     email: 'blah@testmail.com',
     password: 'password12345',
     bio: 'I dont know what to put here lmao lol',
+    location: 'Springfield, OR',
     profPic: 'profile.jpg',
     plants: [
       plants[6]._id

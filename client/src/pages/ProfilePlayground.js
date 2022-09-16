@@ -21,9 +21,9 @@ export default function ProfilePlayground() {
         variables: {_id: id}
     })
     const intUser = dataInt?.getUser || {}
-
+    
     return(
-        loading ? <div>loading...</div> :
+        loading || loading2 ? <div>loading...</div> :
         <div>
             {rightUser? 
                 <IntProfile user={intUser} /> : 
