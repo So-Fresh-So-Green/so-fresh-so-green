@@ -54,7 +54,7 @@ function App() {
           <StoreProvider>
             <Nav />
             
-            <TestChat />
+            {/* <TestChat /> */}
 
             <Routes>
               <Route 

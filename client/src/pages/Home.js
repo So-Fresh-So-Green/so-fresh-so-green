@@ -1,19 +1,21 @@
 import React from "react";
 import Footer from "../components/Footer";
+import SFSGLogofull from '../assets/SFSGlogofull.jpg'
+import SFSGLogo2 from '../assets/sfsglogo2.jpg'
+import SFSGLogo3 from '../assets/sfsglogo3.png'
+
 
 const Home = () => {
   return (
     <>
-    {/* container divs */}
+
     <div class="h-1 bg-gradient- bg-slate-100 rounded ">
     <div class="h-1 bg-gradient-to-r from-white  via-green-200 to-green-300 ... ... rounded">
 
-      {/* top section */}
-      {/* TODO: address accessibility warnings in console */}
       <div class="w-24 h-full bg-slate-50"></div>
         <section class="bg-gradient-to-r from-slate-300 via-green-200 to-green-300 ...">
           <div class="grid py-8 px-4 mx-auto max-w-screen-xl lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-            <div class="place-self-center mr-auto lg:col-span-7">
+            <div class="place-self-center mr-auto lg:col-span-7 pr-5">
               <h1 class="mb-4 max-w-2xl text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl dark:text-white">So Fresh So Green</h1>
                 <p class="mb-6 max-w-2xl font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-white">Buy, Sell, Trade, and Share all the latest plants in your area. </p>
                   {/* TODO: convert to react link */}
@@ -25,36 +27,9 @@ const Home = () => {
                   <a href="#" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-50 dark:hover:bg-green-700 dark:focus:ring-gray-100">
                       SIGN UP NOW
                   </a>
-            </div>
-            <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-              <img src="https://watchandlearn.scholastic.com/content/dam/classroom-magazines/watchandlearn/videos/animals-and-plants/plants/what-are-plants-/What-Are-Plants.jpg" alt="mockup" />
-            </div>                
-          </div>
-      </section>
-
-      {/* mid section bold text */}
-      <section class="bg-gradient-to-r from-slate-300 via-green-200 to-green-300 ...">
-        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
-          <h2 class="mb-8 text-3xl font-extrabold tracking-tight leading-tight text-center text-white md:text-4xl">Fresh content for green thumbs.</h2>
-            <div class="grid grid-cols-2 gap-8 text-gray-500 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 dark:text-gray-400">                                                                                      
-            </div>
-        </div>
-      </section>
-
-      {/* info text */}
-      <section class="bg-gradient-to-r from-slate-300 via-green-200 to-green-300 ">
-        <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-          <div class="mb-8 max-w-screen-md lg:mb-16">
-            <h2 class="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">Designed for plant lovers and friends</h2>
+                  <h2 class="mt-20 mb-20 text-3xl font-extrabold tracking-tight leading-tight text-center text-white md:text-4xl">Fresh content for green thumbs.</h2>
+                  <h2 class="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">Designed for plant lovers and friends</h2>
               <p class="text-white sm:text-xl ">Here at So Fresh So Green we focus on keeping you in the loop for the hottest plant world news. Grow your plants and the community along side us!</p>
-          </div>
-          <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
-              <div>
-                <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-              </div>
-                
-            {/* designed for teams like yours section */}
-            {/* TODO: fix card spacing of create/posts/sell */}
               <div>
                 <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                   <svg class="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path></svg>
@@ -76,11 +51,11 @@ const Home = () => {
                 <h3 class="mb-2 text-xl font-bold dark:text-white">Sell Your Plants</h3>
                 <p class="text-white"> Got green? Buy and sell plants in app!  </p>
               </div>
+            </div>
+            <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
+            <iframe src='https://my.spline.design/iphone14procopy-68a850969c407b94664b3fed9cf9d229/' frameborder='0' width='100%' height='100%'></iframe>            </div>                
           </div>
-          </div>
-   </div>
- </section>
-
+      </section>
   <Footer />
     </div>
   </div>
