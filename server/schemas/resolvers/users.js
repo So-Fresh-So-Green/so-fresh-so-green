@@ -55,7 +55,6 @@ module.exports = {
           followUser: async (_, {userId: _id}, context) => {
             if (context.user) {
               const shepherd = await User.findById(_id)
-              console.log(shepherd)
               if (shepherd.followers.find((sheep) => sheep == context.user._id)) {
                 return new UserInputError('User is already following them')
               } else {

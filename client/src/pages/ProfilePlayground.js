@@ -17,7 +17,6 @@ export default function ProfilePlayground() {
         variables: {_id: id}
     })
     const user = data?.getUser || {}
-    console.log(user)
 
     return(
         loading ? <div>loading...</div> :
