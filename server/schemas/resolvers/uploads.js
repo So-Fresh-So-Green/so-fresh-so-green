@@ -17,7 +17,7 @@ module.exports = {
       console.log(imageUrl);
       await singlefile.save();
       return {
-        message: "Single File uploaded successfully!"
+        message: `${imageUrl}`
       }
     },
 
