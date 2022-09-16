@@ -15,6 +15,31 @@ export const QUERY_PRODUCTS = gql`
   }
 `;
 
+export const QUERY_PLANT_PRODUCTS = gql`
+  query Plant {
+    products {
+      plant {
+        _id
+      }
+    }
+  }
+`
+
+export const QUERY_USER_PLANTS = gql`
+  query Query($id: ID!) {
+    getUser(_id: $id) {
+      plants {
+        _id
+        name
+        waterSched
+        image
+        description
+        createdAt
+      }
+    }
+  }
+`
+
 export const QUERY_CHECKOUT = gql`
   query getCheckout($products: [ID]!) {
     checkout(products: $products) {

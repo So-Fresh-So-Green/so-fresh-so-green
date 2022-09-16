@@ -29,6 +29,26 @@ export const ADD_ORDER = gql`
   }
 `;
 
+export const SELL_PLANT = gql`
+  mutation Mutation($name: String!, $description: String, $price: Int, $image: String, $plant: ID) {
+    createProduct(name: $name, description: $description, price: $price, image: $image, plant: $plant) {
+      name
+    }
+  }
+`
+
+export const ADD_PLANT = gql`
+  mutation Mutation($name: String!, $waterSched: String, $image: String, $description: String) {
+    addPlant(name: $name, waterSched: $waterSched, image: $image, description: $description) {
+      _id
+      name
+      waterSched
+      image
+      description
+    }
+  }
+`
+
 export const ADD_USER = gql`
   mutation addUser(
     $username: String!
