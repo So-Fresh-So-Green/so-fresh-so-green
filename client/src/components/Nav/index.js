@@ -122,11 +122,21 @@ function Nav() {
     <div>
       {Auth.loggedIn() ? <div class=" bg-gradient-to-r from-slate-300 via-purple-200  to-green-300 ...  ... ">   <header class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl bg-gradient-to-r from-slate-200 via-green-200  to-green-800 ...  ...">
         <h1>
-          <Link to="/about">
-            <a href="//////" class="flex items-center">
-              <img src="//////" class="mr-3 h-6 sm:h-9" alt="esfsg logo" />
-            </a>
-          </Link>
+        <Link to="/">
+            <div class="col-span-6 lg:col-span-3">
+                        <img src={SFSGLogo3} height='100px' width='100px' display='inline'/>
+                        <a
+                            href="/"
+                            aria-label="Company"
+                            title="Company"
+                            class="inline-flex items-center"
+                        >
+                            <span
+                                class="ml-2 text-2xl font-bold tracking-widest text-green-600 uppercase"
+                                >SFSG</span>
+                        </a>
+                    </div>
+            </Link>
         </h1>
 
         <nav>
@@ -135,7 +145,7 @@ function Nav() {
       </header> </div> : <div class=" bg-gradient-to-r from-slate-300 via-green-200  to-green-300 ...  ... ">
         <header class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl bg-gradient-to-r from-slate-300 via-green-200  to-green-300 ...  ...">
           <h1>
-            <Link to="/about">
+            <Link to="/">
             <div class="col-span-6 lg:col-span-3">
                         <img src={SFSGLogo3} height='100px' width='100px' display='inline'/>
                         <a
