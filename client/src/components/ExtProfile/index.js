@@ -21,7 +21,7 @@ export default function ExtProfile({user: {
     followerCount
 }}) {
     const profData = Auth.getProfile()
-    const sheepId = profData.data
+    const sheep = profData.data
 
     return(
         <div>
@@ -31,10 +31,10 @@ export default function ExtProfile({user: {
                 src={`/images/${profPic}`}
             />
             <p>About: {bio}</p>
-            <p>{followerCount} followers</p>
             <p>following: {followingCount}</p>
             <br></br>
-            <FollowButton sheep={sheepId} shepherd={{_id, followers}} />
+            {/* followcount is returned in the button so it can update automatically on click */}
+            <FollowButton sheep={sheep} shepherd={{_id, followers, followerCount}} />
             <br></br><br></br>
             <h2>{username} has {postCount} posts</h2>
             <hr></hr><br></br>
