@@ -61,6 +61,7 @@ module.exports.readFile = async (file) => {
                 ContentType: "mimetype"
         }).promise()
 
+    return url;
 
     // stream.pipe(uploadFromStream(key))
 }

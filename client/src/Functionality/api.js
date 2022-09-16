@@ -4,7 +4,9 @@ import FormData from "form-data"
 export const singleUploadApi = async (data) => {
     var formData = new FormData();
 
-    formData.append('operations', '{"query" : "mutation singleUpload($file: Upload!) {singleUpload(file: $file){message}}", "variables" : {"file" : null}}');
+    // formData.append('operations', '{"query" : "mutation singleUpload($file: Upload!) {singleUpload(file: $file){message}}", "variables" : {"file" : null}}');
+    
+    formData.append('operations', '{"query" : "mutation updateUserPic($file: Upload!) {updateUserPic(file: $file){_id username profPic}}", "variables" : {"file" : null}}');
     formData.append('map', '{"0": ["variables.file"]}');
     formData.append('0', data.picture[0]);
     console.log('This is the formData ' + formData)

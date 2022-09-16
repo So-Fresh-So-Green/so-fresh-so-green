@@ -172,6 +172,7 @@ const typeDefs = gql`
     postMessage( sender: String, content: String): Message
     addChat(recipientsId: [String!]): Chat
     singleUpload(file: Upload!): SuccessMessage
+    updateUserPic(file: Upload!): User
   }
 `;
 

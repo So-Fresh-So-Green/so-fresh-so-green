@@ -1,5 +1,7 @@
 const {readFile} = require ("../../middleware/file");
 const {SingleFile} = require("../../models/singleUploadModel.js")
+const { User } = require('../../models')
+
 
 module.exports = {
   Query: {
@@ -17,6 +19,17 @@ module.exports = {
       return {
         message: "Single File uploaded successfully!"
       }
+    },
+
+    updateUserPic: async (_, {file}, context) => {
+      console.log(file)
+      const imageUrl = await readFile(file);
+      console.log(context.user._id)
+
+      const loggedInUser = await User.findByIdAndUpdate({_id: context.user._id}, { profPic: imageUrl }, {new: true});
+      console.log(loggedInUser);
+      console.log(imageUrl)
+      return loggedInUser;
     }
   }
 }
