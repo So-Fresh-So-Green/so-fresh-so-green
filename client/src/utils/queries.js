@@ -87,17 +87,49 @@ export const QUERY_USER_EXT = gql`
 `;
 
 export const QUERY_USER_INT = gql`
-query GetUser($_id: ID!){
-  getUser(_id: $_id) {
+query GetUser($id: ID!) {
+  getUser(_id: $id) {
+    _id
     username
+    profPic
+    bio
+    posts {
+      body
+      createdAt
+      image
+      likeCount
+      commentCount
+      _id
+    }
+    postCount
+    plants {
+      _id
+      name
+      waterSched
+      image
+      description
+      createdAt
+    }
+    plantCount
+    followers {
+      username
+      profPic
+      _id
+    }
+    following {
+      _id
+      username
+      profPic
+    }
+    followerCount
+    followingCount
     orders {
       _id
       purchaseDate
       products {
-        _id
         name
         description
-        price
+        _id
         image
       }
     }
