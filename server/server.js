@@ -34,6 +34,17 @@ const io = require("socket.io")(8800, {
   },
 });
 
+io.on("connection", socket => {
+  console.log(socket.id)
+
+
+  socket.on('send-message', ms => {
+    socket.broadcast.emit('recieve-message', ms)
+    console.log(ms)
+  })
+})
+
+
 let activeUsers = [];
 
 //socket instance everytime user logs on
@@ -70,7 +81,7 @@ io.on("connection", (socket) => {
 });
 
 //graphql-upload package
-app.use(graphqlUploadExpress({ maxFileSize: 1000000000, maxFiles: 1}));
+app.use(graphqlUploadExpress({ maxFileSize: 1000000000, maxFiles: 1 }));
 
 
 app.use(express.urlencoded({ extended: false }));
@@ -92,14 +103,14 @@ app.get('/', (req, res) => {
 const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
   server.applyMiddleware({ app });
-  
+
   db.once('open', () => {
     app.listen(PORT, () => {
       console.log(`API server running on port ${PORT}!`);
       console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
     })
   })
-  };
-  
+};
+
 // Call the async function to start the server
-  startApolloServer(typeDefs, resolvers);
+startApolloServer(typeDefs, resolvers);
