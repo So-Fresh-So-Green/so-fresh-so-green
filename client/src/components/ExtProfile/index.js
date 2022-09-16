@@ -33,6 +33,7 @@ export default function ExtProfile({user: {
             <p>About: {bio}</p>
             <p>following: {followingCount}</p>
             <br></br>
+            {/* followcount is returned in the button so it can update automatically on click */}
             <FollowButton sheep={sheep} shepherd={{_id, followers, followerCount}} />
             <br></br><br></br>
             <h2>{username} has {postCount} posts</h2>
