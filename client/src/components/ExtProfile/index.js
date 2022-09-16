@@ -57,6 +57,7 @@ export default function ExtProfile({user: {
             {plants?.map((plant) => (
                 <PlantCard
                     key={plant.id}
+                    _id={plant.id}
                     name={plant.name}
                     image={plant.image}
                     description={plant.description}

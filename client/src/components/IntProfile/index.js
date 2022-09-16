@@ -57,7 +57,8 @@ export default function IntProfile({user: {
             <hr></hr><br></br>
             {plants?.map((plant) => (
                 <PlantCard
-                    key={plant.id}
+                    key={plant._id}
+                    _id={plant._id}
                     name={plant.name}
                     image={plant.image}
                     description={plant.description}
