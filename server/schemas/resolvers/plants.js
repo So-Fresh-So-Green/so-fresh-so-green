@@ -1,7 +1,17 @@
 const { AuthenticationError, UserInputError } = require('apollo-server-express');
-const {Plant} = require('../../models');
+const {Plant, User} = require('../../models');
 
 module.exports = {
+    // Query: {
+    //       plants: async() => {
+    //         try {
+    //           const plants = await Plant.find().sort({createdAt: -1})
+    //           return plants
+    //         } catch(err) {
+    //           throw new Error(err)
+    //         }
+    //       }
+    //     },
     Mutation: {
         addPlant: async(_, {name, waterSched, image, description}, context) => {
             if(context.user) {

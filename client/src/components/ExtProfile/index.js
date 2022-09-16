@@ -23,7 +23,6 @@ export default function ExtProfile({user: {
 }}) {
     const profData = Auth.getProfile()
     const sheep = profData.data
-
     return(
         <div>
             {username}'s profile

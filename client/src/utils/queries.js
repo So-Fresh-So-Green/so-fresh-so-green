@@ -129,14 +129,6 @@ query GetUser($_id: ID!) {
       _id
     }
     postCount
-    plants {
-      _id
-      name
-      waterSched
-      image
-      description
-      createdAt
-    }
     plantCount
     followers {
       username

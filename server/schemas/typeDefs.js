@@ -144,6 +144,7 @@ const typeDefs = gql`
     getOrder(_id: ID!): Order
     checkout(products: [ID]!): Checkout
     posts: [Post]
+    # plants: [Plant]
     getPost(postId: ID!): Post
     getUserPost(user: ID!): [Post]
     getMessages: [Message]
