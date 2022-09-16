@@ -1,8 +1,6 @@
 import React from "react";
 import Footer from "../components/Footer";
-import SFSGLogofull from '../assets/SFSGlogofull.jpg'
-import SFSGLogo2 from '../assets/sfsglogo2.jpg'
-import SFSGLogo3 from '../assets/sfsglogo3.png'
+import { Link } from "react-router-dom";
 
 
 const Home = () => {
@@ -19,14 +17,18 @@ const Home = () => {
               <h1 class="mb-4 max-w-2xl text-4xl font-extrabold leading-none md:text-5xl xl:text-6xl dark:text-white">So Fresh So Green</h1>
                 <p class="mb-6 max-w-2xl font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-white">Buy, Sell, Trade, and Share all the latest plants in your area. </p>
                   {/* TODO: convert to react link */}
-                  <a href="#" class="inline-flex justify-center items-center py-3 px-5 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
+                  <Link to="/signup">
+                  <a href="/signup" class="inline-flex justify-center items-center py-3 px-5 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
                       Get started
                     <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                   </a>
+                  </Link>
                   {/* TODO: convert to react link */}
-                  <a href="#" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-50 dark:hover:bg-green-700 dark:focus:ring-gray-100">
+                  <Link to="/signup">
+                  <a href="/signup" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-50 dark:hover:bg-green-700 dark:focus:ring-gray-100">
                       SIGN UP NOW
                   </a>
+                  </Link>
                   <h2 class="mt-20 mb-20 text-3xl font-extrabold tracking-tight leading-tight text-center text-white md:text-4xl">Fresh content for green thumbs.</h2>
                   <h2 class="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">Designed for plant lovers and friends</h2>
               <p class="text-white sm:text-xl ">Here at So Fresh So Green we focus on keeping you in the loop for the hottest plant world news. Grow your plants and the community along side us!</p>
@@ -53,7 +55,8 @@ const Home = () => {
               </div>
             </div>
             <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
-            <iframe src='https://my.spline.design/iphone14procopy-68a850969c407b94664b3fed9cf9d229/' frameborder='0' width='100%' height='100%'></iframe>            </div>                
+            <iframe src='https://my.spline.design/untitled-f7bec5409f033b3aba753dbcefa9f3dd/' frameborder='0' width='100%' height='100%'></iframe>               
+          </div>
           </div>
       </section>
   <Footer />
