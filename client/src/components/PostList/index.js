@@ -28,7 +28,7 @@ function PostItem({post: {
             <hr></hr>
             <Link to={`/post/${_id}`}>
                 <h1>{body}</h1>
-                {image !== null ? <img src={`/images/${image}`}/> : null}
+                {image !== null ? <img src={`${image}`}/> : null}
                 <p><Link to={`/profile/${userId}`}>by: {username}</Link></p>
                 <p>created at: {createdAt}</p>
                 {/* a link to the individual post page here */}

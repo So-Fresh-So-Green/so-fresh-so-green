@@ -27,7 +27,7 @@ export default function IntProfile({user: {
             {username}
             <img
                 alt={username}
-                src={`/images/${profPic}`}
+                src={`${profPic}`}
             />
             <p>{location}</p>
             <p>About: {bio}</p>
