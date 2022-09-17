@@ -84,29 +84,38 @@ function Detail() {
   return (
     <>
       {currentProduct && cart ? (
-        <div className="container my-1">
-          <Link to="/">← Back to Products</Link>
 
-          <h2>{currentProduct.name}</h2>
+        <section class="text-gray-600 body-font overflow-hidden">
+          <div class="container px-5 py-24 mx-auto">
+            <div class="lg:w-4/5 mx-auto flex flex-wrap">
+              {/* <Link to="/">← Back to Products</Link> */}
+              <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+                {/* <div className="container my-1"> */}
+                <div class="pb-7">
+                  <Link to="/plant-shop">← Back to Products</Link>
+                </div>
 
-          <p>{currentProduct.description}</p>
+                <h2 class="text-gray-900 text-3xl title-font font-medium mb-4">{currentProduct.name}</h2>
+                <div class="flex mb-4">
+                  <a class="flex-grow text-green-500 border-b-2 border-green-500 py-2 text-lg px-1">Description</a>
+                </div>
 
-          <p>
-            <strong>Price:</strong>${currentProduct.price}{' '}
-            <button onClick={addToCart}>Add to Cart</button>
-            <button
-              disabled={!cart.find((p) => p._id === currentProduct._id)}
-              onClick={removeFromCart}
-            >
-              Remove from Cart
-            </button>
-          </p>
+                <p class="leading-relaxed mb-4">{currentProduct.description}</p>
 
-          <img
-            src={`/images/${currentProduct.image}`}
-            alt={currentProduct.name}
-          />
-        </div>
+                <div class="flex">
+                  <span class="title-font font-medium text-2xl text-gray-900">${currentProduct.price}{' '}</span>
+                  <button onClick={addToCart} class="flex ml-auto text-white bg-green-400 border-0 py-2 px-6 focus:outline-none hover:bg-green-200 rounded">BUY</button>
+                  <button disabled={!cart.find((p) => p._id === currentProduct._id)}
+                    onClick={removeFromCart} class="flex ml-auto text-white bg-red-400 border-0 py-2 px-6 focus:outline-none hover:bg-green-200 rounded">REMOVE</button>
+                </div>
+              </div>
+              <img class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+                src={`/images/${currentProduct.image}`}
+                alt={currentProduct.name}
+              />
+            </div>
+          </div>
+        </section>
       ) : null}
       {loading ? <img src={spinner} alt="loading" /> : null}
       <Cart />
