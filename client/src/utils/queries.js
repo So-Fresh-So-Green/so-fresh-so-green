@@ -168,6 +168,17 @@ export const QUERY_USER_UPDATE = gql`
   }
 `
 
+export const QUERY_USER_MINI = gql`
+  query GetUser($_id: ID!) {
+    getUser(_id: $_id) {
+      username
+      profPic
+      bio
+      location
+    }
+  }
+`
+
 export const QUERY_ALL_POSTS = gql`
   {
     posts {
@@ -176,7 +187,10 @@ export const QUERY_ALL_POSTS = gql`
       createdAt
       username
       image
-      userId
+      userId {
+        profPic
+        _id
+      }
       likes {
         username
       }
@@ -198,7 +212,10 @@ export const QUERY_POST = gql`
       createdAt
       image
       username
-      userId
+      userId {
+        _id
+        profPic
+      }
       comments {
         body
         username
