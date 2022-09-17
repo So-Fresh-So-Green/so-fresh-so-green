@@ -22,7 +22,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       username: 'Pamela',
-      createdAt: 'new Date().toISOString()'
+      createdAt: new Date().toISOString()
     },
     {
       name: 'grass',
@@ -30,7 +30,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       username: 'Pamela',
-      createdAt: 'new Date().toISOString()'
+      createdAt: new Date().toISOString()
     },
     {
       name: 'fern',
@@ -38,7 +38,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       username: 'Elijah',
-      createdAt: 'new Date().toISOString()'
+      createdAt: new Date().toISOString()
     },
     {
       name: 'monstera',
@@ -46,7 +46,8 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       username: 'Jimbo',
-      createdAt: 'new Date().toISOString()'
+      createdAt: new Date().toISOString()
+
     },
     {
       name: 'tree',
@@ -54,7 +55,8 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       username: 'Jimbo',
-      createdAt: 'new Date().toISOString()'
+      createdAt: new Date().toISOString()
+
     },
     {
       name: 'moss',
@@ -62,7 +64,8 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       username: 'Niki',
-      createdAt: 'new Date().toISOString()'
+      createdAt: new Date().toISOString()
+
     },
     {
       name: 'melon',
@@ -70,7 +73,8 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       username: 'Grego',
-      createdAt: 'new Date().toISOString()'
+      createdAt: new Date().toISOString()
+
     },
     {
       name: 'Money Tree',
@@ -78,7 +82,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'marketplace plant',
       username: 'Syd',
-      createdAt: 'new Date().toISOString()'
+      createdAt: new Date().toISOString()
     },
     {
       name: 'Marigold',
@@ -86,7 +90,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'marketplace plant',
       username: 'Syd',
-      createdAt: 'new Date().toISOString()'
+      createdAt: new Date().toISOString()
     },
     {
       name: 'fiddlehead fern',
@@ -94,7 +98,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'marketplace plant',
       username: 'Syd',
-      createdAt: 'new Date().toISOString()'
+      createdAt: new Date().toISOString()
     },
     {
       name: 'cactus',
@@ -102,7 +106,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'marketplace plant',
       username: 'Taylor',
-      createdAt: 'new Date().toISOString()'
+      createdAt: new Date().toISOString()
     },
     {
       name: 'orchid',
@@ -110,7 +114,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'marketplace plant',
       username: 'Taylor',
-      createdAt: 'new Date().toISOString()'
+      createdAt: new Date().toISOString()
     },
     {
       name: 'baby rubber plant',
@@ -118,7 +122,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'marketplace plant',
       username: 'Taylor',
-      createdAt: 'new Date().toISOString()'
+      createdAt: new Date().toISOString()
     },
     {
       name: 'halcyon host',
@@ -126,7 +130,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'marketplace plant',
       username: 'Taylor',
-      createdAt: 'new Date().toISOString()'
+      createdAt: new Date().toISOString()
     },
   ])
 
@@ -400,31 +404,31 @@ db.once('open', async () => {
     {
       body: "This is a sample post",
       username: "grego",
-      createdAt: "lalala",
+      createdAt: new Date().toISOString(),
       userId: grego._id,
       comments: [
         {
           body: 'blah blah blah blah',
           username: 'Leonard',
-          createdAt: 'blah',
+          createdAt: new Date().toISOString(),
           userId: leonard._id
         },
         {
           body: 'i dont get it',
           username: 'Jimbo',
-          createdAt: 'asdfasdg',
+          createdAt: new Date().toISOString(),
           userId: jimbo._id
         },
         {
           body: 'very cool wow',
           username: 'Syd',
-          createdAt: 'basdgasdglah',
+          createdAt: new Date().toISOString(),
           userId: syd._id
         },
         {
           body: 'i love this',
           username: 'Pam',
-          createdAt: 'blasdgah',
+          createdAt: new Date().toISOString(),
           userId: pam._id
         },
       ]
@@ -432,37 +436,37 @@ db.once('open', async () => {
     {
       body: "Another lovely post",
       username: "frankie",
-      createdAt: "woohoo",
+      createdAt: new Date().toISOString(),
       userId: frankie._id
     },
     {
       body: "alsdgjsadkghsaldkgjsaldf",
       username: "pam",
-      createdAt: "lalala",
+      createdAt: new Date().toISOString(),
       userId: pam._id,
       comments: [
         {
           body: 'blah blah blah blah',
           username: 'Grego',
-          createdAt: 'blah',
+          createdAt: new Date().toISOString(),
           userId: grego._id
         },
         {
           body: 'not very cool at all',
           username: 'Jimbo',
-          createdAt: 'asdfasdg',
+          createdAt: new Date().toISOString(),
           userId: jimbo._id
         },
         {
           body: 'not very cool at all',
           username: 'Leonard',
-          createdAt: 'basdgasdglah',
+          createdAt: new Date().toISOString(),
           userId: leonard._id
         },
         {
           body: 'i hate this',
           username: 'Syd',
-          createdAt: 'blasdgah',
+          createdAt: new Date().toISOString(),
           userId: syd._id
         },
       ]
@@ -470,25 +474,25 @@ db.once('open', async () => {
     {
       body: "blah blah blah",
       username: "pam",
-      createdAt: "woohoo",
+      createdAt: new Date().toISOString(),
       userId: pam._id
     },
     {
       body: "sample x2",
       username: "jimbo",
-      createdAt: "lalala",
+      createdAt: new Date().toISOString(),
       userId: jimbo._id,
       comments: [
         {
           body: 'blah blah blah blah',
           username: 'Grego',
-          createdAt: 'blah',
+          createdAt: new Date().toISOString(),
           userId: grego._id
         },
         {
           body: 'not very cool at all',
           username: 'syd',
-          createdAt: 'asdfasdg',
+          createdAt: new Date().toISOString(),
           userId: syd._id
         }
       ]
@@ -496,7 +500,7 @@ db.once('open', async () => {
     {
       body: "plants plants plants",
       username: "syd",
-      createdAt: "woohoo",
+      createdAt: new Date().toISOString(),
       userId: syd._id
     },
   ]);
