@@ -145,10 +145,10 @@ export default function About() {
           </div>
           <div class="p-4 lg:w-1/2">
             <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-              <img
+            <img
                 alt="team"
                 class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                src="https://mail.google.com/mail/u/0?ui=2&ik=b0858adec5&attid=0.1&permmsgid=msg-f:1744072894683348842&th=1834310ea5fcff6a&view=fimg&fur=ip&sz=s0-l75-ft&attbid=ANGjdJ_zLp7KBRwoZy2iGkJnfpLlJkjK7xiMfVCG3g8ka-iHbEoDppC6qf3uzNf17ayM4pOdk1rqOqCVPRG8Oi8mbEpopAfVmnRL3HO8aQJFii_TKJZIXrE0OdqJcnA&disp=emb&realattid=ii_l83kggiu0"
+                src="https://sfsg-upload.s3.us-east-2.amazonaws.com/headshot.jpg"
               ></img>
               <div class="flex-grow sm:pl-8">
                 <h2 class="title-font font-medium text-lg text-gray-900">
