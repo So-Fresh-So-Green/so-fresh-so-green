@@ -27,7 +27,7 @@ const userSchema = new Schema(
     profPic: {
       type: String,
       trim: true,
-      default: ''
+      default: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/sfsglogo2.jpg'
     },
     posts: [{
       type: Schema.Types.ObjectId,
