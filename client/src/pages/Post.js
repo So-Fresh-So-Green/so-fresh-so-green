@@ -20,17 +20,17 @@ function Post() {
     history("/newsfeed");
   };
 
-  const { _id, likeCount, body, username, createdAt, comments, image } =
+  const { _id, likeCount, body, username, createdAt, image } =
     data?.getPost || {};
+  const comments = data?.getPost?.comments || [];
   const likes = data?.getPost?.likes || [];
   const userId = data?.getPost?.userId || {};
 
   const profData = Auth.getProfile();
   const userData = profData.data;
   const rightUser = userData._id === userId;
-  console.log(comments.length)
   return (
-    comments.length === 0 ? 
+    comments?.length === 0 ? 
     <div>
     <div class="px-6 py-6 border-b bg-white rounded-lg shadow border-gray-300">
       <div class="w-max flex justify-between items-center">
