@@ -6,7 +6,6 @@ import PostForm from "../components/PostForm";
 import { Link } from "react-router-dom";
 import Auth from '../utils/auth'
 import '../index.css'
-import { Link } from "react-router-dom";
 
 
 export default function Newsfeed() {
