@@ -36,7 +36,7 @@ function PostItem({post: {
                                     class="rounded-full h-10 w-10"
                                     src={userId.profPic}
                                 />
-                                <div class="ml-2"><p><Link to={`/profile/${userId._id}`}>{username}</Link></p></div>
+                                <div class="ml-2"><p><Link to={`/profile/${userId?._id}`}>{username}</Link></p></div>
                             </div>
                     
                         </div>
