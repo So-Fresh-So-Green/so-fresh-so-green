@@ -17,11 +17,12 @@ function PostItem({post: {
     likeCount,
     userId
 }}) {
-
+    console.log(userId)
     const profData = Auth.getProfile()
     const userData = profData.data
     const rightUser = userData._id === userId
-    const userProfPic = userId?.profPic || ""
+
+    const userProfPic = userId?.profPic || ''
 
     return(
         <>

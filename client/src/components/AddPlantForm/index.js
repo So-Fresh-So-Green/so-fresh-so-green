@@ -127,9 +127,9 @@ const AddPlantForm = () => {
                         <div>
                     <input name='name' placeholder='plant name' value={formState.name} onChange={handleChange} />
                 </div>
-                <div>
+                {/* <div>
                     <input hidden name='image' placeholder='upload plant image' value={formState.image} onChange={handleChange} />
-                </div>
+                </div> */}
                 <div>
                     <input name='waterSched' placeholder='water schedule' value={formState.waterSched} onChange={handleChange} />
                 </div>
