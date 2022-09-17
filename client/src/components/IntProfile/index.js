@@ -56,7 +56,7 @@ export default function IntProfile({user: {
         <div class="container px-5 py-24 mx-auto">
             <div class="flex flex-col text-center w-full mb-20">
             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 uppercase">MY GARDEN</h1>
-            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">You have {plantCount} plants in your garden</p>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">You have {plantCount} plant(s) in your garden</p>
             </div>
             
             {/* <div class="flex flex-wrap -m-4"> */}
@@ -82,7 +82,7 @@ export default function IntProfile({user: {
         <div class="container px-5 py-24 mx-auto">
             <div class="flex flex-col text-center w-full mb-20">
             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 uppercase">MY POSTS</h1>
-            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">You have contributed {postCount} posts</p>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">You have contributed {postCount} post(s)</p>
             </div>
             
             {/* <div class="flex flex-wrap -m-4"> */}
