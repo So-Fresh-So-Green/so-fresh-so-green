@@ -22,6 +22,8 @@ function PostItem({post: {
     const userData = profData.data
     const rightUser = userData._id === userId
 
+    console.log(userData)
+
     return(
         <>
                     <div
@@ -34,7 +36,7 @@ function PostItem({post: {
                                 {/* TODO Update Profile img */}
                                 <img
                                     class="rounded-full h-10 w-10"
-                                    src="https://image.scoopwhoop.com/w360/s3.scoopwhoop.com/anj/erg/58fb822a-afce-4b89-9099-894b703bee98_1.jpg.webp"
+                                    src={userId.profPic}
                                 />
                                 <div class="ml-2"><p><Link to={`/profile/${userId}`}>{username}</Link></p></div>
                             </div>

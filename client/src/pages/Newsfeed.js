@@ -7,13 +7,11 @@ import Auth from '../utils/auth'
 import '../index.css'
 
 export default function Newsfeed() {
-    const {loading, data} = useQuery(QUERY_ALL_POSTS)
-
+    const {loading: loadingPosts, data: postData} = useQuery(QUERY_ALL_POSTS)
     const newPostBtn = () => {
         const postForm = document.getElementById('post-form')
         postForm.classList.toggle('invis')
     }
-
     return (
         <>
 
@@ -116,10 +114,10 @@ export default function Newsfeed() {
                 <PostForm />
             </div>
                     {/* Newsfeed */}
-                {loading ? (
+                {loadingPosts ? (
                     <h2>Loading posts...</h2>
                 ) : (
-                    data.posts.map(post => 
+                    postData?.posts.map(post => 
                     <div key={post.id}>
                         <PostList post={post}/>
                     </div>)
@@ -127,7 +125,7 @@ export default function Newsfeed() {
             </div>
 
             {/* People you may know */}
-            {/* TODO Map through users and provide two-four random entries */}
+            {/* TODO: Map through users and provide two-four random entries */}
 
             <div class="hidden lg:block col-span-3 space-y-5">
                     <div class="bg-green-50 rounded-lg shadow p-6 space-y-5">

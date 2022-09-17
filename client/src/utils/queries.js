@@ -176,7 +176,9 @@ export const QUERY_ALL_POSTS = gql`
       createdAt
       username
       image
-      userId
+      userId {
+        profPic
+      }
       likes {
         username
       }
