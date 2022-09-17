@@ -1,13 +1,15 @@
 # So Fresh, So Green :herb:
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Check out our Heroku deployment here!
-https://so-fresh-so-green-app.herokuapp.com/
+
 
 ## Description :pencil:
 So Fresh So Green is A Social Networking and E-Commerce App for Plant Lovers!
 
 ## Demo :desktop_computer:
+Check out our Heroku deployment here!
+https://so-fresh-so-green-app.herokuapp.com/
+
 ![ezgif com-gif-maker (7)](https://user-images.githubusercontent.com/101853344/190841375-bfbae8ef-d82b-4818-9e06-1d3b594d685b.gif)
 
 
