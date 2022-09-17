@@ -23,22 +23,46 @@ function PostItem({post: {
     const rightUser = userData._id === userId
 
     return(
-        <div>
-            <br></br>
-            <hr></hr>
-            <Link to={`/post/${_id}`}>
-                <h1>{body}</h1>
-                {image !== null ? <img src={`${image}`}/> : null}
-                <p><Link to={`/profile/${userId}`}>by: {username}</Link></p>
-                <p>created at: {createdAt}</p>
-                {/* a link to the individual post page here */}
-            <button>💬</button><label>{commentCount} </label>
-            </Link>
-            <LikeButton user={userData} post={{_id, likes, likeCount}}/>
-            {rightUser ? <DeletePostButton postId={{_id}} /> : null}
-            <hr></hr>
-            <br></br>
-        </div>
+        <>
+        <div class="object-cover rounded-r-lg py-6 hover:bg-gray-50 cursor-pointer flex items-center justify-center">
+                    <div
+                        class="object-cover px-6 py-6  bg-white rounded-lg shadow border-b border-gray-300"
+                    >
+                        <div
+                            class="object-cover flex justify-between items-center"
+                        >
+                            <div class="object-cover flex items-center cursor-pointer">
+                                {/* TODO Update Profile img */}
+                                <img
+                                    class="rounded-full h-10 w-10"
+                                    src="https://image.scoopwhoop.com/w360/s3.scoopwhoop.com/anj/erg/58fb822a-afce-4b89-9099-894b703bee98_1.jpg.webp"
+                                />
+                                <div class="ml-2"><p><Link to={`/profile/${userId}`}>{username}</Link></p></div>
+                            </div>
+                    
+                        </div>
+
+                        <div>
+                        <h1>{body}</h1>
+                        {image !== null ? <img
+                                class="object-cover cursor-pointer"
+                                src={image}
+                            /> : null}
+                        <p>created at: {createdAt}</p>
+                        </div>
+
+                        <div
+                            class="px-6 py-6  flex justify-between items-center"
+                        >
+                            <div class="flex items-center space-x-2">
+                            <LikeButton user={userData} post={{_id, likes, likeCount}}/>
+                                <Link to={`/post/${_id}`}><button>💬 </button><label> {commentCount} </label></Link>
+                                {rightUser ? <DeletePostButton postId={{_id}} /> : null}
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+        </>
     )
 
     
