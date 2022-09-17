@@ -19,8 +19,9 @@ function Post() {
         history('/newsfeed')
     }
 
-    const {_id, likeCount, body, username, image, createdAt, comments, userId} = data?.getPost || {};
+    const {_id, likeCount, body, username, createdAt, comments} = data?.getPost || {};
     const likes = data?.getPost?.likes || [];
+    const userId = data?.getPost?.userId || {}
 
     const profData = Auth.getProfile()
     const userData = profData.data
@@ -30,9 +31,9 @@ function Post() {
         <div>
             <br></br>
             <p>created at: {createdAt}</p>
-            <img src={`/images/${image}`}/>
+            <img src={userId.profPic}/>
             <h3>{body}</h3>
-            <h4>By: <Link to={`/profile/${userId}`}>{username}</Link></h4>
+            <h4>By: <Link to={`/profile/${userId._id}`}>{username}</Link></h4>
             <hr/>
             <LikeButton user={userData} post={{_id, likes, likeCount}}/>
             {rightUser ? <DeletePostButton postId={{_id}} callback={deleteReroute} /> : null}

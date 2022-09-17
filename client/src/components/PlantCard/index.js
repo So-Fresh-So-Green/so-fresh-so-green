@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_PLANT_PRODUCTS } from "../../utils/queries";
 import SellPlantForm from '../SellPlantForm'
+import { useParams } from 'react-router-dom';
+import Auth from "../../utils/auth";
 
 export default function ProductItem(plant) {
     const {
@@ -16,6 +18,11 @@ export default function ProductItem(plant) {
     const {loading, data} = useQuery(QUERY_PLANT_PRODUCTS)
     const [inMarket, setInMarket] = useState(false)
     const products = data?.products || []
+
+    // const profData = Auth.getProfile()
+    // const params = useParams()
+    // console.log(params)
+
 
     useEffect(() => {
         for(let product of products) {

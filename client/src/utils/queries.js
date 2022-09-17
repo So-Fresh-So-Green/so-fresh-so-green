@@ -189,6 +189,7 @@ export const QUERY_ALL_POSTS = gql`
       image
       userId {
         profPic
+        _id
       }
       likes {
         username
@@ -211,7 +212,10 @@ export const QUERY_POST = gql`
       createdAt
       image
       username
-      userId
+      userId {
+        _id
+        profPic
+      }
       comments {
         body
         username

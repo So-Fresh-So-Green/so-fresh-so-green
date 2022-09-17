@@ -20,8 +20,8 @@ export default function Newsfeed() {
         variables: {_id: userData._id}
     })
 
-    const profilePic = curUserData.getUser.profPic
-    const userLocation = curUserData.getUser.location
+    const profilePic = curUserData?.getUser.profPic
+    const userLocation = curUserData?.getUser.location
     return (
         <>
         {loadingUser || loadingPosts ? null : 
