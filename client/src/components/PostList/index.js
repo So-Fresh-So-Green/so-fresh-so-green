@@ -17,10 +17,11 @@ function PostItem({post: {
     likeCount,
     userId
 }}) {
-
+    console.log(userId)
     const profData = Auth.getProfile()
     const userData = profData.data
     const rightUser = userData._id === userId
+    const userProfPic = userId?.profPic || ''
 
     return(
         <>
@@ -36,7 +37,7 @@ function PostItem({post: {
                                 {/* TODO Update Profile img */}
                                 <img
                                     class="rounded-full h-10 w-10"
-                                    src={userId?.profPic}
+                                    src={userProfPic}
                                 />
                                 <div class="ml-2 text-green-800 font-bold"><p>{username}</p></div>
                             </div></Link>
