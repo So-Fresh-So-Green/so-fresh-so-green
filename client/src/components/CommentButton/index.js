@@ -46,21 +46,21 @@ function CommentButton() {
           onSubmit={handleFormSubmit}
           class="flex items-center justify-end rounded-lg w-full"
         >
-          <div>
-            <input
-              type={"text"}
-              placeholder={"comment.."}
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            />
-            <button
-              type="submit"
-              disabled={comment.trim() === ""}
-              onClick={createComment}
-            >
-              Create Comment
-            </button>
-          </div>
+          {/* <div> */}
+          <input
+            type={"text"}
+            placeholder={"comment.."}
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
+          <button
+            type="submit"
+            disabled={comment.trim() === ""}
+            onClick={createComment}
+          >
+            Create Comment
+          </button>
+          {/* </div> */}
         </form>
       </div>
     )
