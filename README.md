@@ -2,10 +2,14 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
+
 ## Description :pencil:
 So Fresh So Green is A Social Networking and E-Commerce App for Plant Lovers!
 
 ## Demo :desktop_computer:
+Check out our Heroku deployment here!
+https://so-fresh-so-green-app.herokuapp.com/
+
 ![ezgif com-gif-maker (7)](https://user-images.githubusercontent.com/101853344/190841375-bfbae8ef-d82b-4818-9e06-1d3b594d685b.gif)
 
 
@@ -20,16 +24,23 @@ So Fresh So Green is A Social Networking and E-Commerce App for Plant Lovers!
 - [Questions](#questions-question)
 
 ## Installation :electric_plug:
-Check out our Heroku deployment here!
-https://so-fresh-so-green-app.herokuapp.com/
+In order to clone and install So Fresh, So Green, to run locally: 
+
+```md
+npm install
+```
+Then 
+* `npm run seed`
+Run the following command to start MySQL server
+* `npm run dev`
 
 
 ## Usage :gear:
 ```
-This app utalizes
+This app utilizes:
 -Stripe
 -Redux
--Aws for deployment and image upload
+-AWS for deployment and image upload
 -3JS(spline)/Tailwind for UX/UI
 -JWT Authentication
 -Javascript
@@ -57,8 +68,11 @@ I ALSO WANT to be able to connect with other users and share tips and ask questi
 SO THAT I can learn how to better care for my plant and help out when other users have questions
 ```
 ## Collaborators :handshake:
-Alex Olsavsky | Givens | Ian Sieg 
-Elia Martinez | Kaluki Musau
+<a href="https://github.com/So-Fresh-So-Green/so-fresh-so-green/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=So-Fresh-So-Green/so-fresh-so-green" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
 
 ## Questions :question:
 Questions? Reach out! One of our teammates, Alex, will be happy to assist. alexandraolsavsky@gmail.com
