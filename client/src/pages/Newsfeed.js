@@ -142,7 +142,7 @@ export default function Newsfeed() {
                                         src="https://footwearnews.com/wp-content/uploads/2022/06/betty-boop.jpg"
                                     />
                                     <div class="ml-2 text-sm">
-                                      User
+                                    User
                                     </div>
                                 </div>
                                 <button
