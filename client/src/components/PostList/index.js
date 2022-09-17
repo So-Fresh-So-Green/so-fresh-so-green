@@ -24,20 +24,22 @@ function PostItem({post: {
 
     return(
         <>
+        <Link to={`/post/${_id}`}>
                     <div
                         class="px-6 py-6  bg-white rounded-lg shadow border-b border-gray-300 w-12/12"
                     >
                         <div
                             class="w-max flex justify-between items-center"
                         >
+                            <Link to={`/profile/${userId?._id}`}>
                             <div class="flex items-center cursor-pointer">
                                 {/* TODO Update Profile img */}
                                 <img
                                     class="rounded-full h-10 w-10"
                                     src={userId.profPic}
                                 />
-                                <div class="ml-2"><p><Link to={`/profile/${userId?._id}`}>{username}</Link></p></div>
-                            </div>
+                                <div class="ml-2 text-green-800 font-bold"><p>{username}</p></div>
+                            </div></Link>
                     
                         </div>
 
@@ -55,11 +57,12 @@ function PostItem({post: {
                         >
                             <div class="flex items-center space-x-2">
                             <LikeButton user={userData} post={{_id, likes, likeCount}}/>
-                                <Link to={`/post/${_id}`}><button>💬 </button><label> {commentCount} </label></Link>
+                                <button>💬 </button><label> {commentCount} </label>
                                 {rightUser ? <DeletePostButton postId={{_id}} /> : null}
                             </div>
                             </div>
                         </div>
+                        </Link>
 
 
         </>

@@ -149,7 +149,7 @@ export default function Newsfeed() {
                                 <div class="flex items-center">
                                     <img
                                         class="rounded-full h-10 w-10"
-                                        src="https://sfsg-upload.s3.us-east-2.amazonaws.com/sfsglogo2.jpg"
+                                        src="https://sfsg-upload.s3.us-east-2.amazonaws.com/nathan-dumlao-4_mJ1TbMK8A-unsplash.jpg"
                                     />
                                     <div class="ml-2 text-sm">
                                       Syd

@@ -20,7 +20,7 @@ function Post() {
     history("/newsfeed");
   };
 
-  const { _id, likeCount, body, username, createdAt, comments } =
+  const { _id, likeCount, body, username, createdAt, comments, image } =
     data?.getPost || {};
   const likes = data?.getPost?.likes || [];
   const userId = data?.getPost?.userId || {};
@@ -28,8 +28,39 @@ function Post() {
   const profData = Auth.getProfile();
   const userData = profData.data;
   const rightUser = userData._id === userId;
-
+  console.log(comments.length)
   return (
+    comments.length === 0 ? 
+    <div>
+    <div class="px-6 py-6 border-b bg-white rounded-lg shadow border-gray-300">
+      <div class="w-max flex justify-between items-center">
+        {/* <br></br> */}
+        <div class="flex items-center cursor-pointer">
+          <img class="rounded-full h-10 w-10" src={userId.profPic} />
+          <h4>
+            By: <Link to={`/profile/${userId._id}`}>{username}</Link>
+          </h4>
+          <p class=" ml-2">Created at: {createdAt}</p>
+          <h3 class="ml-2">{body}</h3>
+          <img class="ml-2" src={image} />
+          <hr />
+          <div class="px-6 py-6  flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+              <LikeButton user={userData} post={{ _id, likes, likeCount }} />
+              {rightUser ? (
+                <DeletePostButton postId={{ _id }} callback={deleteReroute} />
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <CommentButton />
+
+      <div>No comments yet</div>
+      <br></br>
+    </div>
+  </div> :
     <div>
       <div class="px-6 py-6 border-b bg-white rounded-lg shadow border-gray-300">
         <div class="w-max flex justify-between items-center">
@@ -41,6 +72,7 @@ function Post() {
             </h4>
             <p class=" ml-2">Created at: {moment(createdAt).fromNow(true)}</p>
             <h3 class="ml-2">{body}</h3>
+            <img class="ml-2" src={image} />
             <hr />
             <div class="px-6 py-6  flex justify-between items-center">
               <div class="flex items-center space-x-2">
