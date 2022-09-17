@@ -37,7 +37,7 @@ export default function ProductItem(plant) {
     }, [products, _id, inMarket])
 
     const priceButton = (e) => {
-        const sellPlantForm = e.target.nextSibling
+        const sellPlantForm = e.target.parentNode.nextSibling
         sellPlantForm.classList.toggle('invis')
     }
 
@@ -51,14 +51,17 @@ export default function ProductItem(plant) {
                     <h2 class="tracking-widest text-sm title-font font-medium text-green-500 mb-1">{name}</h2>
                     <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{description}</h1>
                     <p class="leading-relaxed">📆 Water Schedule: {waterSched}</p>
-                    {rightUser ? <div>
+                    {rightUser ? 
+                    <>
+                    <div>
                         {inMarket ? 
                         <p>Plant in shop</p> : 
                         <button onClick={priceButton}>Sell this plant?</button>}
-                    </div> : null }
-            <div className="invis">
-                <SellPlantForm plant={{_id, name, image, description}}/>
-            </div>
+                    </div>
+                        <div className="invis">
+                        <SellPlantForm plant={{_id, name, image, description}}/>
+                    </div>
+                    </> : null }
                 </div>
                 </div>
             </div>
