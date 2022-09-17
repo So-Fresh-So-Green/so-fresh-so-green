@@ -37,21 +37,24 @@ export default function ProductItem(plant) {
 
     return (
         <div>
-            <br></br>
-            <h1>{name}</h1>
-            <img
-                alt={name}
-                src={image}
-            />
-            <p>{description}</p>
-            <p>{waterSched}</p>
-            <br></br>
-            {inMarket ? 
+            <div class="flex flex-wrap -m-4">
+            <div class="lg:w-11/12 sm:w-11/12 p-4">
+                <div class="flex relative">
+                <img alt={name} class="absolute inset-0 w-full h-full object-cover object-center" src={image} />
+                <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                    <h2 class="tracking-widest text-sm title-font font-medium text-green-500 mb-1">{name}</h2>
+                    <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{description}</h1>
+                    <p class="leading-relaxed">📆 Water Schedule: {waterSched}</p>
+                    {inMarket ? 
                 <p>Plant in shop</p> : 
                 <button onClick={priceButton}>Sell this plant?</button>}
             <div className="invis">
                 <SellPlantForm plant={{_id, name, image, description}}/>
             </div>
+                </div>
+                </div>
+            </div>
+        </div>
         </div>
     )
 }

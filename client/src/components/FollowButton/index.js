@@ -31,16 +31,18 @@ function FollowButton({sheep, shepherd: {_id, followers, followerCount}}) {
     })
 
     const followButton = followed ? (
-        <button onClick={unfollowUser}>UNFOLLOW</button>
+        
+        <button onClick={unfollowUser} class="text-white py-2 px-4 uppercase rounded bg-orange-400 hover:bg-orange-700 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">Unfollow</button>
     ) : (
-        <button onClick={followUser}>FOLLOW</button>
+        <button onClick={followUser} class="text-white py-2 px-4 uppercase rounded bg-green-500 hover:bg-green-700 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">Follow</button>
     )
 
     return(
         <>
+        <div>
+            {followButton}<br></br>
             {followCount} followers
-            <br></br>
-            {followButton}
+        </div>
         </>
     )
 }
