@@ -41,7 +41,7 @@ export default function ProductItem(plant) {
             <h1>{name}</h1>
             <img
                 alt={name}
-                src={`/images/${image}`}
+                src={`${image}`}
             />
             <p>{description}</p>
             <p>{waterSched}</p>
