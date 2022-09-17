@@ -19,8 +19,10 @@ function Post() {
         history('/newsfeed')
     }
 
-    const { _id, likeCount, body, username, image, createdAt, comments, userId } = data?.getPost || {};
+
+    const {_id, likeCount, body, username, createdAt, comments} = data?.getPost || {};
     const likes = data?.getPost?.likes || [];
+    const userId = data?.getPost?.userId || {}
 
     const profData = Auth.getProfile()
     const userData = profData.data
@@ -34,10 +36,10 @@ function Post() {
                 <div class="w-max flex justify-between items-center">
                     <br></br>
                     <div class="flex items-center cursor-pointer">
-                        <img src={`/images/${image}`} />
+                        <img src={userId.profPic} />
                         <p>created at: {createdAt}</p>
                         <h3>{body}</h3>
-                        <h4>By: <Link to={`/profile/${userId}`}>{username}</Link></h4>
+                        <h4>By: <Link to={`/profile/${userId._id}`}>{username}</Link></h4>
                         <hr />
                         <div
                             class="px-6 py-6  flex justify-between items-center"
