@@ -20,7 +20,6 @@ export default function IntProfile({user: {
     orders
 }, plants : {plants}}) {
     // TODO: add a new query to update cache so the posts can update
-
     return(
         <div>
             {username}

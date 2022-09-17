@@ -156,6 +156,18 @@ query GetUser($_id: ID!) {
 }
 `
 
+export const QUERY_USER_UPDATE = gql`
+  query GetUser($_id: ID!) {
+    getUser(_id: $_id) {
+      username
+      profPic
+      bio
+      location
+      email
+    }
+  }
+`
+
 export const QUERY_ALL_POSTS = gql`
   {
     posts {
