@@ -4,6 +4,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import Auth from "../utils/auth";
 import { QUERY_POST } from "../utils/queries";
 import { CREATE_COMMENT } from "../utils/mutations";
+import moment from 'moment'
 
 import CommentButton from "../components/CommentButton";
 import LikeButton from "../components/LikeButton";
@@ -38,7 +39,7 @@ function Post() {
             <h4>
               By: <Link to={`/profile/${userId._id}`}>{username}</Link>
             </h4>
-            <p class=" ml-2">Created at: {createdAt}</p>
+            <p class=" ml-2">Created at: {moment(createdAt).fromNow(true)}</p>
             <h3 class="ml-2">{body}</h3>
             <hr />
             <div class="px-6 py-6  flex justify-between items-center">
@@ -67,7 +68,7 @@ function Post() {
               by:{" "}
               <Link to={`/profile/${comment.userId}`}>{comment.username}</Link>
             </p> */}
-            <p>at: {comment.createdAt}</p>
+            <p>at: {moment(comment.createdAt).fromNow(true)}</p>
             {userData._id === comment.userId ? (
               <DeletePostButton postId={{ _id }} commentId={comment.id} />
             ) : null}
