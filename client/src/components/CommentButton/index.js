@@ -39,29 +39,31 @@ function CommentButton() {
                 fill="#41416E"
               />
             </svg>
+            {/* </div>
+        </div> */}
+            <p class="ml-2">Post a comment</p>
+            <form
+              onSubmit={handleFormSubmit}
+              class="flex items-center justify-end rounded-lg w-full"
+            >
+              <div>
+                <input
+                  type={"text"}
+                  placeholder={"comment.."}
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                />
+                <button
+                  type="submit"
+                  // disabled={comment.trim() === ""}
+                  onClick={createComment}
+                >
+                  Create Comment
+                </button>
+              </div>
+            </form>
           </div>
         </div>
-        <p>Post a comment</p>
-        <form
-          onSubmit={handleFormSubmit}
-          class="flex items-center justify-end rounded-lg w-full"
-        >
-          {/* <div> */}
-          <input
-            type={"text"}
-            placeholder={"comment.."}
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          />
-          <button
-            type="submit"
-            disabled={comment.trim() === ""}
-            onClick={createComment}
-          >
-            Create Comment
-          </button>
-          {/* </div> */}
-        </form>
       </div>
     )
   );
