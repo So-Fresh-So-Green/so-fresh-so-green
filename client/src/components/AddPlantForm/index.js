@@ -42,7 +42,10 @@ const AddPlantForm = () => {
         await plantUploadApi(data);
         const storedImg = sessionStorage.getItem("plantURL")
         setFormState({
-            image: storedImg
+            name: formState.name,
+            image: storedImg,
+            waterSched: formState.waterSched,
+            description: formState.description
         })
     }
 
