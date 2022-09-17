@@ -8,6 +8,7 @@ import { singleUploadApi } from "../Functionality/api"
 import Auth from '../utils/auth'
 
 export default function UpdateProfile() {
+  
   const [image, setImage] = useState();
   const profData = Auth.getProfile()
   const userId = profData.data._id
@@ -29,8 +30,9 @@ export default function UpdateProfile() {
       reader.readAsDataURL(file);
     }
   }
-  const onSubmit = (data, e) => {
-    singleUploadApi(data);
+  const onSubmit = async (data, e) => {
+    await singleUploadApi(data);
+    updateReroute();
   }
 
   //ians code for rest of update
@@ -91,7 +93,80 @@ export default function UpdateProfile() {
   }
         
     return (
-    <div>
+
+<>
+      <div class="bg-white rounded-lg shadow">
+      <div
+                        class="rounded-r-lg py-6 flex items-center justify-center"
+                    >
+                      Update Profile
+
+                    </div>
+                <div
+                    class="px-6 py-6 border-b border-gray-300 flex items-center"
+                >
+                    <div
+                        class="flex items-center justify-end rounded-lg w-full"
+                    >
+                        <form onSubmit={handleFormSubmit} class="grid-col-1 items-center justify-end rounded-lg w-full">
+                        <div>Name</div>
+                        <div>
+            <input name='username' placeholder={`${data?.getUser.username}`} value={formState.username} onChange={handleChange} />
+        </div>
+        <div>Email</div>
+        <div>
+            <input name='email' placeholder={`${data?.getUser.email}`} value={formState.email} onChange={handleChange} />
+        </div>
+        <div>Location</div>
+        <div>
+            <input name='location' placeholder={`${data?.getUser.location}`} value={formState.location} onChange={handleChange} />
+        </div>
+        <div>Bio</div>
+        <div>
+            <textarea name='bio' placeholder={`${data?.getUser.bio}`} value={formState.bio} onChange={handleChange}></textarea>
+        </div>
+                            <div class="flex items-center justify-end rounded-lg w-full">
+                                <button type='submit'>Submit Updates</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-4 justify-center">
+
+                </div>
+                <form onSubmit={handleSubmit(onSubmit)} className="4 p-4 m-12 border-dark rounded">
+        <div className="form-group row">
+          <label htmlFor="image" className="col-sm-2 col-form-label">Update your profile picture:</label>
+          <div class="col-sm-4">
+            <input
+              className="image"
+              name="image"
+              type="file"
+              id="image"
+              {...register("picture")}
+              onChange={onPreviewImage}
+            />
+          </div>
+        </div>
+        <br></br>
+        <div className="col-sm-10">
+          <button type="submit">Upload Photo</button>
+        </div>
+        <br></br>
+      </form>
+
+
+
+            </div>
+
+
+
+
+
+
+
+    {/* <div>
       <form onSubmit={handleSubmit(onSubmit)} className="4 p-4 border border-dark rounded" style={{ backgroundColor: "rgb(170,200,170)", fontWeight: "bold" }}>
         <div className="form-group row">
           <label htmlFor="image" className="col-sm-2 col-form-label">Update your profile picture:</label>
@@ -113,8 +188,10 @@ export default function UpdateProfile() {
         </div>
         <br></br>
       </form>
+
+
       {/* other form for rest of data */}
-      {loading ? <div>Loading...</div> : 
+      {/* {loading ? <div>Loading...</div> : 
       <form onSubmit={handleFormSubmit}>
         <div>
             <input name='username' placeholder={`${data?.getUser.username}`} value={formState.username} onChange={handleChange} />
@@ -133,7 +210,8 @@ export default function UpdateProfile() {
             <button type='submit'>Update your profile</button>
         </div>
       </form>} 
-    </div>
+    </div> */}
+    </>
     )
 }
 
