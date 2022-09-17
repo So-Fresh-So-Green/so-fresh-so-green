@@ -67,9 +67,9 @@ export default function About() {
 
                         </img>
                         <div class="flex-grow sm:pl-8">
-                            <h2 class="title-font font-medium text-lg text-gray-900">Ian Seig</h2>
+                            <h2 class="title-font font-medium text-lg text-gray-900">Ian Sieg</h2>
                             <h3 class="text-gray-500 mb-3">UI Developer</h3>
-                            <p class="mb-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
+                            <p class="mb-4">Ian is a web developer from Seattle, WA with a BA in cultural anthropology and a background in graphic design. He met the guy that says 'wait' for the crosswalk buttons</p>
                             <span class="inline-flex">
                                 <a href="https://www.linkedin.com/in/ian-sieg-670675212/" class="text-gray-500">
 
