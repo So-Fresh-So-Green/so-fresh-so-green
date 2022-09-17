@@ -38,7 +38,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       username: 'Elijah',
-      createdAt: 'wed'
+      createdAt: new Date().toISOString()
     },
     {
       name: 'monstera',
@@ -46,7 +46,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       username: 'Jimbo',
-      createdAt: 'thu'
+      createdAt: new Date().toISOString()
     },
     {
       name: 'tree',
@@ -54,7 +54,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       username: 'Jimbo',
-      createdAt: 'fri'
+      createdAt: new Date().toISOString()
     },
     {
       name: 'moss',
@@ -62,7 +62,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       username: 'Niki',
-      createdAt: 'sat'
+      createdAt: new Date().toISOString()
     },
     {
       name: 'melon',
@@ -70,7 +70,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       username: 'Grego',
-      createdAt: 'sun'
+      createdAt: new Date().toISOString()
     },
     {
       name: 'Money Tree',

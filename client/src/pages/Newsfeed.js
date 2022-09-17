@@ -3,6 +3,7 @@ import {useQuery} from '@apollo/client'
 import {QUERY_ALL_POSTS, QUERY_USER_MINI} from '../utils/queries'
 import PostList from '../components/PostList'
 import PostForm from "../components/PostForm";
+import { Link } from "react-router-dom";
 import Auth from '../utils/auth'
 import '../index.css'
 
@@ -19,7 +20,6 @@ export default function Newsfeed() {
     const {loading: loadingUser, data: curUserData} = useQuery(QUERY_USER_MINI, {
         variables: {_id: userData._id}
     })
-
     const profilePic = curUserData?.getUser.profPic
     const userLocation = curUserData?.getUser.location
     return (
@@ -40,7 +40,7 @@ export default function Newsfeed() {
                                 src={profilePic}
                             />
                             <div class="ml-4">
-                                <h3 class="text-base font-bold">My Profile</h3>
+                                <h3 class="text-base font-bold"><Link to={`/profile/${userData._id}`}> My Profile </Link></h3>
                                 <h4 class="text-sm">Location: {userLocation}</h4>
                             </div>
                         </div>
