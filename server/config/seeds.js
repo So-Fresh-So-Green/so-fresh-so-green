@@ -185,7 +185,7 @@ db.once('open', async () => {
     bio: 'I love plants duh',
     location: 'Chicago, IL',
     password: 'password12345',
-    profPic: 'profile.jpg',
+    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/sfsglogo2.jpg',
     plants: [
       plants[0]._id,
       plants[1]._id
@@ -203,7 +203,7 @@ db.once('open', async () => {
     password: 'password12345',
     bio: 'I hate plants',
     location: 'Seattle, WA',
-    profPic: 'profile.jpg',
+    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/sfsglogo2.jpg',
     plants: [
       plants[2]._id,
       plants[0]._id
@@ -217,7 +217,7 @@ db.once('open', async () => {
     password: 'password12345',
     bio: 'I am allergic to plants',
     location: 'Atlanta, GA',
-    profPic: 'profile.jpg',
+    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/sfsglogo2.jpg',
     plants: [
       plants[3]._id,
       plants[4]._id
@@ -235,7 +235,7 @@ db.once('open', async () => {
     password: 'password12345',
     bio: 'I have too many plants',
     location: 'Dallas, TX',
-    profPic: 'profile.jpg',
+    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/sfsglogo2.jpg',
     plants: [
       plants[4]._id,
       plants[5]._id
@@ -249,7 +249,7 @@ db.once('open', async () => {
     password: 'password12345',
     bio: 'I am scared of plants',
     location: 'Detroit, MI',
-    profPic: 'profile.jpg',
+    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/sfsglogo2.jpg',
     plants: [
       plants[6]._id
     ],
@@ -271,7 +271,7 @@ db.once('open', async () => {
     bio: 'I only eat plants',
     location: 'Boulder, CO',
     password: 'password12345',
-    profPic: 'profile.jpg',
+    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/sfsglogo2.jpg',
     plants: [
       plants[7]._id, plants[8]._id, plants[9]._id,
     ],
@@ -293,7 +293,7 @@ db.once('open', async () => {
     password: 'password12345',
     bio: 'I dont know what to put here lmao lol',
     location: 'Springfield, OR',
-    profPic: 'profile.jpg',
+    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/sfsglogo2.jpg',
     plants: [
       plants[6]._id
     ],

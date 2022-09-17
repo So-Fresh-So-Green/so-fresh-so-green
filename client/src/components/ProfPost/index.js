@@ -18,14 +18,22 @@ export default function ProductItem(post) {
     } = post
 
     return (
+        <div
+                        class="px-6 py-6  bg-white rounded-lg shadow border-b border-gray-300 w-12/12"
+                    >
+                        <div
+                            class="w-max flex justify-between items-center"
+                        >
+                            <div class="flex items-center cursor-pointer">
         <div>
             <h1>{body}</h1>
-            <img
-                src={`/images/${image}`}
-            />
             <p>{commentCount} comments</p>
             <p>{likeCount} likes</p>
             <br></br>
+            <Link to={`/post/${_id}`}><button>🪴 View Post</button></Link>
+        </div>
+        </div>
+        </div>
         </div>
     )
 }
