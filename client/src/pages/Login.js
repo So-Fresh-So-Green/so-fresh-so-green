@@ -32,7 +32,6 @@ function Login(props) {
 
   return (
     <div class="flex items-center min-h-screen bg-gradient-to-r from-slate-300 via-green-100 to-green-200" >
-      {/* <div className="container my-1"> */}
       <div class="flex-1 h-full max-w-4xl mx-auto bg-white rounded-lg shadow-xl">
         <div class="flex flex-col md:flex-row">
           <div class="h-32 md:h-auto md:w-1/2">
@@ -43,11 +42,9 @@ function Login(props) {
               <div class="flex justify-center">
 
               </div>
-              {/* <Link to="/signup">← Go to Signup</Link> */}
               <h1 class="mb-4 text-2xl font-bold text-center text-gray-700">
                 Login to Your Account
               </h1>
-              {/* <h2>Login</h2> */}
               <form onSubmit={handleFormSubmit}>
                 <div>
                   <label class="block text-sm">
@@ -60,16 +57,6 @@ function Login(props) {
                     placeholder="youremail@test.com"
                     onChange={handleChange} />
                 </div>
-                {/* <div className="flex-row space-between my-2">
-                  <label htmlFor="email">Email address:</label>
-                  <input
-                    placeholder="youremail@test.com"
-                    name="email"
-                    type="email"
-                    id="email"
-                    onChange={handleChange}
-                  />
-                </div> */}
                 <div>
                   <label class="block mt-4 text-sm">
                     Password
@@ -82,16 +69,6 @@ function Login(props) {
                     onChange={handleChange}
                   />
                 </div>
-                {/* <div className="flex-row space-between my-2">
-                  <label htmlFor="pwd">Password:</label>
-                  <input
-                    placeholder="******"
-                    name="password"
-                    type="password"
-                    id="pwd"
-                    onChange={handleChange}
-                  />
-                </div> */}
                 {error ? (
                   <div>
                     <p className="error-text">The provided credentials are incorrect</p>
@@ -115,12 +92,7 @@ function Login(props) {
                     class="text-orange-300 hover:text-orange-300 focus:text-orange-500 transition duration-200 ease-in-out">Register as New User</a></Link>
                   </p>
                 </div>
-
-                {/* <div className="flex-row flex-end">
-                  <button type="submit">Submit</button>
-                </div> */}
               </form>
-              {/* </div> */}
             </div>
           </div>
         </div>
