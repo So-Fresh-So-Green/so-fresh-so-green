@@ -33,7 +33,7 @@ const AddPlantForm = () => {
     }
     const onSubmit = async (data, e) => {
         await plantUploadApi(data);
-        const storedImg = sessionStorage.getItem("photoURL")
+        const storedImg = sessionStorage.getItem("plantURL")
         setFormState({
             image: storedImg
         })
