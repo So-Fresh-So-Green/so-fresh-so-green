@@ -15,8 +15,8 @@ function Nav() {
           <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
             <li>
               <Link to="/newsfeed">
-                <a href="/newsfeed" class="block py-2 pr-4 pl-3 text-green-600 rounded bg-primary-700 
-            lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">Newsfeed</a>
+                <a href="/newsfeed" class="block py-2 pr-4 pl-3 text-green-600 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
+            lg:border-0 lg:hover:text-primary-700 lg:p-0  hover:text-white " aria-current="page">Newsfeed</a>
               </Link>
             </li>
             <li>
@@ -59,14 +59,14 @@ function Nav() {
           <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
             <li>
               <Link to="/signup">
-                <a href="/" class="block py-2 pr-4 pl-3 text-green-600 rounded bg-primary-700 
-            lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">Signup</a>
+                <a href="/" class="block py-2 pr-4 pl-3 text-green-600 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
+            lg:border-0 lg:hover:text-primary-700 lg:p-0  hover:text-white " aria-current="page">Signup</a>
               </Link>
             </li>
             <li>
               <Link to="/login">
-                <a href="/" class="block py-2 pr-4 pl-3 text-green-600 rounded bg-primary-700 
-            lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">Log in</a>
+                <a href="/" class="block py-2 pr-4 pl-3 text-green-600 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
+            lg:border-0 lg:hover:text-primary-700 lg:p-0  hover:text-white " aria-current="page">Log in</a>
               </Link>
             </li>
             <li>
@@ -78,7 +78,7 @@ function Nav() {
             <li>
               <Link to="/about">
                 <a href="/about" class="block py-2 pr-4 pl-3 text-green-600 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
-            lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-white lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">SFSG Team</a>
+            lg:border-0 lg:hover:text-primary-700 lg:p-0  hover:text-white ">SFSG Team</a>
               </Link>
             </li>
           </ul>
