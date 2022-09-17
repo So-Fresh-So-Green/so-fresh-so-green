@@ -127,7 +127,8 @@ export default function Newsfeed() {
             </div>
 
             {/* People you may know */}
-            
+            {/* TODO Map through users and provide two-four random entries */}
+
             <div class="hidden lg:block col-span-3 space-y-5">
                     <div class="bg-green-50 rounded-lg shadow p-6 space-y-5">
                         <h3 class="font-bold text-base text-gray-900">
@@ -147,27 +148,7 @@ export default function Newsfeed() {
                                 <button
                                     class="bg-green-200 text-black hover:text-white hover:bg-green-600 transition duration-100	transform hover:scale-110	 text-xs  rounded p-2 text-gray-900"
                                 >
-                                    Follow
-                                </button>
-                            </div>
-
-                           
-
-                            <div class="flex justify-between items-center">
-                                <div class="flex items-center">
-                                    <img
-                                        class="rounded-full h-10 w-10"
-                                        src="https://legendary-digital-network-assets.s3.amazonaws.com/wp-content/uploads/2021/05/12225342/HimPowerPuff4.jpeg"
-                                    />
-                                    <div class="ml-2 text-sm">
-                                        User
-                                    </div>
-                                </div>
-
-                                <button
-                                    class="bg-green-200 text-black hover:text-white hover:bg-green-600 transition duration-100	transform hover:scale-110	 text-xs  rounded p-2 text-gray-900"
-                                >
-                                    Follow
+                                    View
                                 </button>
                             </div>
                         </div>

@@ -24,14 +24,13 @@ function PostItem({post: {
 
     return(
         <>
-        <div class="object-cover rounded-r-lg py-6 hover:bg-gray-50 cursor-pointer flex items-center justify-center">
                     <div
-                        class="object-cover px-6 py-6  bg-white rounded-lg shadow border-b border-gray-300"
+                        class="px-6 py-6  bg-white rounded-lg shadow border-b border-gray-300 w-12/12"
                     >
                         <div
-                            class="object-cover flex justify-between items-center"
+                            class="w-max flex justify-between items-center"
                         >
-                            <div class="object-cover flex items-center cursor-pointer">
+                            <div class="flex items-center cursor-pointer">
                                 {/* TODO Update Profile img */}
                                 <img
                                     class="rounded-full h-10 w-10"
@@ -61,7 +60,8 @@ function PostItem({post: {
                             </div>
                             </div>
                         </div>
-                    </div>
+
+
         </>
     )
 
