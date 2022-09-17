@@ -85,7 +85,7 @@ function App() {
                 element={<PlantShop />}
               />
               <Route
-                path="/update-prof/:id"
+                path="/update-profile/:id"
                 element={<UpdateProfile />}
               />
               <Route
