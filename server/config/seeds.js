@@ -22,7 +22,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       username: 'Pamela',
-      createdAt: 'monday'
+      createdAt: 'new Date().toISOString()'
     },
     {
       name: 'grass',
@@ -30,7 +30,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       username: 'Pamela',
-      createdAt: 'tuesday'
+      createdAt: 'new Date().toISOString()'
     },
     {
       name: 'fern',
@@ -38,7 +38,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       username: 'Elijah',
-      createdAt: 'wed'
+      createdAt: 'new Date().toISOString()'
     },
     {
       name: 'monstera',
@@ -46,7 +46,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       username: 'Jimbo',
-      createdAt: 'thu'
+      createdAt: 'new Date().toISOString()'
     },
     {
       name: 'tree',
@@ -54,7 +54,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       username: 'Jimbo',
-      createdAt: 'fri'
+      createdAt: 'new Date().toISOString()'
     },
     {
       name: 'moss',
@@ -62,7 +62,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       username: 'Niki',
-      createdAt: 'sat'
+      createdAt: 'new Date().toISOString()'
     },
     {
       name: 'melon',
@@ -70,7 +70,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'blah blah blah blah blah',
       username: 'Grego',
-      createdAt: 'sun'
+      createdAt: 'new Date().toISOString()'
     },
     {
       name: 'Money Tree',
@@ -78,7 +78,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'marketplace plant',
       username: 'Syd',
-      createdAt: 'sun'
+      createdAt: 'new Date().toISOString()'
     },
     {
       name: 'Marigold',
@@ -86,7 +86,7 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'marketplace plant',
       username: 'Syd',
-      createdAt: 'yesterday'
+      createdAt: 'new Date().toISOString()'
     },
     {
       name: 'fiddlehead fern',
@@ -94,7 +94,39 @@ db.once('open', async () => {
       image: 'placeholder-plant.jpg',
       description: 'marketplace plant',
       username: 'Syd',
-      createdAt: 'Mon'
+      createdAt: 'new Date().toISOString()'
+    },
+    {
+      name: 'cactus',
+      waterSched: '1x/week',
+      image: 'placeholder-plant.jpg',
+      description: 'marketplace plant',
+      username: 'Taylor',
+      createdAt: 'new Date().toISOString()'
+    },
+    {
+      name: 'orchid',
+      waterSched: '2x/week',
+      image: 'placeholder-plant.jpg',
+      description: 'marketplace plant',
+      username: 'Taylor',
+      createdAt: 'new Date().toISOString()'
+    },
+    {
+      name: 'baby rubber plant',
+      waterSched: '1x/week',
+      image: 'placeholder-plant.jpg',
+      description: 'marketplace plant',
+      username: 'Taylor',
+      createdAt: 'new Date().toISOString()'
+    },
+    {
+      name: 'halcyon host',
+      waterSched: '1x/week',
+      image: 'placeholder-plant.jpg',
+      description: 'marketplace plant',
+      username: 'Taylor',
+      createdAt: 'new Date().toISOString()'
     },
   ])
 
@@ -307,7 +339,31 @@ db.once('open', async () => {
       grego._id
     ],
     following: [pam._id, frankie._id, syd._id]
+    
   })
+
+  const taylor = await User.create({
+    username: 'Taylor',
+    email: 'taylor@testmail.com',
+    bio: 'plants are life',
+    location: 'New York, NY',
+    password: 'password12345',
+    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/sfsglogo2.jpg',
+    plants: [
+      plants[7]._id, plants[8]._id, plants[9]._id,
+    ],
+    orders: [
+      {
+        products: [products[2]._id, products[2]._id, products[3]._id]
+      }
+    ],
+    followers: [
+      grego._id,
+      jimbo._id
+    ],
+    following: [pam._id]
+  })
+
 
   console.log('users seeded');
 
