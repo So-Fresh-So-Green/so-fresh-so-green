@@ -10,14 +10,15 @@ import LikeButton from '../components/LikeButton';
 import DeletePostButton from '../components/DeletePostButton'
 
 function Post() {
-    const {postId} = useParams()
-    const {loading, data} = useQuery(QUERY_POST, {
-        variables: {postId: postId}
+    const { postId } = useParams()
+    const { loading, data } = useQuery(QUERY_POST, {
+        variables: { postId: postId }
     })
     const history = useNavigate()
     const deleteReroute = () => {
         history('/newsfeed')
     }
+
 
     const {_id, likeCount, body, username, createdAt, comments} = data?.getPost || {};
     const likes = data?.getPost?.likes || [];
@@ -26,35 +27,56 @@ function Post() {
     const profData = Auth.getProfile()
     const userData = profData.data
     const rightUser = userData._id === userId
-    
-    return(
+
+    return (
+
         <div>
-            <br></br>
-            <p>created at: {createdAt}</p>
-            <img src={userId.profPic}/>
-            <h3>{body}</h3>
-            <h4>By: <Link to={`/profile/${userId._id}`}>{username}</Link></h4>
-            <hr/>
-            <LikeButton user={userData} post={{_id, likes, likeCount}}/>
-            {rightUser ? <DeletePostButton postId={{_id}} callback={deleteReroute} /> : null}
-            <CommentButton />
-            
-            {comments?.map(comment =>
-                <div key={comment.id}>
-                    <br></br><hr></hr>
-                    <h4>comment: {comment.body}</h4>
-                    <p>by: <Link to={`/profile/${comment.userId}`}>{comment.username}</Link></p>
-                    <p>at: {comment.createdAt}</p>
-                    {/* <DeletePostButton postId={{_id}} commentId={comment.id} /> */}
-                    {/* not passing in userId when creating comment */}
-                    {userData._id === comment.userId ?
-                        <DeletePostButton postId={{_id}} commentId={comment.id} /> :
-                        null
-                    }
+            <div
+                class="px-6 py-6  bg-white rounded-lg shadow border-b border-gray-300 w-12/12">
+                <div class="w-max flex justify-between items-center">
+                    <br></br>
+                    <div class="flex items-center cursor-pointer">
+                        <img src={userId.profPic} />
+                        <p>created at: {createdAt}</p>
+                        <h3>{body}</h3>
+                        <h4>By: <Link to={`/profile/${userId._id}`}>{username}</Link></h4>
+                        <hr />
+                        <div
+                            class="px-6 py-6  flex justify-between items-center"
+                        >
+                            <div class="flex items-center space-x-2">
+                                <LikeButton user={userData} post={{ _id, likes, likeCount }} />
+                                {rightUser ? <DeletePostButton postId={{ _id }} callback={deleteReroute} /> : null}
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            )}
-            <br></br>
+
+
+
+
+                <CommentButton />
+
+                {
+                    comments?.map(comment =>
+                        <div key={comment.id}>
+                            <br></br><hr></hr>
+                            <h4>comment: {comment.body}</h4>
+                            <p>by: <Link to={`/profile/${comment.userId}`}>{comment.username}</Link></p>
+                            <p>at: {comment.createdAt}</p>
+                            {/* <DeletePostButton postId={{_id}} commentId={comment.id} /> */}
+                            {/* not passing in userId when creating comment */}
+                            {userData._id === comment.userId ?
+                                <DeletePostButton postId={{ _id }} commentId={comment.id} /> :
+                                null
+                            }
+                        </div>
+                    )
+                }
+                <br></br>
+            </div>
         </div>
+
     )
 }
 

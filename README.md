@@ -10,7 +10,8 @@ So Fresh So Green is A Social Networking and E-Commerce App for Plant Lovers!
 Check out our Heroku deployment here!
 https://so-fresh-so-green-app.herokuapp.com/
 
-![ezgif com-gif-maker (7)](https://user-images.githubusercontent.com/101853344/190841375-bfbae8ef-d82b-4818-9e06-1d3b594d685b.gif)
+![ezgif com-gif-maker (8)](https://user-images.githubusercontent.com/101853344/190857532-f73f7d8a-2ece-4070-a5a9-2576c93f30bb.gif)
+
 
 
 ## Table of Contents :open_book:
