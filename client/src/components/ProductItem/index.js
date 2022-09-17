@@ -5,7 +5,6 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 
-
 function ProductItem(item) {
   const [state, dispatch] = useStoreContext();
 
@@ -35,7 +34,7 @@ function ProductItem(item) {
   };
 
   return (
-    <div class="flex flex-wrap -m-4">
+    <div class="-m-4">
       {/* <div class="container px-5 py-24 mx-auto"> */}
       <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
         {/* <div class="mt-4"> */}

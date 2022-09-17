@@ -21,6 +21,7 @@ function PostItem({post: {
     const profData = Auth.getProfile()
     const userData = profData.data
     const rightUser = userData._id === userId
+
     const userProfPic = userId?.profPic || ''
 
     return(
