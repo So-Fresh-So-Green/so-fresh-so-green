@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import SFSGLogo3 from '../../assets/sfsglogo3.png'
 
 function Nav() {
-
   function showNavigation() {
     if (Auth.loggedIn()) {
-      console.log('logged In');
+      const userData = Auth.getProfile()
+      const _id = userData.data._id
       return (
         // HAVE TO REMOVE HIDDEN CLASS OR ELSE NO NAV ON MOBILE
         <div class="justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
@@ -34,7 +34,7 @@ function Nav() {
               </Link>
             </li>
             <li>
-              <Link to="/profile">
+              <Link to={`/profile/${_id}`}>
                 {/* this is not using the Link component to logout or user and then refresh the application to the start */}
                 <a href="/profile" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent 
             lg:border-0 lg:hover:text-primary-700 lg:p-0  hover:text-white ">

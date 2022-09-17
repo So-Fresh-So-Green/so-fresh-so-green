@@ -4,14 +4,7 @@ import { useForm } from "react-hook-form";
 import { singleUploadApi } from "../Functionality/api"
 import Auth from '../utils/auth'
 
-
-// import { useHistory } from 'react-router-dom';
-
-// import { UPLOAD_PROFILE_PIC } from '../utils/mutations';
-
-// import { useGlobalUserContext } from '../utils/GlobalState';
-
-export default function Profile() {
+export default function UpdateProfile() {
   const [image, setImage] = useState();
 
   const profData = Auth.getProfile()

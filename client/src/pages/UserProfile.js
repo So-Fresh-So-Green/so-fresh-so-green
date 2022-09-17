@@ -6,7 +6,7 @@ import ExtProfile from "../components/ExtProfile";
 import IntProfile from "../components/IntProfile";
 import { QUERY_USER_EXT, QUERY_USER_INT, QUERY_USER_PLANTS } from "../utils/queries";
 
-export default function ProfilePlayground() {    
+export default function UserProfile() {    
     const {id} = useParams()
     const profData = Auth.getProfile()
     const userData = profData.data
