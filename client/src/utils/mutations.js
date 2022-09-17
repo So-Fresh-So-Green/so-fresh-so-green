@@ -112,7 +112,9 @@ export const CREATE_POST = gql`
       createdAt
       image
       username
-      userId
+      userId {
+        _id
+      }
       comments {
         id
         body
