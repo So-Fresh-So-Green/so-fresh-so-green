@@ -52,7 +52,9 @@ module.exports = {
                 username: context.user.username,
                 createdAt: new Date().toISOString(),
                 image,
-                userId: context.user._id
+                userId: {
+                  _id: context.user._id
+                }
               });
       
               const post = await newPost.save();
