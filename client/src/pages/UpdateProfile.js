@@ -1,27 +1,17 @@
-import React, { useState } from "react";
-import { useMutation } from '@apollo/client';
+import React, { useState, useEffect } from "react";
+import { useMutation, useQuery } from '@apollo/client';
 import { useForm } from "react-hook-form";
+import { useParams, useNavigate } from 'react-router-dom';
+import { UPDATE_USER } from "../utils/mutations";
+import { QUERY_USER_UPDATE } from "../utils/queries";
 import { singleUploadApi } from "../Functionality/api"
 import Auth from '../utils/auth'
 
 export default function UpdateProfile() {
   const [image, setImage] = useState();
-
   const profData = Auth.getProfile()
   const userId = profData.data._id
   const userName = profData.data.username
-
-  console.log(`
-  
-  
-  THIS IS USER ID
-  
-
-  ${userId}
-  ${userName}
-  
-  `)
-
   const {
     register,
     handleSubmit,
@@ -37,45 +27,114 @@ export default function UpdateProfile() {
         }
       }
       reader.readAsDataURL(file);
-
     }
   }
-
   const onSubmit = (data, e) => {
     singleUploadApi(data);
   }
+
+  //ians code for rest of update
+  const {id} = useParams()
+  const history = useNavigate()
+  const updateReroute = () => {
+    history(`/profile/${id}`)
+  }
+
+  const {loading, data} = useQuery(QUERY_USER_UPDATE, {variables: {_id: id}})
+  const [formState, setFormState] = useState({
+    username: '',
+    email: '',
+    location: '',
+    bio: ''
+  })
+
+  const [updateUser] = useMutation(UPDATE_USER, {
+      update(cache, {data: {updateUser}}) {
+          try {
+              const {getUser} = cache.readQuery({
+                  query: QUERY_USER_UPDATE,
+                  variables: {_id: id}
+              })
+
+              cache.writeQuery({
+                  query: QUERY_USER_UPDATE,
+                  variables: {_id: id},
+                  data: {getUser: [updateUser, getUser]}
+              })
+              updateReroute()
+          } catch (err) {
+              console.error(err)
+          }
+      }
+  })
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault()
+    try {
+        const {data} = await updateUser({
+            variables: {...formState}
+        })
+        setFormState({
+            username: '',
+            email: '',
+            location: '',
+            bio: ''
+        })
+    } catch (err) {
+        console.error(err)
+    }
+  }
+
+  const handleChange = (e) => {
+    const {name, value} = e.target
+    setFormState({...formState, [name]: value})
+  }
         
+    return (
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)} className="4 p-4 border border-dark rounded" style={{ backgroundColor: "rgb(170,200,170)", fontWeight: "bold" }}>
+        <div className="form-group row">
+          <label htmlFor="image" className="col-sm-2 col-form-label">Update your profile picture:</label>
+          <div class="col-sm-4">
+            <input
+              className="image"
+              name="image"
+              type="file"
+              id="image"
+              {...register("picture")}
+              onChange={onPreviewImage}
+            />
+          </div>
+          <img src={image} alt="Preview Image" />
+        </div>
+        <br></br>
+        <div className="col-sm-10">
+          <button type="submit">Upload Photo</button>
+        </div>
+        <br></br>
+      </form>
+      {/* other form for rest of data */}
+      {loading ? <div>Loading...</div> : 
+      <form onSubmit={handleFormSubmit}>
+        <div>
+            <input name='username' placeholder={`${data?.getUser.username}`} value={formState.username} onChange={handleChange} />
+        </div>
+        <div>
+            <input name='email' placeholder={`${data?.getUser.email}`} value={formState.email} onChange={handleChange} />
+        </div>
+        <div>
+            <input name='location' placeholder={`${data?.getUser.location}`} value={formState.location} onChange={handleChange} />
+        </div>
+        <div>
+            <textarea name='bio' placeholder={`${data?.getUser.bio}`} value={formState.bio} onChange={handleChange}></textarea>
+        </div>
 
-    return <div>
-Hi div!
-
-<form onSubmit={handleSubmit(onSubmit)} className="4 p-4 border border-dark rounded" style={{ backgroundColor: "rgb(170,200,170)", fontWeight: "bold" }}>
-                <div className="form-group row">
-                  <label htmlFor="image" className="col-sm-2 col-form-label">Upload profile picture:</label>
-                  <div class="col-sm-4">
-                    <input
-                      className="image"
-                      name="image"
-                      type="file"
-                      id="image"
-                      {...register("picture")}
-                      onChange={onPreviewImage}
-                    />
-                  </div>
-                  <img src={image} alt="Preview Image" />
-                  {/* {error ? (
-              <div className="mt-3">
-                <p className="text-muted small">The password is incorrect</p>
-              </div>
-            ) : null} */}
-                </div>
-                <br></br>
-                <div className="col-sm-10">
-                  <button type="submit">Upload Photo</button>
-                </div>
-                <br></br>
-              </form>
+        <div>
+            <button type='submit'>Update your profile</button>
+        </div>
+      </form>} 
     </div>
+    )
 }
 
 

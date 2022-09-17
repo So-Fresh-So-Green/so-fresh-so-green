@@ -28,7 +28,6 @@ const AddPlantForm = () => {
             }
         }
         reader.readAsDataURL(file);
-
         }
     }
     const onSubmit = async (data, e) => {
@@ -97,8 +96,8 @@ const AddPlantForm = () => {
             <h4>Upload an Image (optional)</h4>
             <form onSubmit={handleSubmit(onSubmit)} className="4 p-4 border border-dark rounded" style={{ backgroundColor: "rgb(170,200,170)", fontWeight: "bold" }}>
                 <div className="form-group row">
-                  <label htmlFor="image" className="col-sm-2 col-form-label">Upload profile picture:</label>
-                  <div class="col-sm-4">
+                    <label htmlFor="image" className="col-sm-2 col-form-label">Upload profile picture:</label>
+                    <div class="col-sm-4">
                     <input
                       className="image"
                       name="image"
@@ -109,11 +108,6 @@ const AddPlantForm = () => {
                     />
                   </div>
                   <img src={image} alt="Preview Image" />
-                  {/* {error ? (
-              <div className="mt-3">
-                <p className="text-muted small">The password is incorrect</p>
-              </div>
-            ) : null} */}
                 </div>
                 <br></br>
                 <div className="col-sm-10">

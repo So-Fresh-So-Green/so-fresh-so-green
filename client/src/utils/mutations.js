@@ -68,6 +68,18 @@ export const ADD_USER = gql`
   }
 `;
 
+export const UPDATE_USER = gql`
+  mutation Mutation($username: String, $bio: String, $profPic: String, $location: String, $email: String) {
+    updateUser(username: $username, bio: $bio, profPic: $profPic, location: $location, email: $email) {
+      username
+      email
+      bio
+      location
+      profPic
+    }
+  }
+`
+
 export const FOLLOW_USER = gql`
   mutation FollowUser($userId: ID!) {
     followUser(userId: $userId) {
