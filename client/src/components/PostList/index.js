@@ -22,8 +22,6 @@ function PostItem({post: {
     const userData = profData.data
     const rightUser = userData._id === userId
 
-    console.log(userData)
-
     return(
         <>
                     <div

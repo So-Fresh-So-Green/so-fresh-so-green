@@ -168,6 +168,17 @@ export const QUERY_USER_UPDATE = gql`
   }
 `
 
+export const QUERY_USER_MINI = gql`
+  query GetUser($_id: ID!) {
+    getUser(_id: $_id) {
+      username
+      profPic
+      bio
+      location
+    }
+  }
+`
+
 export const QUERY_ALL_POSTS = gql`
   {
     posts {

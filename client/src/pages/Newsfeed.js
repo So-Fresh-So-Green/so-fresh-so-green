@@ -1,6 +1,6 @@
 import React from "react";
 import {useQuery} from '@apollo/client'
-import {QUERY_ALL_POSTS} from '../utils/queries'
+import {QUERY_ALL_POSTS, QUERY_USER_MINI} from '../utils/queries'
 import PostList from '../components/PostList'
 import PostForm from "../components/PostForm";
 import Auth from '../utils/auth'
@@ -12,8 +12,19 @@ export default function Newsfeed() {
         const postForm = document.getElementById('post-form')
         postForm.classList.toggle('invis')
     }
+
+    const profData = Auth.getProfile()
+    const userData = profData.data
+
+    const {loading: loadingUser, data: curUserData} = useQuery(QUERY_USER_MINI, {
+        variables: {_id: userData._id}
+    })
+
+    const profilePic = curUserData.getUser.profPic
+    const userLocation = curUserData.getUser.location
     return (
         <>
+        {loadingUser || loadingPosts ? null : 
 
 <div class="px-4 py-5 mx-auto sm:max-w-2xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
             <div class="grid grid-cols-12 gap-6">
@@ -26,11 +37,11 @@ export default function Newsfeed() {
                             {/* TODO Add reference to user location or email in subtitle */}
                             <img
                                 class="h-12 w-12 rounded-full"
-                                src="https://sfsg-upload.s3.us-east-2.amazonaws.com/00fae42c-c476-4bdf-8824-c32b99904b65.jpg"
+                                src={profilePic}
                             />
                             <div class="ml-4">
                                 <h3 class="text-base font-bold">My Profile</h3>
-                                <h4 class="text-sm">Location: ADD LOCATION</h4>
+                                <h4 class="text-sm">Location: {userLocation}</h4>
                             </div>
                         </div>
                     </div>
@@ -155,7 +166,7 @@ export default function Newsfeed() {
         </div>
 
         </div>
-        
+    }
         </>
     )
 }
