@@ -7,7 +7,6 @@ import {QUERY_ALL_POSTS} from '../../utils/queries';
 //IMG UPLOAD
 import { useForm } from "react-hook-form";
 import { postUploadApi } from '../../Functionality/api';
-import { json } from 'react-router-dom';
 
 
 

@@ -32,7 +32,7 @@ function Post() {
             <p>created at: {createdAt}</p>
             <img src={`/images/${image}`}/>
             <h3>{body}</h3>
-            <h4>By: <Link to={`/profile/${_id}`}>{username}</Link></h4>
+            <h4>By: <Link to={`/profile/${userId}`}>{username}</Link></h4>
             <hr/>
             <LikeButton user={userData} post={{_id, likes, likeCount}}/>
             {rightUser ? <DeletePostButton postId={{_id}} callback={deleteReroute} /> : null}
