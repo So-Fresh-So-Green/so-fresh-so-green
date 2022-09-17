@@ -40,7 +40,7 @@ const PostForm = () => {
         await postUploadApi(data);
         const storedImg = sessionStorage.getItem("photoURL")
         setFormState({
-            body: '',
+            body: formState.body,
             image: storedImg
         })
       }

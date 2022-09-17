@@ -163,7 +163,7 @@ const typeDefs = gql`
     updateProduct(_id: ID!, name: String, description: String, image: String, price: Int, plant: ID, category: ID): Product
     login(email: String!, password: String!): Auth
     register(registerInput: RegisterInput): User
-    createPost(body: String!, image: String): Post!
+    createPost(body: String, image: String): Post!
     deletePost(postId: ID!): String!
     likePost(postId: ID!): Post!
     createComment(postId: ID!, body: String!): Post!
