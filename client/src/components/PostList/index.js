@@ -24,7 +24,7 @@ function PostItem({post: {
 
     return(
         <>
-        <Link to={`/post/${_id}`}>
+        
                     <div
                         class="px-6 py-6  bg-white rounded-lg shadow border-b border-gray-300 w-12/12"
                     >
@@ -57,12 +57,11 @@ function PostItem({post: {
                         >
                             <div class="flex items-center space-x-2">
                             <LikeButton user={userData} post={{_id, likes, likeCount}}/>
-                                <button>💬 </button><label> {commentCount} </label>
+                            <Link to={`/post/${_id}`}><button>💬 </button><label> {commentCount} </label></Link>
                                 {rightUser ? <DeletePostButton postId={{_id}} /> : null}
                             </div>
                             </div>
                         </div>
-                        </Link>
 
 
         </>
