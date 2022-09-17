@@ -18,13 +18,12 @@ import { StoreProvider } from './utils/GlobalState';
 import Success from './pages/Success';
 import OrderHistory from './pages/OrderHistory';
 import PlantShop from './pages/PlantShop';
-import Profile from './pages/Profile';
 import Newsfeed from './pages/Newsfeed';
 import About from './pages/About';
 import Post from './pages/Post'
 import TestChat from './pages/TestChat/TestChat'
-
-import ProfilePlayground from './pages/ProfilePlayground'
+import UserProfile from './pages/UserProfile'
+import UpdateProfile from './pages/UpdateProfile';
 
 
 const httpLink = createHttpLink({
@@ -86,12 +85,12 @@ function App() {
                 element={<PlantShop />}
               />
               <Route
-                path="/profile"
-                element={<Profile />}
+                path="/update-prof/:id"
+                element={<UpdateProfile />}
               />
               <Route
                 path="/profile/:id"
-                element={<ProfilePlayground />}
+                element={<UserProfile />}
               />
               <Route
                 path="/newsfeed"
