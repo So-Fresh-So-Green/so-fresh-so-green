@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-
+import { Link } from "react-router-dom";
 import ProfPost from '../ProfPost'
 import PlantCard from '../PlantCard'
 import AddPlantForm from '../AddPlantForm'
@@ -19,6 +19,8 @@ export default function IntProfile({user: {
     followerCount,
     orders
 }, plants : {plants}}) {
+    // TODO: add a new query to update cache so the posts can update
+
     return(
         <div>
             {username}
@@ -28,6 +30,9 @@ export default function IntProfile({user: {
             />
             <p>{location}</p>
             <p>About: {bio}</p>
+            <br></br>
+            <Link to={`/update-profile/${_id}`}><button>Update Profile</button></Link>
+            <br></br>
             <p>following: {followingCount}</p>
             <br></br>
             followers {followerCount}
