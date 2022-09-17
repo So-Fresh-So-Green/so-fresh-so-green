@@ -39,19 +39,28 @@ function ProductItem(item) {
   }
 
   return (
-    <div className="card px-1 py-1">
-      <Link to={`/products/${_id}`}>
-        <img
-          alt={name}
-          src={`/images/${image}`}
-        />
-        <p>{name}</p>
-      </Link>
-      <div>
-        <span>${price}</span>
+    <div class="flex flex-wrap -m-4">
+      <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+        <div class="mt-4">
+          {/* <div className="card px-1 py-1"> */}
+          <Link to={`/products/${_id}`}>
+
+            <img class="object-cover object-center w-full h-full block"
+              alt={name}
+              src={`/images/${image}`}
+            />
+
+            <p class="text-gray-900 title-font text-lg font-medium">{name}</p>
+          </Link>
+          <div class="pb-3">
+            <span class="mt-1">${price}</span>
+          </div>
+          <button onClick={addToCart} class="mt-1flex ml-auto text-white bg-green-400 border-0 py-1 px-6 focus:outline-none hover:bg-green-200 rounded">Add to Cart</button>
+          {/* <button class="mt-1" onClick={addToCart}>Add to cart</button> */}
+        </div>
       </div>
-      <button onClick={addToCart}>Add to cart</button>
     </div>
+
   );
 }
 

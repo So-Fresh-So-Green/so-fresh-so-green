@@ -5,7 +5,8 @@
   min-width: 20%;
   max-width: 30%;
   max-height: 60%;
-  background-color: var(--light);
+  background-color: white;
+  /* background-color: var(--light); */
   overflow: auto;
   padding: .5rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, .5);
@@ -57,6 +58,10 @@
   width: 50px;
   padding: 0;
   margin: 0 .5rem 1rem 0;
+}
+
+.checkout {
+  display: flex;
 }
 
 @media screen and (max-width: 768px) {
