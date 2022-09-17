@@ -24,14 +24,15 @@ function PostItem({post: {
 
     return(
         <>
-        <div class="rounded-r-lg py-6 hover:bg-gray-50 cursor-pointer flex items-center justify-center">
+        <div class="object-cover rounded-r-lg py-6 hover:bg-gray-50 cursor-pointer flex items-center justify-center">
                     <div
-                        class="bg-white rounded-lg shadow border-b border-gray-300"
+                        class="object-cover px-6 py-6  bg-white rounded-lg shadow border-b border-gray-300"
                     >
                         <div
-                            class="px-6 py-6  flex justify-between items-center"
+                            class="object-cover flex justify-between items-center"
                         >
-                            <div class="flex items-center cursor-pointer">
+                            <div class="object-cover flex items-center cursor-pointer">
+                                {/* TODO Update Profile img */}
                                 <img
                                     class="rounded-full h-10 w-10"
                                     src="https://image.scoopwhoop.com/w360/s3.scoopwhoop.com/anj/erg/58fb822a-afce-4b89-9099-894b703bee98_1.jpg.webp"

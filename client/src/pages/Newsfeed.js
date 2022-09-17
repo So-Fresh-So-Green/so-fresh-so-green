@@ -115,13 +115,7 @@ export default function Newsfeed() {
             <div id="post-form" className="invis">
                 <PostForm />
             </div>
-                    Newsfeed
-            </div>
-        </div>
-        </div>
-
-        <div>
-            <div>
+                    {/* Newsfeed */}
                 {loading ? (
                     <h2>Loading posts...</h2>
                 ) : (
@@ -131,6 +125,8 @@ export default function Newsfeed() {
                     </div>)
                 ) }
             </div>
+        </div>
+
         </div>
         
         </>
