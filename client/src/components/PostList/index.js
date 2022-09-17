@@ -36,7 +36,7 @@ function PostItem({post: {
                                 {/* TODO Update Profile img */}
                                 <img
                                     class="rounded-full h-10 w-10"
-                                    src={userId.profPic}
+                                    src={userId?.profPic}
                                 />
                                 <div class="ml-2 text-green-800 font-bold"><p>{username}</p></div>
                             </div></Link>
