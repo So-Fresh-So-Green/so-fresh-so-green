@@ -19,7 +19,7 @@ db.once('open', async () => {
     {
       name: 'bamboo',
       waterSched: '2x/day',
-      image: 'placeholder-plant.jpg',
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-21.jpg',
       description: 'blah blah blah blah blah',
       username: 'Pamela',
       createdAt: new Date().toISOString()
@@ -27,7 +27,7 @@ db.once('open', async () => {
     {
       name: 'grass',
       waterSched: '2x/day',
-      image: 'placeholder-plant.jpg',
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-20.jpg',
       description: 'blah blah blah blah blah',
       username: 'Pamela',
       createdAt: new Date().toISOString()
@@ -35,7 +35,7 @@ db.once('open', async () => {
     {
       name: 'fern',
       waterSched: '1x/week',
-      image: 'placeholder-plant.jpg',
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-19.jpg',
       description: 'blah blah blah blah blah',
       username: 'Elijah',
       createdAt: new Date().toISOString()
@@ -43,7 +43,7 @@ db.once('open', async () => {
     {
       name: 'monstera',
       waterSched: '2x/week',
-      image: 'placeholder-plant.jpg',
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-18.jpg',
       description: 'blah blah blah blah blah',
       username: 'Jimbo',
       createdAt: new Date().toISOString()
@@ -52,7 +52,7 @@ db.once('open', async () => {
     {
       name: 'tree',
       waterSched: '2x/year',
-      image: 'placeholder-plant.jpg',
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-17.jpg',
       description: 'blah blah blah blah blah',
       username: 'Jimbo',
       createdAt: new Date().toISOString()
@@ -61,7 +61,7 @@ db.once('open', async () => {
     {
       name: 'moss',
       waterSched: '1x/week',
-      image: 'placeholder-plant.jpg',
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-16.jpg',
       description: 'blah blah blah blah blah',
       username: 'Niki',
       createdAt: new Date().toISOString()
@@ -70,7 +70,7 @@ db.once('open', async () => {
     {
       name: 'melon',
       waterSched: '1x/week',
-      image: 'placeholder-plant.jpg',
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-15.jpg',
       description: 'blah blah blah blah blah',
       username: 'Grego',
       createdAt: new Date().toISOString()
@@ -79,7 +79,7 @@ db.once('open', async () => {
     {
       name: 'Money Tree',
       waterSched: '1x/week',
-      image: 'placeholder-plant.jpg',
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-14.jpg',
       description: 'marketplace plant',
       username: 'Syd',
       createdAt: new Date().toISOString()
@@ -87,7 +87,7 @@ db.once('open', async () => {
     {
       name: 'Marigold',
       waterSched: '1x/week',
-      image: 'placeholder-plant.jpg',
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-13.jpg',
       description: 'marketplace plant',
       username: 'Syd',
       createdAt: new Date().toISOString()
@@ -95,7 +95,7 @@ db.once('open', async () => {
     {
       name: 'fiddlehead fern',
       waterSched: '1x/week',
-      image: 'placeholder-plant.jpg',
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-12.jpg',
       description: 'marketplace plant',
       username: 'Syd',
       createdAt: new Date().toISOString()
@@ -103,7 +103,7 @@ db.once('open', async () => {
     {
       name: 'cactus',
       waterSched: '1x/week',
-      image: 'placeholder-plant.jpg',
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-11.jpg',
       description: 'marketplace plant',
       username: 'Taylor',
       createdAt: new Date().toISOString()
@@ -111,7 +111,7 @@ db.once('open', async () => {
     {
       name: 'orchid',
       waterSched: '2x/week',
-      image: 'placeholder-plant.jpg',
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-10.jpg',
       description: 'marketplace plant',
       username: 'Taylor',
       createdAt: new Date().toISOString()
@@ -119,7 +119,7 @@ db.once('open', async () => {
     {
       name: 'baby rubber plant',
       waterSched: '1x/week',
-      image: 'placeholder-plant.jpg',
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-9.jpg',
       description: 'marketplace plant',
       username: 'Taylor',
       createdAt: new Date().toISOString()
@@ -127,7 +127,7 @@ db.once('open', async () => {
     {
       name: 'halcyon host',
       waterSched: '1x/week',
-      image: 'placeholder-plant.jpg',
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-8.jpg',
       description: 'marketplace plant',
       username: 'Taylor',
       createdAt: new Date().toISOString()
@@ -221,7 +221,7 @@ db.once('open', async () => {
     bio: 'I love plants duh',
     location: 'Chicago, IL',
     password: 'password12345',
-    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/sfsglogo2.jpg',
+    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/pexels-daniel-xavier-1239288.jpg',
     plants: [
       plants[0]._id,
       plants[1]._id
@@ -239,7 +239,7 @@ db.once('open', async () => {
     password: 'password12345',
     bio: 'I hate plants',
     location: 'Seattle, WA',
-    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/sfsglogo2.jpg',
+    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/yusron-el-jihan-YRJsMa72UDw-unsplash.jpg',
     plants: [
       plants[2]._id,
       plants[0]._id
@@ -253,7 +253,7 @@ db.once('open', async () => {
     password: 'password12345',
     bio: 'I am allergic to plants',
     location: 'Atlanta, GA',
-    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/sfsglogo2.jpg',
+    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/zoe-fernandez--zqoE7jnQgw-unsplash.jpg',
     plants: [
       plants[3]._id,
       plants[4]._id
@@ -271,7 +271,7 @@ db.once('open', async () => {
     password: 'password12345',
     bio: 'I have too many plants',
     location: 'Dallas, TX',
-    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/sfsglogo2.jpg',
+    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/pexels-stefan-stefancik-91227.jpg',
     plants: [
       plants[4]._id,
       plants[5]._id
@@ -285,7 +285,7 @@ db.once('open', async () => {
     password: 'password12345',
     bio: 'I am scared of plants',
     location: 'Detroit, MI',
-    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/sfsglogo2.jpg',
+    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/pexels-samson-katt-5255596.jpg',
     plants: [
       plants[6]._id
     ],
@@ -307,7 +307,7 @@ db.once('open', async () => {
     bio: 'I only eat plants',
     location: 'Boulder, CO',
     password: 'password12345',
-    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/sfsglogo2.jpg',
+    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/pexels-pixabay-220453.jpg',
     plants: [
       plants[7]._id, plants[8]._id, plants[9]._id,
     ],
@@ -329,7 +329,7 @@ db.once('open', async () => {
     password: 'password12345',
     bio: 'I dont know what to put here lmao lol',
     location: 'Springfield, OR',
-    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/sfsglogo2.jpg',
+    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/pexels-k-makhasette-3805874.jpg',
     plants: [
       plants[6]._id
     ],
@@ -352,7 +352,7 @@ db.once('open', async () => {
     bio: 'plants are life',
     location: 'New York, NY',
     password: 'password12345',
-    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/sfsglogo2.jpg',
+    profPic: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/pexels-jimmy-jimmy-1484794.jpg',
     plants: [
       plants[7]._id, plants[8]._id, plants[9]._id,
     ],
