@@ -406,6 +406,7 @@ db.once('open', async () => {
       username: "grego",
       createdAt: new Date().toISOString(),
       userId: grego._id,
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-1.jpg',
       comments: [
         {
           body: 'blah blah blah blah',
@@ -437,6 +438,7 @@ db.once('open', async () => {
       body: "Another lovely post",
       username: "frankie",
       createdAt: new Date().toISOString(),
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-2.jpg',
       userId: frankie._id
     },
     {
@@ -444,6 +446,7 @@ db.once('open', async () => {
       username: "pam",
       createdAt: new Date().toISOString(),
       userId: pam._id,
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-3.jpg',
       comments: [
         {
           body: 'blah blah blah blah',
@@ -475,12 +478,14 @@ db.once('open', async () => {
       body: "blah blah blah",
       username: "pam",
       createdAt: new Date().toISOString(),
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-4.jpg',
       userId: pam._id
     },
     {
       body: "sample x2",
       username: "jimbo",
       createdAt: new Date().toISOString(),
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-5.jpg',
       userId: jimbo._id,
       comments: [
         {
@@ -501,6 +506,7 @@ db.once('open', async () => {
       body: "plants plants plants",
       username: "syd",
       createdAt: new Date().toISOString(),
+      image: 'https://sfsg-upload.s3.us-east-2.amazonaws.com/images-5.jpg',
       userId: syd._id
     },
   ]);
