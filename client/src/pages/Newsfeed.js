@@ -5,6 +5,8 @@ import PostList from '../components/PostList'
 import PostForm from "../components/PostForm";
 import Auth from '../utils/auth'
 import '../index.css'
+import { Link } from "react-router-dom";
+
 
 export default function Newsfeed() {
     const {loading: loadingPosts, data: postData} = useQuery(QUERY_ALL_POSTS)
@@ -75,7 +77,7 @@ export default function Newsfeed() {
             )}</div>
                             </div>
 
-                            <div class="flex items-center cursor-pointer">
+                            {/* <div class="flex items-center cursor-pointer">
                                 <svg
                                     class="w-6 h-6 text-gray-900"
                                     viewBox="0 0 24 24"
@@ -114,7 +116,7 @@ export default function Newsfeed() {
                                     />
                                 </svg>
                                 <div class="ml-4 text-gray-900">Share</div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -148,17 +150,19 @@ export default function Newsfeed() {
                                 <div class="flex items-center">
                                     <img
                                         class="rounded-full h-10 w-10"
-                                        src="https://footwearnews.com/wp-content/uploads/2022/06/betty-boop.jpg"
+                                        src="https://sfsg-upload.s3.us-east-2.amazonaws.com/sfsglogo2.jpg"
                                     />
                                     <div class="ml-2 text-sm">
-                                      User
+                                      Syd
                                     </div>
                                 </div>
+                                <Link to={`/profile/`}>
                                 <button
                                     class="bg-green-200 text-black hover:text-white hover:bg-green-600 transition duration-100	transform hover:scale-110	 text-xs  rounded p-2 text-gray-900"
                                 >
                                     View
                                 </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
