@@ -1,9 +1,9 @@
 import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import Auth from '../../utils/auth'
-
 import LikeButton from '../LikeButton'
 import DeletePostButton from '../DeletePostButton'
+import moment from 'moment'
 
 function PostItem({post: {
     _id,
@@ -47,7 +47,7 @@ function PostItem({post: {
                                 class="object-cover cursor-pointer"
                                 src={image}
                             /> : null}
-                        <p>created at: {createdAt}</p>
+                        <p>created at: {moment(createdAt).fromNow(true)} ago</p>
                         </div>
 
                         <div
