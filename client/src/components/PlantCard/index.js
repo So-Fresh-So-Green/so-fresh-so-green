@@ -19,10 +19,9 @@ export default function ProductItem(plant) {
     const [inMarket, setInMarket] = useState(false)
     const products = data?.products || []
 
-    // const profData = Auth.getProfile()
-    // const params = useParams()
-    // console.log(params)
-
+    const profData = Auth.getProfile()
+    const params = useParams()
+    const rightUser = params.id === profData.data._id
 
     useEffect(() => {
         for(let product of products) {
@@ -52,9 +51,11 @@ export default function ProductItem(plant) {
                     <h2 class="tracking-widest text-sm title-font font-medium text-green-500 mb-1">{name}</h2>
                     <h1 class="title-font text-lg font-medium text-gray-900 mb-3">{description}</h1>
                     <p class="leading-relaxed">📆 Water Schedule: {waterSched}</p>
-                    {inMarket ? 
-                <p>Plant in shop</p> : 
-                <button onClick={priceButton}>Sell this plant?</button>}
+                    {rightUser ? <div>
+                        {inMarket ? 
+                        <p>Plant in shop</p> : 
+                        <button onClick={priceButton}>Sell this plant?</button>}
+                    </div> : null }
             <div className="invis">
                 <SellPlantForm plant={{_id, name, image, description}}/>
             </div>
