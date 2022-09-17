@@ -45,7 +45,7 @@ function ProductItem(item) {
             <img
               class="object-cover object-center w-full h-full block"
               alt={name}
-              src={`/images/${image}`}
+              src={image}
             />
           </a>
 

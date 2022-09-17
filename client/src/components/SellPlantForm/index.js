@@ -41,7 +41,7 @@ const SellPlantForm = ({plant: {_id, name, image, description}}) => {
     const handleFormSubmit = async (e) => {
         e.preventDefault()
         try {
-            const {data} = await sellPlant
+            const {data} = sellPlant
             setFormState({
                 price: ''
             })
