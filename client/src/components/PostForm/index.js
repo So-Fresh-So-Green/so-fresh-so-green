@@ -12,6 +12,11 @@ import { postUploadApi } from '../../Functionality/api';
 
 const PostForm = () => {
     // IMG UPLOAD
+    const photoBtn = () => {
+        const postForm = document.getElementById('photo-upload-form')
+        postForm.classList.toggle('invis')
+    }
+
     const [image, setImage] = useState();
     const {
         register,
@@ -74,6 +79,7 @@ const PostForm = () => {
                 body: '',
                 image: ''
             })
+            setCharacterCount(0)
         } catch (err) {
             console.error(err)
         }
@@ -92,12 +98,7 @@ const PostForm = () => {
 
     return (
         <div>
-
-
-
-            <h3>New Post</h3>
-            <h4>Upload an Image (optiona)</h4>
-            <form onSubmit={handleSubmit(onSubmit)} className="4 p-4 border border-dark rounded" style={{ backgroundColor: "rgb(170,200,170)", fontWeight: "bold" }}>
+            {/* <form onSubmit={handleSubmit(onSubmit)} className="4 p-4 border border-dark rounded" style={{ backgroundColor: "rgb(170,200,170)", fontWeight: "bold" }}>
                 <div className="form-group row">
                   <label htmlFor="image" className="col-sm-2 col-form-label">Upload profile picture:</label>
                   <div class="col-sm-4">
@@ -111,21 +112,16 @@ const PostForm = () => {
                     />
                   </div>
                   <img src={image} alt="Preview Image" />
-                  {/* {error ? (
-              <div className="mt-3">
-                <p className="text-muted small">The password is incorrect</p>
-              </div>
-            ) : null} */}
                 </div>
                 <br></br>
                 <div className="col-sm-10">
                   <button type="submit">Upload Photo</button>
                 </div>
                 <br></br>
-              </form>
+              </form> */}
 
 
-            <p>Character Count: {characterCount}/2000</p>
+            {/* <p>Character Count: {characterCount}/2000</p>
 
             <form onSubmit={handleFormSubmit}>
                 <div>
@@ -145,7 +141,7 @@ const PostForm = () => {
                         <li>{error.graphQLErrors[0].message}</li>
                     </ul>
                 </div>
-            )}
+            )} */}
 
 <div class="bg-white rounded-lg shadow">
                         <div
@@ -167,38 +163,33 @@ const PostForm = () => {
                                         fill="#41416E"
                                     />
                                 </svg>
-
+                                <form onSubmit={handleFormSubmit} class="flex items-center justify-end rounded-lg w-full">
                                 <input
+                                    name='body'
+                                    onChange={handleChange}
                                     placeholder="whats up..."
                                     type="text"
+                                    value={formState.body}
                                     class="w-full ml-2 focus:outline-none bg-transparent border-0 focus:border-0 focus:ring-0"
                                 />
+                                <input hidden name='image' placeholder='Upload your photo here' onChange={handleChange} value={formState.image} />
+                                <div class="flex items-center justify-end rounded-lg w-full">
+                                    <button type='submit'>Create Post</button>
+                                </div>
+                                </form>
+                                {error && (
+                <div>
+                    <ul>
+                        <li>{error.graphQLErrors[0].message}</li>
+                    </ul>
+                </div>
+            )}
                             </div>
                         </div>
+                            <p class="text-sm m-2">&nbsp;&nbsp;&nbsp;Character Count: {characterCount}/2000</p>
 
 
                         <div class="grid grid-cols-4 justify-center">
-                            <div
-                                class="rounded-l-lg py-6 hover:bg-gray-50 cursor-pointer flex items-center justify-center"
-                            >
-                                <div
-                                    class="flex items-center space-x-1 text-gray-900"
-                                >
-                                    <svg
-                                        class="h-6 w-6"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M17 3.25H7C4.381 3.25 2.25 5.381 2.25 8V16C2.25 16.373 2.30299 16.731 2.38499 17.079C2.39699 17.126 2.40699 17.1709 2.42799 17.2159C2.96899 19.2439 4.804 20.75 7 20.75H17C19.619 20.75 21.75 18.619 21.75 16V8C21.75 5.381 19.619 3.25 17 3.25ZM7 4.75H17C18.792 4.75 20.25 6.208 20.25 8V13.189L16.24 9.17896C15.556 8.49496 14.443 8.49496 13.76 9.17896L9 13.939L8.24001 13.179C7.55601 12.495 6.44299 12.495 5.75999 13.179L3.75 15.189V8C3.75 6.208 5.208 4.75 7 4.75ZM17 19.25H7C5.597 19.25 4.41099 18.352 3.95599 17.104L6.82001 14.24C6.94701 14.113 7.052 14.113 7.179 14.24L8.119 15.1801C8.604 15.6651 9.394 15.6651 9.88 15.1801L14.82 10.24C14.918 10.142 15.082 10.142 15.179 10.24L20.249 15.3101V16C20.25 17.792 18.792 19.25 17 19.25ZM7 9C7 8.448 7.448 8 8 8C8.552 8 9 8.448 9 9C9 9.552 8.552 10 8 10C7.448 10 7 9.552 7 9Z"
-                                            fill="#41416E"
-                                        />
-                                    </svg>
-
-                                    <span class="hidden md:block">Photo</span>
-                                </div>
-                            </div>
 
                             <div
                                 class="rounded-r-lg py-6 hover:bg-gray-50 cursor-pointer flex items-center justify-center"
@@ -218,11 +209,38 @@ const PostForm = () => {
                                         />
                                     </svg>
 
-                                    <span class="hidden md:block">Submit</span>
+                                    <button onClick={photoBtn}><span class="hidden md:block">Add Photo</span></button>
                             </div>
                             </div>
 
 
+                        </div>
+                        <div id="photo-upload-form" className="invis">
+                            <div class="justify-center">
+                            <div
+                                class="rounded-r-lg py-6 cursor-pointer flex items-center justify-center"
+                            >
+                                <div
+                                    class="flex items-center space-x-1 text-gray-900"
+                                >
+                                    <form onSubmit={handleSubmit(onSubmit)}>
+                                    <label htmlFor="image"></label>
+                                    <div class="flex items-center space-x-1 text-gray-900">
+                                        <input
+                                        className="image"
+                                        name="image"
+                                        type="file"
+                                        id="image"
+                                        {...register("picture")}
+                                        onChange={onPreviewImage}
+                                        />
+                                    {/* <img src={image} alt="Preview Image" /> */}
+                                    <button type="submit" class="hover:bg-gray-50 p-5" onClick={photoBtn}>Attach</button>
+                                </div>
+                                </form>
+                                </div>
+                                </div>
+                            </div>
                         </div>
 
 
